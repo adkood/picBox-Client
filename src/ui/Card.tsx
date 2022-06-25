@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { useSelector } from "react-redux";
 
-const Card: React.FC<{}> = ({ children }: any) => {
+const Card = ({ children }: any) => {
   const uiState = useSelector((state: any) => state.ui.uiColorCode);
 
   return (
