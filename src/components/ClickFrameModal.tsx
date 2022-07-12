@@ -19,7 +19,9 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { clickFrameActions } from "../../store";
 import axios from "axios";
-import { saveAs } from "file-saver";
+
+// import saveAs from "file-saver";
+const saveAs = require('file-saver');
 
 import { loadStripe } from "@stripe/stripe-js";
 // import { redirect } from "next/dist/server/api-utils";
