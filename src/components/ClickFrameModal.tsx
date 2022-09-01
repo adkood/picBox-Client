@@ -21,7 +21,7 @@ import { clickFrameActions } from "../../store";
 import axios from "axios";
 
 // import saveAs from "file-saver";
-const saveAs = require('file-saver');
+const saveAs = require("file-saver");
 
 import { loadStripe } from "@stripe/stripe-js";
 // import { redirect } from "next/dist/server/api-utils";
@@ -37,8 +37,12 @@ function ClickFrameModal() {
   const router = useRouter();
 
   // const [isVisible, setIsVisible] = useState(true);
+  const [planCount, setPlanCount] = useState(0);
   const buyVisiblity = useSelector((state: any) => state.clickFrame.buyVisible);
-  const isVisible = buyVisiblity ? 'visible' : 'hidden';
+  let isVisible = buyVisiblity ? 1 : 0;
+  isVisible = planCount > 0 ? 0 : 1;
+
+  let download_Button_Visibility = isVisible ? 0 : 1;
 
   const onOpen = useSelector((state: any) => state.clickFrame.frameState);
   const imageSrc = useSelector((state: any) => state.clickFrame.src);
@@ -75,33 +79,67 @@ function ClickFrameModal() {
   };
 
   const downloadImage = () => {
+    const func = async () => {
+      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      let data = await res.json();
+      data.data.data.planCount -= 1;
+
+      const url = "http://127.0.0.1:8000/api/v1/users/updateMe";
+      axios({
+        url,
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        data: data.data.data,
+      });
+    };
+    func();
     saveAs(imageSrc, "image.jpg");
   };
 
   //api
-  const handleApi = () => {
-    // console.log(image);
-    const formData = new FormData();
-    formData.append("title", titleRef.current!.value);
-    formData.append("price", priceRef.current!.value);
-    formData.append("img", image);
+  // const handleApi = () => {
+  //   // console.log(image);
+  //   const formData = new FormData();
+  //   formData.append("title", titleRef.current!.value);
+  //   formData.append("price", priceRef.current!.value);
+  //   formData.append("img", image);
 
-    const url = "http://127.0.0.1:8000/api/v1/photo";
-    axios({
-      url,
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      data: formData,
-    })
-      .then((res) => {
-        // console.log(res);
-      })
-      .catch((error) => {
-        // console.log(error);
+  //   const url = "http://127.0.0.1:8000/api/v1/photo";
+  //   axios({
+  //     url,
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //     },
+  //     data: formData,
+  //   })
+  //     .then((res) => {
+  //       // console.log(res);
+  //     })
+  //     .catch((error) => {
+  //       // console.log(error);
+  //     });
+  // };
+
+  useEffect(() => {
+    const func = async () => {
+      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
-  };
+
+      let data = await res.json();
+      setPlanCount(data.data.data.planCount);
+    };
+    func();
+  });
 
   // checkout-session
   const onBuyItClickHandler = async () => {
@@ -269,6 +307,9 @@ function ClickFrameModal() {
                         border="1px dotted green"
                         color="#006400"
                         onClick={downloadImage}
+                        visibility={
+                          download_Button_Visibility ? "visible" : "hidden"
+                        }
                       >
                         <Heading fontSize="100%">DOWNLOAD</Heading>
                       </Button>
@@ -287,7 +328,7 @@ function ClickFrameModal() {
                         borderStyle="none"
                         border="1px dotted #1E90FF"
                         color="#008080"
-                        visibility={isVisible}
+                        visibility={isVisible ? "visible" : "hidden"}
                         onClick={onBuyItClickHandler}
                       >
                         <Heading fontSize="100%">Buy It</Heading>

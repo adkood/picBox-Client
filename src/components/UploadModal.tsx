@@ -120,8 +120,8 @@ function UploadModal() {
               <Flex
                 flexWrap="wrap"
                 gap="15"
-                width="60%"
-                height="50%"
+                width="40%"
+                height="70%"
                 bgColor="white"
                 borderRadius="8px"
                 justifyContent="center"
@@ -144,6 +144,7 @@ function UploadModal() {
                     fontFamily="serif"
                     color={"purple"}
                     focusBorderColor="purple"
+                    outline={'none'}
                     ref={titleRef}
                   ></Input>
                   <Input
@@ -156,6 +157,7 @@ function UploadModal() {
                     fontSize="110%"
                     fontFamily="serif"
                     color={"purple"}
+                    outline={'none'}
                     focusBorderColor="purple"
                     ref={priceRef}
                   ></Input>
@@ -169,6 +171,7 @@ function UploadModal() {
                     fontSize="110%"
                     fontFamily="serif"
                     color={"purple"}
+                    outline={'none'}
                     focusBorderColor="purple"
                     ref={discountRef}
                   ></Input>
@@ -179,16 +182,30 @@ function UploadModal() {
                     alignItems="center"
                     justifyContent={"space-around"}
                   >
-                    {/* <Flex
+                    <Flex
                       width="50%"
                       height="80%"
                       border="1px dotted purple"
-                    ></Flex> */}
-                    <Input
-                      type="file"
-                      color={"purple"}
-                      onChange={onProfilePhotoChangeHandler}
-                    ></Input>
+                      flexDirection={"column"}
+                      justifyContent="center"
+                      alignItems='center'
+                    >
+                      <img
+                        width={"90%"}
+                        height="90%"
+                        src="uploadPlaceHolder.jpeg"
+                        alt="upload file"
+                      />
+                      <Input
+                        type="file"
+                        width={'80%'}
+                        color={"purple"}
+                        display='inline-block'
+                        outline={'none'}
+                        whiteSpace='nowrap'
+                        onChange={onProfilePhotoChangeHandler}
+                      ></Input>
+                    </Flex>
                   </Flex>
                 </Flex>
                 <Button

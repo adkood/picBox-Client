@@ -99,9 +99,12 @@
   color: #2288f9;
 }
 
-.pricingTable .buyNow button {
+.buttonCont{
   text-align: center;
   margin: auto;
-  font-weight: 600;
-  padding: 9px 0;
+  width: 60%;
+  height: 30%;
+  /* border-radius: 10px; */
+  font-weight: 900;
+  padding: 3px 0;
 }

@@ -1,6 +1,52 @@
 import classes from "./PremiumPlan.module.css";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const PremiumPlan = () => {
+  const router = useRouter();
+  
+  const onBuyItClickHandler1 = async () => {
+    const session = await axios(
+      `http://127.0.0.1:8000/api/v1/payment/checkout-session-basic`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+  
+    router.push(session.data.session.url);
+  };
+
+  const onBuyItClickHandler2 = async () => {
+    const session = await axios(
+      `http://127.0.0.1:8000/api/v1/payment/checkout-session-pro`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+  
+    router.push(session.data.session.url);
+  };
+
+  const onBuyItClickHandler3 = async () => {
+    const session = await axios(
+      `http://127.0.0.1:8000/api/v1/payment/checkout-session-premium`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+  
+    router.push(session.data.session.url);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.pricingTable}>
@@ -24,9 +70,11 @@ const PremiumPlan = () => {
             </h4>
           </div>
           <div className={classes.price}>
-            <h4>$25</h4>
+            <h4>Rs. 199.00</h4>
           </div>
-          <button type="submit">BUY NOW</button>
+          <div className={classes.buttonCont}>
+          <button onClick={onBuyItClickHandler1} className={classes.buttonCont} type="submit">BUY NOW</button>
+          </div>
         </div>
         <div className={classes.item}>
           <div className={classes.ribbon}>Best Value</div>
@@ -49,9 +97,11 @@ const PremiumPlan = () => {
             </h4>
           </div>
           <div className={classes.price}>
-            <h4>$50</h4>
+            <h4>Rs. 399.00</h4>
           </div>
-          <button type="submit">BUY NOW</button>
+          <div className={classes.buttonCont}>
+          <button onClick={onBuyItClickHandler2} className={classes.buttonCont} type="submit">BUY NOW</button>
+          </div>
         </div>
         <div className={classes.item}>
           <div className={classes.heading}>
@@ -73,9 +123,11 @@ const PremiumPlan = () => {
             </h4>
           </div>
           <div className={classes.price}>
-            <h4>$150</h4>
+            <h4>Rs. 1099.00</h4>
           </div>
-          <button type="submit">BUY NOW</button>
+          <div className={classes.buttonCont}>
+          <button onClick={onBuyItClickHandler3} className={classes.buttonCont} type="submit">BUY NOW</button>
+          </div>
         </div>
       </div>
     </div>
