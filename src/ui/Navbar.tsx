@@ -46,7 +46,8 @@ export default function Navbar() {
 
   const dispatch = useDispatch();
   const uiState = useSelector((state: any) => state.ui.uiColorCode);
-  const darkUi = useSelector((state: any) => state.ui.darkColorMode);
+  // const darkUi = useSelector((state: any) => state.ui.darkColorMode);
+  const authState = useSelector((state: any) => state.auth.isLogged);
 
   const colorModeToggle = () => {
     dispatch(uiActtions.colorToggle());
@@ -54,8 +55,8 @@ export default function Navbar() {
 
   const onLogoutHandler = () => {
     dispatch(authActions.logout());
-    router.replace('/');
-  }
+    router.replace("/");
+  };
 
   return (
     <>
@@ -80,7 +81,7 @@ export default function Navbar() {
               router.push("/");
             }}
             boxSize="7vh"
-            borderRadius= '5px'
+            borderRadius="5px"
             src={"/logo.png"}
           />
 
@@ -105,99 +106,106 @@ export default function Navbar() {
               )}
             </Button> */}
 
-            <Button
-              onClick={() => {
-                dispatch(modalActions.loginToggle());
-              }}
-              borderBottom='1px solid'
-              borderStyle={'none'}
-              bgColor={'transparent'}
-              fontSize='130%'
-              fontFamily={'monospace'}
-            >
-              Login
-            </Button>
-            <Button
-              onClick={() => {
-                dispatch(modalActions.signupToggle());
-              }}
-              borderBottom='1px solid'
-              borderStyle={'none'}
-              bgColor={'transparent'}
-              fontSize='130%'
-              fontFamily={'monospace'}
-            >
-              Signup
-            </Button>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                borderRadius='5px'
-                borderStyle={'none'}
+            {!authState && (
+              <Button
+                onClick={() => {
+                  dispatch(modalActions.loginToggle());
+                }}
+                borderBottom="1px solid"
+                borderStyle={"none"}
+                bgColor={"transparent"}
+                fontSize="130%"
+                fontFamily={"monospace"}
               >
-                <Avatar
-                  boxSize="6vh"
-                  src={"https://avatars.dicebear.com/api/male/username.svg"}
-                />
-              </MenuButton>
-              <MenuList alignItems={"center"} zIndex={5}>
-                <br />
-                <Center>
+                Login
+              </Button>
+            )}
+            {!authState && (
+              <Button
+                onClick={() => {
+                  dispatch(modalActions.signupToggle());
+                }}
+                borderBottom="1px solid"
+                borderStyle={"none"}
+                bgColor={"transparent"}
+                fontSize="130%"
+                fontFamily={"monospace"}
+              >
+                Signup
+              </Button>
+            )}
+
+            {authState && (
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  borderRadius="5px"
+                  borderStyle={"none"}
+                >
                   <Avatar
-                    size={"2xl"}
+                    boxSize="6vh"
                     src={"https://avatars.dicebear.com/api/male/username.svg"}
                   />
-                </Center>
-                <br />
-                <Center>
-                  <p>Username</p>
-                </Center>
-                <br />
-                <MenuDivider />
-                <MenuItem
-                  borderRadius="5px"
-                  borderColor="#BA55D3"
-                  _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                  color="#BA55D3"
-                  onClick={() => {
-                    dispatch(modalActions.uploadToggle());
-                  }}
-                >
-                  Upload Images
-                </MenuItem>
-                <MenuItem
-                  borderRadius="5px"
-                  borderColor="#BA55D3"
-                  _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                  color="#BA55D3"
-                  onClick={() => {
-                    dispatch(modalActions.collectionToggle());
-                  }}
-                >
-                  Your Collections
-                </MenuItem>
-                <MenuItem
-                  borderRadius="5px"
-                  borderColor="#BA55D3"
-                  _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                  color="#BA55D3"
-                >
-                  <Link href="/account">Account Settings</Link>
-                </MenuItem>
-                <MenuItem
-                  borderRadius="5px"
-                  borderColor="#BA55D3"
-                  _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                  color="#BA55D3"
-                  onClick={onLogoutHandler}
-                >
-                  Logout
-                </MenuItem>
-              </MenuList>
-            </Menu>
+                </MenuButton>
+                <MenuList alignItems={"center"} zIndex={5}>
+                  <br />
+                  <Center>
+                    <Avatar
+                      size={"2xl"}
+                      src={"https://avatars.dicebear.com/api/male/username.svg"}
+                    />
+                  </Center>
+                  <br />
+                  <Center>
+                    <p>Username</p>
+                  </Center>
+                  <br />
+                  <MenuDivider />
+                  <MenuItem
+                    borderRadius="5px"
+                    borderColor="#BA55D3"
+                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
+                    color="#BA55D3"
+                    onClick={() => {
+                      dispatch(modalActions.uploadToggle());
+                    }}
+                  >
+                    Upload Images
+                  </MenuItem>
+                  <MenuItem
+                    borderRadius="5px"
+                    borderColor="#BA55D3"
+                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
+                    color="#BA55D3"
+                    onClick={() => {
+                      dispatch(modalActions.collectionToggle());
+                    }}
+                  >
+                    Your Collections
+                  </MenuItem>
+                  <MenuItem
+                    borderRadius="5px"
+                    borderColor="#BA55D3"
+                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
+                    color="#BA55D3"
+                  >
+                    <Link href="/account">Account Settings</Link>
+                  </MenuItem>
+                  <MenuItem
+                    borderRadius="5px"
+                    borderColor="#BA55D3"
+                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
+                    color="#BA55D3"
+                    onClick={onLogoutHandler}
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )}
           </Flex>
         </Flex>
       </Box>

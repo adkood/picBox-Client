@@ -12,6 +12,8 @@ import Container from "../src/ui/Container";
 import Navbar from "./../src/ui/Navbar";
 
 const Home: NextPage = () => {
+  
+
   return (
     <>
       <Login></Login>

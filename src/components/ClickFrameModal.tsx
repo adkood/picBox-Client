@@ -16,6 +16,7 @@ import { Button, Text } from "@chakra-ui/react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useRouter } from "next/router";
 
+import { authActions } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { clickFrameActions } from "../../store";
 import axios from "axios";
@@ -35,6 +36,8 @@ const stripePromise = loadStripe(
 
 function ClickFrameModal() {
   const router = useRouter();
+
+  const authState = useSelector((state: any) => state.auth.isLogged);
 
   // const [isVisible, setIsVisible] = useState(true);
   const [planCount, setPlanCount] = useState(0);
@@ -136,7 +139,9 @@ function ClickFrameModal() {
       });
 
       let data = await res.json();
-      setPlanCount(data.data.data.planCount);
+      {
+        authState && setPlanCount(data.data.data.planCount);
+      }
     };
     func();
   });
