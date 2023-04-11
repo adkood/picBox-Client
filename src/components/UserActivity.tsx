@@ -6,16 +6,16 @@ const UserActivity = () => {
     <Flex
       height="50%"
       width="70%"
-      border="3px solid #D8BFD8"
+      border="3px solid white"
       borderRadius="10px"
       flexDirection="column"
-      boxShadow="5px 10px 5px #D8BFD8"
-      bgColor={'white'}
+      boxShadow="5px 10px white"
+      // bgColor={'white'}
     >
       <Flex
         height="25%"
-        border="1px solid #D8BFD8"
-        color="#BA55D3"
+        border="1px solid white"
+        color="white"
         alignItems="center"
       >
         <Flex width="70%" justifyContent="center">
@@ -27,8 +27,8 @@ const UserActivity = () => {
       </Flex>
       <Flex
         height="25%"
-        border="1px solid #D8BFD8"
-        color="#BA55D3"
+        border="1px solid white"
+        color="white"
         alignItems="center"
       >
         <Flex width="70%" justifyContent="center">
@@ -40,8 +40,8 @@ const UserActivity = () => {
       </Flex>
       <Flex
         height="25%"
-        border="1px solid #D8BFD8"
-        color="#BA55D3"
+        border="1px solid white"
+        color="white"
         alignItems="center"
       >
         <Flex width="70%" justifyContent="center">
@@ -53,8 +53,8 @@ const UserActivity = () => {
       </Flex>
       <Flex
         height="25%"
-        border="1px solid #D8BFD8"
-        color="#BA55D3"
+        border="1px solid white"
+        color="white"
         alignItems="center"
       >
         <Flex width="70%" justifyContent="center">

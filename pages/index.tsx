@@ -10,10 +10,9 @@ import Signup from "../src/components/Signup";
 import UploadModal from "../src/components/UploadModal";
 import Container from "../src/ui/Container";
 import Navbar from "./../src/ui/Navbar";
+import ModalFrame from "../src/ui/ModalFrame";
 
 const Home: NextPage = () => {
-  
-
   return (
     <>
       <Login></Login>
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
       <Container></Container>
       <HomePagePhotos></HomePagePhotos>
       <HomePageArtists></HomePageArtists>
-      
+      <ModalFrame></ModalFrame>
       <UploadModal></UploadModal>
       <CollectionModal></CollectionModal>
       <SearchResultModal></SearchResultModal>

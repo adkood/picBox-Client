@@ -62,11 +62,12 @@ export default function Navbar() {
     <>
       <Box
         // bgColor="black"
-        bgColor={uiState.navbar}
+        bgColor={"#9370DB"}
+        border={"1px solid white"}
         height="8%"
         width="77%"
         borderRadius="10px"
-        boxShadow={`5px 5px ${uiState.cardShadow}`}
+        boxShadow={`5px 5px #9370DB`}
         bg={useColorModeValue("gray.100", "gray.900")}
         px={4}
       >
@@ -191,8 +192,11 @@ export default function Navbar() {
                     borderColor="#BA55D3"
                     _hover={{ bgColor: "#DDA0DD", color: "white" }}
                     color="#BA55D3"
+                    onClick={() => {
+                      dispatch(modalActions.accountToggle());
+                    }}
                   >
-                    <Link href="/account">Account Settings</Link>
+                    Account Settings
                   </MenuItem>
                   <MenuItem
                     borderRadius="5px"

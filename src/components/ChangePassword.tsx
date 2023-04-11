@@ -32,10 +32,10 @@ const ChangePassword = () => {
     <Flex
       height="50%"
       width="70%"
-      border="3px solid #D8BFD8"
+      border="3px solid white"
       borderRadius="10px"
       flexDirection="column"
-      boxShadow="5px 10px 5px #D8BFD8"
+      boxShadow="5px 10px white"
       alignItems="center"
       justifyContent="space-around"
     >
@@ -46,6 +46,7 @@ const ChangePassword = () => {
         placeholder="Your Password"
         borderStyle="none"
         fontSize="100%"
+        backgroundColor={"none"}
         ref={currPasswordRef}
       ></Input>
       <Input
@@ -72,7 +73,8 @@ const ChangePassword = () => {
         height="16%"
         borderStyle="none"
         borderRadius="5px"
-        _hover={{ bgColor: "pink" }}
+        color= "#9932CC"
+        _hover={{ bgColor: "#9932CC", color: 'white' }}
         cursor="pointer"
         onClick={onClickHandler}
       >

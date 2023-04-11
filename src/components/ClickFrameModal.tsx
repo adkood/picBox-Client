@@ -138,8 +138,10 @@ function ClickFrameModal() {
         },
       });
 
+
       let data = await res.json();
       {
+        console.log(data);
         authState && setPlanCount(data.data.data.planCount);
       }
     };

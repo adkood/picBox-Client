@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { useId } from "react";
+// import { useId } from "react";
 
 const initialModalState = {
   isUpload: false,
   isCollection: false,
   isSearch: false,
-  isLogin: false,
+  isLogin: false,  
   isSignup: false,
   isEdit: false,
+  isAccount: false,
 };
 
 const modalSlice = createSlice({
@@ -35,6 +36,9 @@ const modalSlice = createSlice({
     editToggle(state) {
       state.isEdit = !state.isEdit;
     },
+    accountToggle(state) {
+      state.isAccount = !state.isAccount;
+    }
   },
 });
 

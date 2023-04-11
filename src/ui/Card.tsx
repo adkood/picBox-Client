@@ -7,8 +7,8 @@ const Card = ({ children }: any) => {
 
   return (
     <Flex
-      width="77vw"
-      height="82vh"
+      width="77%"
+      height="80vh"
       justifyContent="center"
       alignItems="center"
       borderRadius="10px"

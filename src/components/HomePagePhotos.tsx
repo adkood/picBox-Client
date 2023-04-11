@@ -79,15 +79,14 @@ const HomePagePhotos = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // console.log(imageArray1, imageArray2);
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/v1/photo/getFivePhotos?page=3&limit=5")
+      .then((response) => response.json())
+      .then((res) => setImageArray3(res.data.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/v1/photo/getFivePhotos?page=3")
-  //     .then((response) => response.json())
-  //     .then((res) => setImageArray3(res))
-  //     .catch((err) => console.log(err));
-  // }, []);
-
+  console.log(imageArray3);
   return (
     <Flex
       height="300vh"
@@ -177,11 +176,24 @@ const HomePagePhotos = () => {
             flexDirection="column"
             overflow="clip"
           >
-            {/* {imageArray3.length > 0
-              ? imageArray3.map((i: any) => (
-                  <Frame key={i.id} imageUrl={`${i.urls.raw}`}></Frame>
-                ))
-              : "Loading..."} */}
+            {imageArray3.length > 0
+              ? imageArray3.map((i: any) => {
+                  const base64String = base64ArrayBuffer(i.img.data.data);
+                  return (
+                    <Frame
+                      key={i._id}
+                      id={i._id}
+                      title={i.title}
+                      width={i.width * 1}
+                      height={i.height * 1}
+                      size={i.size}
+                      discount={i.priceDiscount}
+                      price={i.price}
+                      imageUrl={`data:image/*;base64,${base64String}`}
+                    ></Frame>
+                  );
+                })
+              : "Loading..."}
           </Flex>
         </Flex>
 
