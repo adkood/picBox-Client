@@ -167,9 +167,9 @@ export default function Navbar() {
                   <MenuDivider />
                   <MenuItem
                     borderRadius="5px"
-                    borderColor="#BA55D3"
-                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                    color="#BA55D3"
+                    borderColor="#9370DB"
+                    _hover={{ bgColor: "#9370DB", color: "white" }}
+                    color="#9370DB"
                     onClick={() => {
                       dispatch(modalActions.uploadToggle());
                     }}
@@ -178,9 +178,9 @@ export default function Navbar() {
                   </MenuItem>
                   <MenuItem
                     borderRadius="5px"
-                    borderColor="#BA55D3"
-                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                    color="#BA55D3"
+                    borderColor="#9370DB"
+                    _hover={{ bgColor: "#9370DB", color: "white" }}
+                    color="#9370DB"
                     onClick={() => {
                       dispatch(modalActions.collectionToggle());
                     }}
@@ -189,9 +189,9 @@ export default function Navbar() {
                   </MenuItem>
                   <MenuItem
                     borderRadius="5px"
-                    borderColor="#BA55D3"
-                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                    color="#BA55D3"
+                    borderColor="#9370DB"
+                    _hover={{ bgColor: "#9370DB", color: "white" }}
+                    color="#9370DB"
                     onClick={() => {
                       dispatch(modalActions.accountToggle());
                     }}
@@ -200,9 +200,9 @@ export default function Navbar() {
                   </MenuItem>
                   <MenuItem
                     borderRadius="5px"
-                    borderColor="#BA55D3"
-                    _hover={{ bgColor: "#DDA0DD", color: "white" }}
-                    color="#BA55D3"
+                    borderColor="#9370DB"
+                    _hover={{ bgColor: "#9370DB", color: "white" }}
+                    color="#9370DB"
                     onClick={onLogoutHandler}
                   >
                     Logout

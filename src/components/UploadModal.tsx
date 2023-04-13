@@ -112,7 +112,7 @@ function UploadModal() {
                 fontSize="150%"
                 fontFamily="serif"
                 fontWeight="bold"
-                color="purple"
+                color="#9932CC"
               >
                 UPLOAD IMAGES
               </ModalHeader>
@@ -142,9 +142,9 @@ function UploadModal() {
                     border={"1px solid purple"}
                     fontSize="110%"
                     fontFamily="serif"
-                    color={"purple"}
-                    focusBorderColor="purple"
-                    outline={'none'}
+                    color={"#9932CC"}
+                    focusBorderColor="#9932CC"
+                    outline={"none"}
                     ref={titleRef}
                   ></Input>
                   <Input
@@ -156,9 +156,9 @@ function UploadModal() {
                     border={"1px solid purple"}
                     fontSize="110%"
                     fontFamily="serif"
-                    color={"purple"}
-                    outline={'none'}
-                    focusBorderColor="purple"
+                    color={"#9932CC"}
+                    outline={"none"}
+                    focusBorderColor="#9932CC"
                     ref={priceRef}
                   ></Input>
                   <Input
@@ -170,9 +170,9 @@ function UploadModal() {
                     border={"1px solid purple"}
                     fontSize="110%"
                     fontFamily="serif"
-                    color={"purple"}
-                    outline={'none'}
-                    focusBorderColor="purple"
+                    color={"#9932CC"}
+                    outline={"none"}
+                    focusBorderColor="#9932CC"
                     ref={discountRef}
                   ></Input>
                   <Flex
@@ -185,10 +185,9 @@ function UploadModal() {
                     <Flex
                       width="50%"
                       height="80%"
-                      border="1px dotted purple"
                       flexDirection={"column"}
                       justifyContent="center"
-                      alignItems='center'
+                      alignItems="center"
                     >
                       <img
                         width={"90%"}
@@ -197,12 +196,14 @@ function UploadModal() {
                         alt="upload file"
                       />
                       <Input
+                        backgroundImage={"uploadPlaceHolder.jpeg"}
                         type="file"
-                        width={'80%'}
-                        color={"purple"}
-                        display='inline-block'
-                        outline={'none'}
-                        whiteSpace='nowrap'
+                        width="50%"
+                        height="80%"
+                        color={"#9932CC"}
+                        display="inline-block"
+                        outline={"none"}
+                        whiteSpace="nowrap"
                         onChange={onProfilePhotoChangeHandler}
                       ></Input>
                     </Flex>
@@ -214,8 +215,8 @@ function UploadModal() {
                   height={"10%"}
                   borderStyle="none"
                   borderRadius="10px"
-                  _hover={{ bgColor: " #D8BFD8", color: "white" }}
-                  color="purple"
+                  _hover={{ bgColor: " #9932CC", color: "white" }}
+                  color="#9932CC"
                   onClick={handleApi}
                 >
                   <Heading>Click To Upload</Heading>

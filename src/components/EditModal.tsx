@@ -89,7 +89,7 @@ function EditModal() {
                 fontSize="150%"
                 fontFamily="serif"
                 fontWeight="bold"
-                color="white"
+                color="#9370DB"
               >
                 EDIT DETAILS
               </ModalHeader>
@@ -103,8 +103,6 @@ function EditModal() {
                 borderRadius="5px"
                 justifyContent="center"
                 alignItems="center"
-                // borderRadius="15px"
-                boxShadow="5px 10px 5px"
                 flexDirection="column"
               >
                 <Flex
@@ -114,44 +112,47 @@ function EditModal() {
                   justifyContent="space-around"
                 >
                   <Input
+                    border="1px solid #9370DB"
                     width="90%"
                     height="30%"
                     borderRadius="10px"
                     placeholder="New name"
-                    borderStyle="none"
-                    fontSize="150%"
+                    fontSize="100%"
                     fontFamily="serif"
                     ref={nameRef}
                   ></Input>
                   <Input
+                    border="1px solid #9370DB"
                     width="90%"
                     height="30%"
                     borderRadius="10px"
                     placeholder="New email"
-                    borderStyle="none"
-                    fontSize="150%"
+                    fontSize="100%"
                     fontFamily="serif"
                     ref={emailRef}
                   ></Input>
                   <Input
+                    border="1px solid #9370DB"
                     width="90%"
                     height="30%"
                     borderRadius="10px"
                     placeholder="New profession"
-                    borderStyle="none"
-                    fontSize="150%"
+                    fontSize="100%"
                     fontFamily="serif"
                     ref={professionRef}
                   ></Input>
                 </Flex>
                 <Button
-                  width="16%"
+                  width="30%"
                   borderStyle="none"
+                  color="#9370DB"
                   borderRadius="10px"
-                  _hover={{ bgColor: " #D8BFD8" }}
+                  _hover={{ bgColor: "#9370DB" , color: "white"}}
                   onClick={onClickHandler}
+                  fontSize={"20px"}
                 >
-                  <UploadFileIcon fontSize="large"></UploadFileIcon>
+                  click to edit
+                  <UploadFileIcon color="primary" fontSize="large"></UploadFileIcon>
                 </Button>
               </Flex>
               <Box borderRadius="50%" onClick={onToggle}>

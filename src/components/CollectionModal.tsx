@@ -9,6 +9,8 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
+
 
 import React, { useEffect, useState } from "react";
 
@@ -23,8 +25,9 @@ const CollectionModal = () => {
   const dispatch = useDispatch();
 
   const [data1, setData1] = useState([]);
-  const [data2, setData2] = useState([]);
-  const [data3, setData3] = useState([]);
+  const [boughtImages , setBoughtImages] = useState([]);
+  // const [data2, setData2] = useState([]);
+  // const [data3, setData3] = useState([]);
 
   const OverlayTwo = () => (
     <ModalOverlay
@@ -104,12 +107,28 @@ const CollectionModal = () => {
       .then((response) => response.json())
       .then((data) => {
         setData1(data.data.data);
+        console.log(data.data.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  
-  // console.log(data1);
+
+  useEffect(() => {
+    const func = async () => {
+      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      let data = await res.json();
+      // console.log(data);
+      setBoughtImages(data.data.data.boughtImages);
+    };
+    func();
+  });
+
+  // console.log(boughtImages);
   return (
     <>
       <Modal isCentered isOpen={onOpen} onClose={onToggle}>
@@ -136,7 +155,7 @@ const CollectionModal = () => {
                 // wrap="wrap"
                 // css = "::-webkit-scrollbar {
                 //         display: none,
-                //       }"
+                //       }" 
               >
                 <Flex
                   height={"5%"}
@@ -157,9 +176,9 @@ const CollectionModal = () => {
                   height="95%"
                   width="100%"
                   overflow={"scroll"}
-                  // css = "::-webkit-scrollbar {
-                  //   width: 0px
-                  // }"
+                  css = "::-webkit-scrollbar {
+                    width: 0px
+                  }"
                 >
                   <Flex
                     height="100%"
@@ -167,7 +186,8 @@ const CollectionModal = () => {
                     flexDirection="column"
                     // overflow="hidden"
                   >
-                    {data1.map((singleData: any) => {
+                    {data1.length > 0 ? (
+                      data1.map((singleData: any) => {
                       const base64String = base64ArrayBuffer(
                         singleData.img.data.data
                       );
@@ -192,7 +212,15 @@ const CollectionModal = () => {
                           imageUrl={`data:image/*;base64,${base64String}`}
                         ></Frame>
                       );
-                    })}
+                    })
+                    ) : ( <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                    <Spinner
+                      margin={"10%"}
+                      width={"50px"}
+                      height={"50px"}
+                      color="#9370DB"
+                    />
+                  </Flex> )}
                   </Flex>
                   <Flex
                     height="100%"
@@ -200,12 +228,14 @@ const CollectionModal = () => {
                     flexDirection="column"
                     // overflow="hidden"
                   >
-                    {/* <Frame imageUrl="./demo9.jfif"></Frame>
-                    <Frame imageUrl="./demo18.jfif"></Frame>
-                    <Frame imageUrl="./demo11.jfif"></Frame>
-                    <Frame imageUrl="./demo12.jfif"></Frame>
-                    <Frame imageUrl="./demo13.jfif"></Frame>
-                    <Frame imageUrl="./demo2.jfif"></Frame> */}
+                     <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                    <Spinner
+                      margin={"10%"}
+                      width={"50px"}
+                      height={"50px"}
+                      color="#9370DB"
+                    />
+                  </Flex>
                   </Flex>
                   <Flex
                     height="100%"
@@ -213,12 +243,14 @@ const CollectionModal = () => {
                     flexDirection="column"
                     // overflow="hidden"
                   >
-                    {/* <Frame imageUrl="./demo14.jfif"></Frame>
-                    <Frame imageUrl="./demo15.jfif"></Frame>
-                    <Frame imageUrl="./demo16.jfif"></Frame>
-                    <Frame imageUrl="./demo17.jfif"></Frame>
-                    <Frame imageUrl="./demo10.jfif"></Frame>
-                    <Frame imageUrl="./demo3.jfif"></Frame> */}
+                     <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                    <Spinner
+                      margin={"10%"}
+                      width={"50px"}
+                      height={"50px"}
+                      color="#9370DB"
+                    />
+                  </Flex>
                   </Flex>
                 </Flex>
               </Flex>

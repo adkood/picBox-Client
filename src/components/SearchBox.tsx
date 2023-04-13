@@ -47,7 +47,7 @@ const SearchBox = () => {
           borderRadius="10px"
           borderStyle="none"
           fontSize="170%"
-          color="#cc0066"
+          color="#9370DB"
           fontFamily="monospace"
           ref={searchDataRef}
           // onSelect={border: '0'}
@@ -55,10 +55,10 @@ const SearchBox = () => {
         <Button
           height="60%"
           width="10%"
-          color="#ff4da6"
+          color="#9370DB"
           borderRadius="10px"
           borderStyle="none"
-          _hover={{ color: "white", bgColor: "#ff4da6" }}
+          _hover={{ color: "white", bgColor: "#9370DB" }}
           onClick={() => {
             dispatch(searchDataActions.searchDataDefiner(searchDataRef.current!.value));
             dispatch(modalActions.searchToggle());

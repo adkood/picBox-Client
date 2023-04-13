@@ -167,9 +167,9 @@ function SearchResultModal() {
                   height="95%"
                   width="100%"
                   overflow={"scroll"}
-                  // css = "::-webkit-scrollbar {
-                  //         width: 0px
-                  //       }"
+                  css = "::-webkit-scrollbar {
+                          width: 0px
+                        }"
                 >
                   <Flex
                     height="100%"

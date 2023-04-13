@@ -41,11 +41,7 @@ function ClickFrameModal() {
 
   // const [isVisible, setIsVisible] = useState(true);
   const [planCount, setPlanCount] = useState(0);
-  const buyVisiblity = useSelector((state: any) => state.clickFrame.buyVisible);
-  let isVisible = buyVisiblity ? 1 : 0;
-  isVisible = planCount > 0 ? 0 : 1;
-
-  let download_Button_Visibility = isVisible ? 0 : 1;
+  const [boughtImages, setBoughtImages] = useState([]);
 
   const onOpen = useSelector((state: any) => state.clickFrame.frameState);
   const imageSrc = useSelector((state: any) => state.clickFrame.src);
@@ -65,6 +61,23 @@ function ClickFrameModal() {
   const onProfilePhotoChangeHandler = (e: any) => {
     setImage(e.target.files[0]);
   };
+
+//-------------------------------------------------------
+
+  const isCollectionModalOpen = useSelector((state: any) => state.modal.isCollection);
+
+  const buyVisiblity = useSelector((state: any) => state.clickFrame.buyVisible);
+
+  let isVisible = buyVisiblity ? 1 : 0;
+  isVisible = planCount > 0 ? 0 : 1;
+
+  let isImageBought = boughtImages.find((obj: any) => obj.photoId === photoId);
+  isVisible = isImageBought ? 0 : 1;
+
+  isVisible = isCollectionModalOpen ? 0 : isVisible;
+
+  let download_Button_Visibility = isVisible ? 0 : 1;
+//--------------------------------------------------------------------
 
   const OverlayTwo = () => (
     <ModalOverlay
@@ -138,11 +151,11 @@ function ClickFrameModal() {
         },
       });
 
-
       let data = await res.json();
       {
-        console.log(data);
         authState && setPlanCount(data.data.data.planCount);
+        authState && setBoughtImages(data.data.data.boughtImages);
+        // console.log(boughtImages);
       }
     };
     func();

@@ -6,6 +6,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { modalActions } from "../../store";
 import Frame from "../ui/Frame";
+import { Spinner } from "@chakra-ui/react";
+
 const HomePagePhotos = () => {
   const dispatch = useDispatch();
   const [imageArray1, setImageArray1] = useState([]);
@@ -126,24 +128,33 @@ const HomePagePhotos = () => {
             flexDirection="column"
             overflow="clip"
           >
-            {imageArray1.length > 0
-              ? imageArray1.map((i: any) => {
-                  const base64String = base64ArrayBuffer(i.img.data.data);
-                  return (
-                    <Frame
-                      key={i._id}
-                      id={i._id}
-                      title={i.title}
-                      width={i.width * 1}
-                      height={i.height * 1}
-                      size={i.size}
-                      discount={i.priceDiscount}
-                      price={i.price}
-                      imageUrl={`data:image/*;base64,${base64String}`}
-                    ></Frame>
-                  );
-                })
-              : "Loading..."}
+            {imageArray1.length > 0 ? (
+              imageArray1.map((i: any) => {
+                const base64String = base64ArrayBuffer(i.img.data.data);
+                return (
+                  <Frame
+                    key={i._id}
+                    id={i._id}
+                    title={i.title}
+                    width={i.width * 1}
+                    height={i.height * 1}
+                    size={i.size}
+                    discount={i.priceDiscount}
+                    price={i.price}
+                    imageUrl={`data:image/*;base64,${base64String}`}
+                  ></Frame>
+                );
+              })
+            ) : (
+              <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                <Spinner
+                  margin={"10%"}
+                  width={"50px"}
+                  height={"50px"}
+                  color="#9370DB"
+                />
+              </Flex>
+            )}
           </Flex>
           <Flex
             height="100%"
@@ -151,24 +162,33 @@ const HomePagePhotos = () => {
             flexDirection="column"
             overflow="clip"
           >
-            {imageArray2.length > 0
-              ? imageArray2.map((i: any) => {
-                  const base64String = base64ArrayBuffer(i.img.data.data);
-                  return (
-                    <Frame
-                      key={i._id}
-                      id={i._id}
-                      title={i.title}
-                      width={i.width * 1}
-                      height={i.height * 1}
-                      size={i.size}
-                      discount={i.priceDiscount}
-                      price={i.price}
-                      imageUrl={`data:image/*;base64,${base64String}`}
-                    ></Frame>
-                  );
-                })
-              : "Loading..."}
+            {imageArray2.length > 0 ? (
+              imageArray2.map((i: any) => {
+                const base64String = base64ArrayBuffer(i.img.data.data);
+                return (
+                  <Frame
+                    key={i._id}
+                    id={i._id}
+                    title={i.title}
+                    width={i.width * 1}
+                    height={i.height * 1}
+                    size={i.size}
+                    discount={i.priceDiscount}
+                    price={i.price}
+                    imageUrl={`data:image/*;base64,${base64String}`}
+                  ></Frame>
+                );
+              })
+            ) : (
+              <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                <Spinner
+                  margin={"10%"}
+                  width={"50px"}
+                  height={"50px"}
+                  color="#9370DB"
+                />
+              </Flex>
+            )}
           </Flex>
           <Flex
             height="100%"
@@ -176,24 +196,33 @@ const HomePagePhotos = () => {
             flexDirection="column"
             overflow="clip"
           >
-            {imageArray3.length > 0
-              ? imageArray3.map((i: any) => {
-                  const base64String = base64ArrayBuffer(i.img.data.data);
-                  return (
-                    <Frame
-                      key={i._id}
-                      id={i._id}
-                      title={i.title}
-                      width={i.width * 1}
-                      height={i.height * 1}
-                      size={i.size}
-                      discount={i.priceDiscount}
-                      price={i.price}
-                      imageUrl={`data:image/*;base64,${base64String}`}
-                    ></Frame>
-                  );
-                })
-              : "Loading..."}
+            {imageArray3.length > 0 ? (
+              imageArray3.map((i: any) => {
+                const base64String = base64ArrayBuffer(i.img.data.data);
+                return (
+                  <Frame
+                    key={i._id}
+                    id={i._id}
+                    title={i.title}
+                    width={i.width * 1}
+                    height={i.height * 1}
+                    size={i.size}
+                    discount={i.priceDiscount}
+                    price={i.price}
+                    imageUrl={`data:image/*;base64,${base64String}`}
+                  ></Frame>
+                );
+              })
+            ) : (
+              <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                <Spinner
+                  margin={"10%"}
+                  width={"50px"}
+                  height={"50px"}
+                  color="#9370DB"
+                />
+              </Flex>
+            )}
           </Flex>
         </Flex>
 
@@ -203,20 +232,19 @@ const HomePagePhotos = () => {
           justifyContent={"center"}
           alignItems="center"
         >
-          <Button
-            width="20%"
-            height="40%"
-            fontSize="150%"
-            fontFamily={"mono"}
-            _hover={{ bgColor: "lightGrey" }}
-            onClick={() => {
-              dispatch(modalActions.searchToggle());
-            }}
-            borderRadius="10px"
+          <Flex
+            width="77vw"
+            height="25%"
+            fontSize="180%"
+            fontFamily="mono"
             borderStyle="none"
+            color="white"
+            backgroundColor="#9370DB"
+            justifyContent={"center"}
+            alignItems="center"
           >
-            See More...
-          </Button>
+            Search for more...
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
