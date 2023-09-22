@@ -64,7 +64,7 @@ const SearchBox = () => {
             dispatch(modalActions.searchToggle());
           }}
         >
-          <SearchSharpIcon fontSize="large"></SearchSharpIcon>
+          <SearchSharpIcon sx={{fontSize: "2rem"}}></SearchSharpIcon>
         </Button>
       </Flex>
     </Flex>

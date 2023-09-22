@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 
-import CancelIcon from "@mui/icons-material/Cancel";
+import CloseIcon from "@mui/icons-material/Close";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../store";
 
@@ -134,7 +134,7 @@ const ChangePassword = () => {
             </Button>
           </Flex>
           <Box borderRadius="50%" onClick={onToggle}>
-            <CancelIcon fontSize="large" color="error"></CancelIcon>
+            <CloseIcon sx={{ color: "red", fontSize: "2.5rem" }}></CloseIcon>
           </Box>
         </ModalBody>
       </ModalContent>

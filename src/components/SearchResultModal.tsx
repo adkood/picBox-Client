@@ -13,7 +13,7 @@ import React, { useCallback, useEffect, useState } from "react";
 // import { useDisclosure } from "@chakra-ui/react";
 import { Button, Text } from "@chakra-ui/react";
 
-import CancelIcon from "@mui/icons-material/Cancel";
+import CloseIcon from "@mui/icons-material/Close";
 import Frame from "../ui/Frame";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -237,7 +237,7 @@ function SearchResultModal() {
                 </Flex>
               </Flex>
               <Box borderRadius="50%" onClick={onToggle}>
-                <CancelIcon fontSize="large" color="error"></CancelIcon>
+              <CloseIcon sx={{ color: "red", fontSize: "2.5rem" }}></CloseIcon>
               </Box>
             </Flex>
           </ModalBody>

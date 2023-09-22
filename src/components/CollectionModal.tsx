@@ -14,7 +14,7 @@ import { Spinner } from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 
-import CancelIcon from "@mui/icons-material/Cancel";
+import CloseIcon from "@mui/icons-material/Close";
 import Frame from "../ui/Frame";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -255,7 +255,7 @@ const CollectionModal = () => {
                 </Flex>
               </Flex>
               <Box borderRadius="50%" onClick={onToggle}>
-                <CancelIcon fontSize="large" color="error"></CancelIcon>
+              <CloseIcon sx={{ color: "red", fontSize: "2.5rem" }}></CloseIcon>
               </Box>
             </Flex>
           </ModalBody>
