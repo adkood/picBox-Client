@@ -46,6 +46,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
+        _hover={{ bgColor: "#9932CC", color: "white" }}
       >
         <Flex width="60%" padding="20px">
           <span>Name:</span>
@@ -59,6 +60,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
+        _hover={{ bgColor: "#9932CC", color: "white" }}
       >
         <Flex width="60%" padding="20px">
           <span>UserId:</span>
@@ -72,6 +74,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
+        _hover={{ bgColor: "#9932CC", color: "white" }}
       >
         <Flex width="60%" padding="20px">
           <span>E-Mail:</span>
@@ -85,6 +88,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
+        _hover={{ bgColor: "#9932CC", color: "white" }}
       >
         <Flex width="60%" padding="20px">
           <span>Profession:</span>
@@ -93,27 +97,6 @@ const Profile = () => {
           <span>{profession}</span>
         </Flex>
       </Flex>
-      {/* <Flex
-        width="100%"
-        height={"8%"}
-        justifyContent="center"
-        alignItems={"center"}
-      >
-        <Button
-          width="100%"
-          borderStyle="none"
-          borderRadius="5px"
-          color={"#9932CC"}
-          _hover={{ bgColor: "#9932CC", color: "white" }}
-          cursor="pointer"
-          onClick={() => {
-            dispatch(modalActions.editToggle());
-          }}
-        >
-          CLICK TO EDIT
-          <EditIcon fontSize="large" color="primary" />
-        </Button>
-      </Flex> */}
     </Flex>
   );
 };

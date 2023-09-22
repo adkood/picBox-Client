@@ -77,8 +77,8 @@ const ChangePassword = () => {
           <Flex
             height="40%"
             width="40%"
-            bgColor={"green"}
-            border="3px solid white"
+            bgColor={"#C197D2"}
+            boxShadow={"2px 2px 5px"}
             borderRadius="10px"
             flexDirection="column"
             alignItems="center"
@@ -89,9 +89,10 @@ const ChangePassword = () => {
               width="97%"
               borderRadius="5px"
               placeholder="Your Password"
-              borderStyle="none"
+              // borderStyle="none"
               fontSize="100%"
-              backgroundColor={"none"}
+              color="#9932CC"
+              bgColor={"white"}
               ref={currPasswordRef}
             ></Input>
             <Input
@@ -99,7 +100,9 @@ const ChangePassword = () => {
               width="97%"
               borderRadius="5px"
               placeholder="New Password"
-              borderStyle="none"
+              // borderStyle="none"
+              color="#9932CC"
+              bgColor={"white"}
               fontSize="100%"
               ref={newPasswordRef}
             ></Input>
@@ -107,8 +110,11 @@ const ChangePassword = () => {
               height="20%"
               width="97%"
               borderRadius="5px"
+              // border="1px solid #9932CC"
               placeholder="Confirm your Password"
-              borderStyle="none"
+              // borderStyle="none"
+              bgColor={"white"}
+              color="#9932CC"
               fontSize="100%"
               ref={confirmPasswordRef}
             ></Input>
@@ -127,9 +133,9 @@ const ChangePassword = () => {
               <EditIcon fontSize="large" color="primary" />
             </Button>
           </Flex>
-            <Box borderRadius="50%" onClick={onToggle}>
-              <CancelIcon fontSize="large" color="error"></CancelIcon>
-            </Box>
+          <Box borderRadius="50%" onClick={onToggle}>
+            <CancelIcon fontSize="large" color="error"></CancelIcon>
+          </Box>
         </ModalBody>
       </ModalContent>
     </Modal>

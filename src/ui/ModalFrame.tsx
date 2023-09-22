@@ -189,7 +189,8 @@ function ModalFrame() {
             <ModalBody
               width={"70vw"}
               height={"40vh"}
-              bg={"white"}
+              boxShadow={"2px 2px 5px"}
+              bg={"#C197D2"}
               borderRadius={"10px"}
               display="flex"
               alignItems="center"
@@ -203,20 +204,20 @@ function ModalFrame() {
                   justifyContent="center"
                   alignItems="center"
                   padding={"20px"}
+                  // border="2px solid #9932CC"
                 >
                   <Flex
                     width="100%"
-                    height="40%"
-                    marginBottom={"10px"}
+                    height="50%"
+                    marginBottom={"5px"}
                     alignItems={"center"}
                     justifyContent="center"
                     flexDirection={"column"}
-                    // border="2px solid #9932CC"
                   >
                     <Flex
-                      height="250px"
-                      width="250px"
-                      border="2px solid #9932CC"
+                      height="300px"
+                      width="300px"
+                      border="2px solid white"
                       // boxShadow="5px 5px 5px #DDA0DD"
                       borderRadius="50%"
                       overflow="hidden"
@@ -240,7 +241,7 @@ function ModalFrame() {
                   {/* All Buttons ----------------------------------*/}
                   <Flex
                     height="7%"
-                    width="70%"
+                    width="80%"
                     // border="1px solid"
                     justifyContent="center"
                     alignItems="center"
@@ -250,7 +251,7 @@ function ModalFrame() {
                       height="90%"
                       borderRadius="10px"
                       // borderStyle="none"
-                      border="1px solid"
+                      border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       // onClick={handleApi}
@@ -260,8 +261,8 @@ function ModalFrame() {
                   </Flex>
                   <Flex
                     height="7%"
-                    width="70%"
-                    marginBottom={"20%"}
+                    width="80%"
+                    marginBottom={"15%"}
                     // border="1px solid"
                     justifyContent="center"
                     alignItems="center"
@@ -271,7 +272,7 @@ function ModalFrame() {
                       height="90%"
                       borderRadius="10px"
                       // borderStyle="none"
-                      border="1px solid"
+                      border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={handleApi}
@@ -281,7 +282,7 @@ function ModalFrame() {
                   </Flex>
                   <Flex
                     height="7%"
-                    width="70%"
+                    width="80%"
                     // border="1px solid"
                     justifyContent="center"
                     alignItems="center"
@@ -291,7 +292,7 @@ function ModalFrame() {
                       height="90%"
                       borderRadius="10px"
                       // borderStyle="none"
-                      border="1px solid"
+                      border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={() => {
@@ -303,7 +304,7 @@ function ModalFrame() {
                   </Flex>
                   <Flex
                     height="7%"
-                    width="70%"
+                    width="80%"
                     // border="1px solid"
                     justifyContent="center"
                     alignItems="center"
@@ -312,7 +313,7 @@ function ModalFrame() {
                       width="90%"
                       height="90%"
                       borderRadius="10px"
-                      border="1px solid"
+                      border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={() => {
@@ -323,7 +324,7 @@ function ModalFrame() {
                     </Button>
                   </Flex>
                 </Flex>
-
+ 
                 {/* right part -------------------------------------- */}
                 <Flex
                   width="80%"
@@ -335,7 +336,7 @@ function ModalFrame() {
                     width={"80%"}
                     height={"40%"}
                     margin={"10px"}
-                    border={"2px solid #9932CC"}
+                    border={"2px solid white"}
                     borderRadius={"3px"}
                   >
                     <Profile></Profile>
@@ -344,7 +345,7 @@ function ModalFrame() {
                     width={"80%"}
                     height={"40%"}
                     margin={"10px"}
-                    border={"2px solid #9932CC"}
+                    border={"2px solid white"}
                     borderRadius={"3px"}
                   >
                     <UserActivity></UserActivity>
