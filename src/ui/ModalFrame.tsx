@@ -181,7 +181,6 @@ function ModalFrame() {
           <ModalBody
             width="100vw"
             height="70vh"
-            border={"1px solid red"}
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -190,8 +189,7 @@ function ModalFrame() {
             <ModalBody
               width={"70vw"}
               height={"40vh"}
-              border={"1px solid"}
-              bg={"red"}
+              bg={"white"}
               borderRadius={"10px"}
               display="flex"
               alignItems="center"
@@ -201,7 +199,6 @@ function ModalFrame() {
                 <Flex
                   width="22%"
                   height="100%"
-                  border="2px solid"
                   flexDirection="column"
                   justifyContent="center"
                   alignItems="center"
@@ -214,12 +211,12 @@ function ModalFrame() {
                     alignItems={"center"}
                     justifyContent="center"
                     flexDirection={"column"}
-                    border="2px solid white"
+                    // border="2px solid #9932CC"
                   >
                     <Flex
                       height="250px"
                       width="250px"
-                      border="2px solid white"
+                      border="2px solid #9932CC"
                       // boxShadow="5px 5px 5px #DDA0DD"
                       borderRadius="50%"
                       overflow="hidden"
@@ -253,7 +250,7 @@ function ModalFrame() {
                       height="90%"
                       borderRadius="10px"
                       // borderStyle="none"
-                      border="1px solid white"
+                      border="1px solid"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       // onClick={handleApi}
@@ -274,7 +271,7 @@ function ModalFrame() {
                       height="90%"
                       borderRadius="10px"
                       // borderStyle="none"
-                      border="1px solid white"
+                      border="1px solid"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={handleApi}
@@ -294,7 +291,7 @@ function ModalFrame() {
                       height="90%"
                       borderRadius="10px"
                       // borderStyle="none"
-                      border="1px solid white"
+                      border="1px solid"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={() => {
@@ -315,7 +312,7 @@ function ModalFrame() {
                       width="90%"
                       height="90%"
                       borderRadius="10px"
-                      border="1px solid white"
+                      border="1px solid"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={() => {
@@ -330,24 +327,25 @@ function ModalFrame() {
                 {/* right part -------------------------------------- */}
                 <Flex
                   width="80%"
-                  border="2px solid"
                   justifyContent="center"
                   alignItems="center"
                   flexDirection={"column"}
                 >
                   <Flex
                     width={"80%"}
-                    border={"1px solid"}
                     height={"40%"}
                     margin={"10px"}
+                    border={"2px solid #9932CC"}
+                    borderRadius={"3px"}
                   >
                     <Profile></Profile>
                   </Flex>
                   <Flex
                     width={"80%"}
-                    border={"1px solid"}
                     height={"40%"}
                     margin={"10px"}
+                    border={"2px solid #9932CC"}
+                    borderRadius={"3px"}
                   >
                     <UserActivity></UserActivity>
                   </Flex>
