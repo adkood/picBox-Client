@@ -170,7 +170,7 @@ function ModalFrame() {
 
   return (
     <>
-      <Modal isOpen={onOpen}>
+      <Modal isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
         <ModalContent
           height={"80vh"}
