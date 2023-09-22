@@ -46,7 +46,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="60%" padding="20px">
           <span>Name:</span>
@@ -60,7 +60,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="60%" padding="20px">
           <span>UserId:</span>
@@ -74,7 +74,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="60%" padding="20px">
           <span>E-Mail:</span>
@@ -88,7 +88,7 @@ const Profile = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="60%" padding="20px">
           <span>Profession:</span>

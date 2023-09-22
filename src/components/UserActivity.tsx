@@ -16,7 +16,7 @@ const UserActivity = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
         // justifyContent={"space-between"}
       >
         <Flex width="80%" padding="20px">
@@ -31,7 +31,7 @@ const UserActivity = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="80%" padding="20px">
           <span>Total Images Downloaded:</span>
@@ -45,7 +45,7 @@ const UserActivity = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="80%" padding="20px">
           <span>Last Image was Uploaded on:</span>
@@ -59,7 +59,7 @@ const UserActivity = () => {
         border="1px solid white"
         color="white"
         alignItems="center"
-        _hover={{ bgColor: "#9932CC", color: "white" }}
+        _hover={{ bgColor: "white", color: "#9932CC" }}
       >
         <Flex width="80%" padding="20px">
           <span>Last Image was Downloaded on:</span>
