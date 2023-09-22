@@ -51,23 +51,23 @@ function ModalFrame() {
     setImage(e.target.files[0]);
   };
 
-  const onProfileClick = () => {
-    setIsProfile(true);
-    setIsChangePassword(false);
-    setIsUserActivity(false);
-  };
+  // const onProfileClick = () => {
+  //   setIsProfile(true);
+  //   setIsChangePassword(false);
+  //   setIsUserActivity(false);
+  // };
 
-  const onUserActivityClick = () => {
-    setIsProfile(false);
-    setIsChangePassword(false);
-    setIsUserActivity(true);
-  };
+  // const onUserActivityClick = () => {
+  //   setIsProfile(false);
+  //   setIsChangePassword(false);
+  //   setIsUserActivity(true);
+  // };
 
-  const onChangePasswordClick = () => {
-    setIsProfile(false);
-    setIsChangePassword(true);
-    setIsUserActivity(false);
-  };
+  // const onChangePasswordClick = () => {
+  //   setIsProfile(false);
+  //   setIsChangePassword(true);
+  //   setIsUserActivity(false);
+  // };
 
   // CONVERTING ARRAYBUFFER TO BASE64
   function base64ArrayBuffer(arrayBuffer: any) {
@@ -210,6 +210,7 @@ function ModalFrame() {
                   <Flex
                     width="100%"
                     height="40%"
+                    marginBottom={"10px"}
                     alignItems={"center"}
                     justifyContent="center"
                     flexDirection={"column"}
@@ -236,13 +237,34 @@ function ModalFrame() {
                   <Input
                     type={"file"}
                     onChange={onProfilePhotoChangeHandler}
-                    style={{display: 'none'}}
-                    
+                    style={{ display: "none" }}
                   ></Input>
 
+                  {/* All Buttons ----------------------------------*/}
                   <Flex
                     height="7%"
                     width="70%"
+                    // border="1px solid"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Button
+                      width="90%"
+                      height="90%"
+                      borderRadius="10px"
+                      // borderStyle="none"
+                      border="1px solid white"
+                      color="#9932CC"
+                      _hover={{ bgColor: "#9932CC", color: "white" }}
+                      // onClick={handleApi}
+                    >
+                      CHOOSE PICTURE
+                    </Button>
+                  </Flex>
+                  <Flex
+                    height="7%"
+                    width="70%"
+                    marginBottom={"20%"}
                     // border="1px solid"
                     justifyContent="center"
                     alignItems="center"
@@ -275,7 +297,9 @@ function ModalFrame() {
                       border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
-                      onClick={onProfileClick}
+                      onClick={() => {
+                        dispatch(modalActions.editToggle());
+                      }}
                     >
                       UPDATE PROFILE
                     </Button>
@@ -294,21 +318,39 @@ function ModalFrame() {
                       border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
-                      onClick={onChangePasswordClick}
+                      onClick={() => {
+                        dispatch(modalActions.changePasswordToggle());
+                      }}
                     >
                       CHANGE-PASSWORD
                     </Button>
                   </Flex>
                 </Flex>
+
+                {/* right part -------------------------------------- */}
                 <Flex
                   width="80%"
-                  // border="2px solid"
+                  border="2px solid"
                   justifyContent="center"
                   alignItems="center"
+                  flexDirection={"column"}
                 >
-                  {/* {isProfile && <Profile></Profile>}
-                  {isUserActivity && <UserActivity></UserActivity>}
-                  {isChangePassword && <ChangePassword></ChangePassword>} */}
+                  <Flex
+                    width={"80%"}
+                    border={"1px solid"}
+                    height={"40%"}
+                    margin={"10px"}
+                  >
+                    <Profile></Profile>
+                  </Flex>
+                  <Flex
+                    width={"80%"}
+                    border={"1px solid"}
+                    height={"40%"}
+                    margin={"10px"}
+                  >
+                    <UserActivity></UserActivity>
+                  </Flex>
                 </Flex>
               </Flex>
 

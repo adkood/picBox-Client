@@ -6,11 +6,12 @@ const initialModalState = {
   isUpload: false,
   isCollection: false,
   isSearch: false,
-  isLogin: false,  
+  isLogin: false,
   isSignup: false,
   isEdit: false,
   isAccount: false,
   isGetImage: false,
+  isChangePassword: false,
 };
 
 const modalSlice = createSlice({
@@ -43,6 +44,9 @@ const modalSlice = createSlice({
     getImageToggle(state) {
       state.isGetImage = !state.isGetImage;
     },
+    changePasswordToggle(state) {
+      state.isChangePassword = !state.isChangePassword;
+    }
   },
 });
 

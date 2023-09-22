@@ -34,68 +34,66 @@ const Profile = () => {
 
   return (
     <Flex
-      height="70%"
-      width="90%"
-      border="3px solid white"
+      height="100%"
+      width="100%"
       borderRadius="10px"
       flexDirection="column"
-      boxShadow="5px 10px white"
       fontSize={"20px"}
       // bgColor='white'
     >
       <Flex
-        height="23%"
+        height="25%"
         border="1px solid white"
         color="white"
         alignItems="center"
       >
-        <Flex width="30%" justifyContent="center">
+        <Flex width="60%" padding="20px">
           <span>Name:</span>
         </Flex>
-        <Flex width="60%" justifyContent="center">
+        <Flex width={"40%"} padding="20px">
           <span>{name}</span>
         </Flex>
       </Flex>
       <Flex
-        height="23%"
+        height="25%"
         border="1px solid white"
         color="white"
         alignItems="center"
       >
-        <Flex width="30%" justifyContent="center">
+        <Flex width="60%" padding="20px">
           <span>UserId:</span>
         </Flex>
-        <Flex width="60%" justifyContent="center">
+        <Flex width={"40%"} padding="20px">
           <span>{userId}</span>
         </Flex>
       </Flex>
       <Flex
-        height="23%"
+        height="25%"
         border="1px solid white"
         color="white"
         alignItems="center"
       >
-        <Flex width="30%" justifyContent="center">
+        <Flex width="60%" padding="20px">
           <span>E-Mail:</span>
         </Flex>
-        <Flex width="60%" justifyContent="center">
+        <Flex width={"40%"} padding="20px">
           <span>{email}</span>
         </Flex>
       </Flex>
       <Flex
-        height="23%"
+        height="25%"
         border="1px solid white"
         color="white"
         alignItems="center"
       >
-        <Flex width="30%" justifyContent="center">
+        <Flex width="60%" padding="20px">
           <span>Profession:</span>
         </Flex>
-        <Flex width="60%" justifyContent="center">
+        <Flex width={"40%"} padding="20px">
           <span>{profession}</span>
         </Flex>
       </Flex>
-      <Flex
+      {/* <Flex
         width="100%"
         height={"8%"}
         justifyContent="center"
@@ -115,7 +113,7 @@ const Profile = () => {
           CLICK TO EDIT
           <EditIcon fontSize="large" color="primary" />
         </Button>
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 };
