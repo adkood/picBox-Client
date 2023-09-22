@@ -122,7 +122,7 @@ const CollectionModal = () => {
       });
 
       let data = await res.json();
-      // console.log(data);
+      console.log(data);
       setBoughtImages(data.data.data.boughtImages);
     };
     func();
@@ -133,7 +133,7 @@ const CollectionModal = () => {
     <>
       <Modal isCentered isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
-        <ModalContent>
+        <ModalContent bgColor={"transparent"}  position={"fixed"} left="0">
           <ModalBody>
             <Flex
               justifyContent="center"

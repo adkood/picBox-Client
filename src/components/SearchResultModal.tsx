@@ -127,7 +127,7 @@ function SearchResultModal() {
     <>
       <Modal isCentered isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
-        <ModalContent>
+        <ModalContent bgColor={"transparent"}  position={"fixed"} left="0">
           <ModalBody>
             <Flex
               justifyContent="center"
@@ -151,15 +151,15 @@ function SearchResultModal() {
                 <Flex
                   height={"5%"}
                   margin="10px"
-                  borderBottom="2px solid"
+                  borderBottom="3px solid"
                   width={"100%"}
                   justifyContent="center"
                   alignItems={"center"}
                 >
-                  <Text fontFamily={"mono"} fontWeight="bold" fontSize="230%">
+                  <Text  fontWeight="extrabold" fontSize="240%">
                     SEARCH
                   </Text>
-                  <Text fontFamily={"mono"} fontWeight="thin" fontSize="230%">
+                  <Text  fontWeight="thin" fontSize="240%">
                     -RESULT
                   </Text>
                 </Flex>

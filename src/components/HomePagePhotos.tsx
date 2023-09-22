@@ -88,7 +88,13 @@ const HomePagePhotos = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(imageArray3);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Flex
       height="300vh"
@@ -96,7 +102,6 @@ const HomePagePhotos = () => {
       justifyContent="center"
       alignItems="center"
       flexDirection={"column"}
-      // border='4px solid'
       overflow="hidden"
     >
       <Flex
@@ -124,7 +129,7 @@ const HomePagePhotos = () => {
         <Flex height="85%" width="100%">
           <Flex
             height="100%"
-            width="33.3%"
+            width="24.5%"
             flexDirection="column"
             overflow="clip"
           >
@@ -158,7 +163,7 @@ const HomePagePhotos = () => {
           </Flex>
           <Flex
             height="100%"
-            width="33.3%"
+            width="24.5%"
             flexDirection="column"
             overflow="clip"
           >
@@ -192,12 +197,47 @@ const HomePagePhotos = () => {
           </Flex>
           <Flex
             height="100%"
-            width="33.3%"
+            width="24.5%"
             flexDirection="column"
             overflow="clip"
           >
             {imageArray3.length > 0 ? (
               imageArray3.map((i: any) => {
+                const base64String = base64ArrayBuffer(i.img.data.data);
+                return (
+                  <Frame
+                    key={i._id}
+                    id={i._id}
+                    title={i.title}
+                    width={i.width * 1}
+                    height={i.height * 1}
+                    size={i.size}
+                    discount={i.priceDiscount}
+                    price={i.price}
+                    imageUrl={`data:image/*;base64,${base64String}`}
+                  ></Frame>
+                );
+              })
+            ) : (
+              <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
+                <Spinner
+                  margin={"10%"}
+                  width={"50px"}
+                  height={"50px"}
+                  color="#9370DB"
+                />
+              </Flex>
+            )}
+          </Flex>
+
+          <Flex
+            height="100%"
+            width="24.5%"
+            flexDirection="column"
+            overflow="clip"
+          >
+            {imageArray1.length > 0 ? (
+              imageArray1.map((i: any) => {
                 const base64String = base64ArrayBuffer(i.img.data.data);
                 return (
                   <Frame
@@ -233,6 +273,8 @@ const HomePagePhotos = () => {
           alignItems="center"
         >
           <Flex
+            borderRadius={"10px"}
+            cursor="pointer"
             width="77vw"
             height="25%"
             fontSize="180%"
@@ -242,6 +284,7 @@ const HomePagePhotos = () => {
             backgroundColor="#9370DB"
             justifyContent={"center"}
             alignItems="center"
+            onClick={scrollToTop}
           >
             Search for more...
           </Flex>

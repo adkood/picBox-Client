@@ -172,10 +172,16 @@ function ModalFrame() {
     <>
       <Modal isOpen={onOpen}>
         <OverlayTwo />
-        <ModalContent>
+        <ModalContent
+          height={"80vh"}
+          bgColor={"transparent"}
+          position={"fixed"}
+          left="0"
+        >
           <ModalBody
             width="100vw"
-            height="100vh"
+            height="70vh"
+            border={"1px solid red"}
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -183,10 +189,9 @@ function ModalFrame() {
           >
             <ModalBody
               width={"70vw"}
-              height={"70vh"}
-              bgImage={"back.jpg"}
-              backgroundRepeat={"no-repeat"}
-              backgroundSize={"cover"}
+              height={"40vh"}
+              border={"1px solid"}
+              bg={"red"}
               borderRadius={"10px"}
               display="flex"
               alignItems="center"
@@ -196,7 +201,7 @@ function ModalFrame() {
                 <Flex
                   width="22%"
                   height="100%"
-                  // border="2px solid"
+                  border="2px solid"
                   flexDirection="column"
                   justifyContent="center"
                   alignItems="center"
@@ -208,6 +213,7 @@ function ModalFrame() {
                     alignItems={"center"}
                     justifyContent="center"
                     flexDirection={"column"}
+                    border="2px solid white"
                   >
                     <Flex
                       height="250px"
@@ -229,14 +235,9 @@ function ModalFrame() {
 
                   <Input
                     type={"file"}
-                    // accept="image/*"
                     onChange={onProfilePhotoChangeHandler}
-                    // border="1px solid"
-                    color="#DDA0DD"
-                    justifyContent="center"
-                    alignContent="center"
-                    width={"85px"}
-                    height={"23px"}
+                    style={{display: 'none'}}
+                    
                   ></Input>
 
                   <Flex
@@ -259,7 +260,6 @@ function ModalFrame() {
                       CHANGE PROFILE
                     </Button>
                   </Flex>
-
                   <Flex
                     height="7%"
                     width="70%"
@@ -277,27 +277,7 @@ function ModalFrame() {
                       _hover={{ bgColor: "#9932CC", color: "white" }}
                       onClick={onProfileClick}
                     >
-                      PROFILE
-                    </Button>
-                  </Flex>
-                  <Flex
-                    height="7%"
-                    width="70%"
-                    // border="1px solid"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <Button
-                      width="90%"
-                      height="90%"
-                      borderRadius="10px"
-                      border="1px solid white"
-                      color="#9932CC"
-                      _hover={{ bgColor: "#9932CC", color: "white" }}
-                      onClick={onUserActivityClick}
-                      fontFamily="Press Start 2P"
-                    >
-                      USER-ACTIVITY
+                      UPDATE PROFILE
                     </Button>
                   </Flex>
                   <Flex
@@ -326,9 +306,9 @@ function ModalFrame() {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  {isProfile && <Profile></Profile>}
+                  {/* {isProfile && <Profile></Profile>}
                   {isUserActivity && <UserActivity></UserActivity>}
-                  {isChangePassword && <ChangePassword></ChangePassword>}
+                  {isChangePassword && <ChangePassword></ChangePassword>} */}
                 </Flex>
               </Flex>
 
@@ -347,5 +327,4 @@ function ModalFrame() {
     </>
   );
 }
-
 export default ModalFrame;

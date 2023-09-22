@@ -34,12 +34,13 @@ const Profile = () => {
 
   return (
     <Flex
-      height="60%"
-      width="80%"
+      height="70%"
+      width="90%"
       border="3px solid white"
       borderRadius="10px"
       flexDirection="column"
       boxShadow="5px 10px white"
+      fontSize={"20px"}
       // bgColor='white'
     >
       <Flex

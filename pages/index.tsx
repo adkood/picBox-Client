@@ -11,6 +11,8 @@ import UploadModal from "../src/components/UploadModal";
 import Container from "../src/ui/Container";
 import Navbar from "./../src/ui/Navbar";
 import ModalFrame from "../src/ui/ModalFrame";
+import GetImageForm from "../src/components/getImage/GetImageForm";
+import Overall from "../src/components/accounts/overall";
 
 const Home: NextPage = () => {
   return (
@@ -25,6 +27,8 @@ const Home: NextPage = () => {
       <CollectionModal></CollectionModal>
       <SearchResultModal></SearchResultModal>
       <ClickFrameModal></ClickFrameModal>
+      <GetImageForm></GetImageForm>
+      {/* <Overall></Overall> */}
     </>
   );
 };

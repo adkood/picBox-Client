@@ -62,13 +62,13 @@ export default function Navbar() {
     <>
       <Box
         // bgColor="black"
-        bgColor={"#9370DB"}
+        // background="linear-gradient(to right, #ff6b6b, #6b47ff)"
         border={"1px solid white"}
         height="8%"
         width="77%"
         borderRadius="10px"
-        boxShadow={`5px 5px #9370DB`}
-        bg={useColorModeValue("gray.100", "gray.900")}
+        // boxShadow={`5px 5px`}
+        bg={"linear-gradient(to right, #ff6b6b, #6b47ff)"}
         px={4}
       >
         <Flex
@@ -78,10 +78,11 @@ export default function Navbar() {
           alignItems="center"
         >
           <Avatar
+          height="70%"
+          width="150px"
             onClick={() => {
               router.push("/");
             }}
-            boxSize="7vh"
             borderRadius="5px"
             src={"/logo.png"}
           />

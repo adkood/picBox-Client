@@ -36,7 +36,7 @@ const HomePageHeadingBox = () => {
           fontSize="150%"
           color="white"
         >
-          A place for exploring creativity and imagination
+          A place to explore your creativity and imagination
         </Heading>
         <SearchBox></SearchBox>
       </Flex>

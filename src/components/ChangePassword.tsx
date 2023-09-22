@@ -30,8 +30,8 @@ const ChangePassword = () => {
 
   return (
     <Flex
-      height="50%"
-      width="70%"
+      height="60%"
+      width="80%"
       border="3px solid white"
       borderRadius="10px"
       flexDirection="column"

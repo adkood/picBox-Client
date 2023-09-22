@@ -83,7 +83,7 @@ const Signup = () => {
   return (
     <Modal isCentered isOpen={onOpen} onClose={onToggle}>
       <OverlayTwo />
-      <ModalContent>
+      <ModalContent bgColor="transparent" position="fixed" left="0">
         <ModalBody>
           <Flex
             justifyContent="center"

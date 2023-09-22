@@ -62,9 +62,11 @@ function ClickFrameModal() {
     setImage(e.target.files[0]);
   };
 
-//-------------------------------------------------------
+  //-------------------------------------------------------
 
-  const isCollectionModalOpen = useSelector((state: any) => state.modal.isCollection);
+  const isCollectionModalOpen = useSelector(
+    (state: any) => state.modal.isCollection
+  );
 
   const buyVisiblity = useSelector((state: any) => state.clickFrame.buyVisible);
 
@@ -77,7 +79,7 @@ function ClickFrameModal() {
   isVisible = isCollectionModalOpen ? 0 : isVisible;
 
   let download_Button_Visibility = isVisible ? 0 : 1;
-//--------------------------------------------------------------------
+  //--------------------------------------------------------------------
 
   const OverlayTwo = () => (
     <ModalOverlay
@@ -187,7 +189,11 @@ function ClickFrameModal() {
     <>
       <Modal isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
-        <ModalContent>
+        <ModalContent
+          bgColor={"transparent"}
+          position={"fixed"}
+          left={"0"}
+        >
           <ModalBody>
             <Flex
               justifyContent="center"

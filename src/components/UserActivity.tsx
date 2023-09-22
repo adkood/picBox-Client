@@ -4,12 +4,13 @@ import EditIcon from "@mui/icons-material/Edit";
 const UserActivity = () => {
   return (
     <Flex
-      height="50%"
-      width="70%"
+      height="60%"
+      width="80%"
       border="3px solid white"
       borderRadius="10px"
       flexDirection="column"
       boxShadow="5px 10px white"
+      fontSize="20px"
       // bgColor={'white'}
     >
       <Flex

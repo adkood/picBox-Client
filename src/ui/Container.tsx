@@ -2,8 +2,15 @@ import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import SearchBox from "../components/SearchBox";
 import Navbar from "./Navbar";
 import HomePageHeadingBox from "../components/HomePageHeadingBox";
+import { useDispatch } from "react-redux";
+import { modalActions } from "../../store";
 
 const Container = () => {
+  const dispatch = useDispatch();
+  const onToggle = () => {
+    dispatch(modalActions.getImageToggle());
+  };
+
   return (
     <>
       <Flex
@@ -33,7 +40,7 @@ const Container = () => {
               justifyContent="center"
               flexDirection={"column"}
               alignItems={"center"}
-              fontFamily= 'Press Start 2P'
+              fontFamily="Press Start 2P"
               padding={"40px"}
             >
               <Heading fontSize={"180%"}>Now get Images when you want.</Heading>
@@ -49,6 +56,7 @@ const Container = () => {
                 borderRadius={"10px"}
                 _hover={{ color: "white", bgColor: "#ff4da6" }}
                 color="#ff4da6"
+                onClick={onToggle}
               >
                 Get Image
               </Button>

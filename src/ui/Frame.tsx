@@ -30,7 +30,6 @@ const Frame: React.FC<{
     dispatch(clickFrameActions.photoIdDefiner(props.id));
     dispatch(clickFrameActions.frameStateToggle());
 
-
     const func = async () => {
       let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
         headers: {
@@ -43,9 +42,8 @@ const Frame: React.FC<{
 
       let wassap = imageArray.find((obj: any) => obj.photoId === props.id);
       let isVisible = true;
-      
-      if(wassap)
-      {
+
+      if (wassap) {
         isVisible = false;
       }
       // console.log(isVisible);
@@ -68,7 +66,9 @@ const Frame: React.FC<{
       onClick={onToggle}
     >
       <Image
-        padding={"2px"}
+        boxShadow="0 0 10px rgba(0, 0, 0, 0.3)" /* Drop shadow for depth */
+        borderRadius="10px"
+        padding="2px"
         width="100%"
         src={props.imageUrl}
         alt="loading..."

@@ -10,6 +10,7 @@ const initialModalState = {
   isSignup: false,
   isEdit: false,
   isAccount: false,
+  isGetImage: false,
 };
 
 const modalSlice = createSlice({
@@ -38,7 +39,10 @@ const modalSlice = createSlice({
     },
     accountToggle(state) {
       state.isAccount = !state.isAccount;
-    }
+    },
+    getImageToggle(state) {
+      state.isGetImage = !state.isGetImage;
+    },
   },
 });
 
