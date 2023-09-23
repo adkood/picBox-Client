@@ -3,6 +3,26 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import axios from "axios";
 
+const handleApi = (photoId: any) => {
+  const url = "http://127.0.0.1:8000/api/v1/count/increaseTransactionCount";
+  axios({
+    url,
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    data: {
+      photoId
+    }
+  })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 const Success = () => {
   const router = useRouter();
   const { userId, photoId } = router.query;
@@ -20,7 +40,7 @@ const Success = () => {
 
       let data = await res.json();
       // console.log(data);
-      data.data.data.boughtImages.push({photoId});
+      data.data.data.boughtImages.push({ photoId });
       // console.log("----------------------->>>>>",data.data);
 
       const url = "http://127.0.0.1:8000/api/v1/users/updateMe";
@@ -33,6 +53,7 @@ const Success = () => {
         data: data.data.data,
       })
         .then((res) => {
+          handleApi(photoId);
           // console.log(res);
         })
         .catch((error) => {

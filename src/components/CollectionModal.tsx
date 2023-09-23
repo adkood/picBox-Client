@@ -112,7 +112,6 @@ const CollectionModal = () => {
       .catch((err) => console.log(err));
   }, []);
 
-
   useEffect(() => {
     const func = async () => {
       let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
@@ -126,7 +125,7 @@ const CollectionModal = () => {
       setBoughtImages(data.data.data.boughtImages);
     };
     func();
-  });
+  },[]);
 
   // console.log(boughtImages);
   return (

@@ -96,6 +96,28 @@ function ClickFrameModal() {
     dispatch(clickFrameActions.frameStateToggle());
   };
 
+  //---------------------------------- download count
+  const handleApi = () => {
+    console.log(photoId);
+    const url = "http://127.0.0.1:8000/api/v1/count/increaseDownloadCount";
+    axios({
+      url,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      data: {
+        photoId,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const downloadImage = () => {
     const func = async () => {
       let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
@@ -117,6 +139,7 @@ function ClickFrameModal() {
       });
     };
     func();
+    handleApi();
     saveAs(imageSrc, "image.jpg");
   };
 
@@ -161,7 +184,7 @@ function ClickFrameModal() {
       }
     };
     func();
-  });
+  }, []);
 
   // checkout-session
   const onBuyItClickHandler = async () => {
@@ -189,11 +212,7 @@ function ClickFrameModal() {
     <>
       <Modal isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
-        <ModalContent
-          bgColor={"transparent"}
-          position={"fixed"}
-          left={"0"}
-        >
+        <ModalContent bgColor={"transparent"} position={"fixed"} left={"0"}>
           <ModalBody>
             <Flex
               justifyContent="center"

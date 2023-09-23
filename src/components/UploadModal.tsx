@@ -110,6 +110,21 @@ function UploadModal() {
     dispatch(modalActions.uploadToggle());
   };
 
+  const handleAnotherApi = () => {
+    const url = "http://127.0.0.1:8000/api/v1/count/increasePostCount";
+    axios({
+      url,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }
+    }).then((res) => {
+      console.log(res);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
   //api
   const handleApi = () => {
     // console.log(image);
@@ -135,6 +150,7 @@ function UploadModal() {
     })
       .then((res) => {
         console.log(res);
+        handleAnotherApi();
         onToggle();
       })
       .catch((error) => {
@@ -287,7 +303,7 @@ function UploadModal() {
                     Upload Image
                   </Button>
                 </Stack>
-                <Button
+                {/* <Button
                   fontFamily={"heading"}
                   mt={8}
                   w={"full"}
@@ -299,7 +315,7 @@ function UploadModal() {
                   }}
                 >
                   Post
-                </Button>
+                </Button> */}
               </Box>
               form
             </Stack>
