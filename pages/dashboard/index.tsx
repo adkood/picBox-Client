@@ -39,6 +39,14 @@ const DashBoard = () => {
             border={"1px solid"}
             marginTop={"10px"}
           >
+            All Images
+          </Flex>
+          <Flex
+            width={"95%"}
+            height={"9%"}
+            border={"1px solid"}
+            marginTop={"10px"}
+          >
             Download Information
           </Flex>
           <Flex

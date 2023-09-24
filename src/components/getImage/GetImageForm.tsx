@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Progress,
   Box,
@@ -29,11 +29,11 @@ import {
 
 import { useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
-import { modalActions } from "../../../store"
+import { modalActions } from "../../../store";
 
 const Form1 = () => {
   const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show); 
+  const handleClick = () => setShow(!show);
 
   return (
     <>
@@ -45,21 +45,21 @@ const Form1 = () => {
           <FormLabel htmlFor="first-name" fontWeight={"normal"}>
             First name
           </FormLabel>
-          <Input id="first-name" placeholder="First name" />
+          <Input id="first-name" placeholder="First name" ref={firstNameRef} />
         </FormControl>
 
         <FormControl>
           <FormLabel htmlFor="last-name" fontWeight={"normal"}>
             Last name
           </FormLabel>
-          <Input id="last-name" placeholder="First name" />
+          <Input id="last-name" placeholder="First name" ref={lastNameRef} />
         </FormControl>
       </Flex>
       <FormControl mt="2%">
         <FormLabel htmlFor="email" fontWeight={"normal"}>
           Email address
         </FormLabel>
-        <Input id="email" type="email" />
+        <Input id="email" type="email" ref={emailRef} />
         <FormHelperText>We&apos;ll never share your email.</FormHelperText>
       </FormControl>
     </>
@@ -94,6 +94,7 @@ const Form2 = () => {
           size="sm"
           w="full"
           rounded="md"
+          ref={countryRef}
         />
       </FormControl>
 
@@ -120,6 +121,7 @@ const Form2 = () => {
           size="sm"
           w="full"
           rounded="md"
+          ref={streetRef}
         />
       </FormControl>
 
@@ -146,58 +148,7 @@ const Form2 = () => {
           size="sm"
           w="full"
           rounded="md"
-        />
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-        <FormLabel
-          htmlFor="state"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-          mt="2%"
-        >
-          State / Province
-        </FormLabel>
-        <Input
-          type="text"
-          name="state"
-          id="state"
-          autoComplete="state"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-        />
-      </FormControl>
-
-      <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-        <FormLabel
-          htmlFor="postal_code"
-          fontSize="sm"
-          fontWeight="md"
-          color="gray.700"
-          _dark={{
-            color: "gray.50",
-          }}
-          mt="2%"
-        >
-          ZIP / Postal
-        </FormLabel>
-        <Input
-          type="text"
-          name="postal_code"
-          id="postal_code"
-          autoComplete="postal-code"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
+          ref={cityRef}
         />
       </FormControl>
     </>
@@ -228,6 +179,7 @@ const Form3 = () => {
               placeholder="www.example.com"
               focusBorderColor="brand.400"
               rounded="md"
+              ref={socialRef}
             />
           </InputGroup>
         </FormControl>
@@ -244,6 +196,7 @@ const Form3 = () => {
             Describe the Picture you need
           </FormLabel>
           <Textarea
+            ref={descriptionRef}
             placeholder="describe here"
             rows={3}
             shadow="sm"
@@ -262,6 +215,16 @@ export default function GetImageForm() {
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
+
+  // const
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const countryRef = useRef<HTMLInputElement>(null);
+  const streetRef = useRef<HTMLInputElement>(null);
+  const cityRef = useRef<HTMLInputElement>(null);
+  const socialRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
 
   const isOpen = useSelector((state: any) => state.modal.isGetImage);
   const dispatch = useDispatch();
@@ -283,7 +246,7 @@ export default function GetImageForm() {
           borderWidth="1px"
           rounded="lg"
           shadow="1px 1px 3px rgba(0,0,0,0.3)"
-          p={10}
+          p={14}
           as="form"
         >
           <Progress
@@ -335,7 +298,8 @@ export default function GetImageForm() {
                   onClick={() => {
                     toast({
                       title: "Image Request Sent.",
-                      description: "We've started looking for the image you required.",
+                      description:
+                        "We've started looking for the image you required.",
                       status: "success",
                       duration: 3000,
                       isClosable: true,

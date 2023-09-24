@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import axios from "axios";
 
-const handleApi = (photoId: any) => {
+const handleApi1 = (photoId: any) => {
   const url = "http://127.0.0.1:8000/api/v1/count/increaseTransactionCount";
   axios({
     url,
@@ -53,7 +53,7 @@ const Success = () => {
         data: data.data.data,
       })
         .then((res) => {
-          handleApi(photoId);
+          handleApi1(photoId);
           // console.log(res);
         })
         .catch((error) => {

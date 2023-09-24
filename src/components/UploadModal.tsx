@@ -294,16 +294,16 @@ function UploadModal() {
                     type="file"
                     onChange={onProfilePhotoChangeHandler}
                   ></Input>
-                  <Button
+                  {/* <Button
                     fontFamily={"heading"}
                     bg={"gray.200"}
                     color={"gray.800"}
                     onClick={handleApi}
                   >
                     Upload Image
-                  </Button>
+                  </Button> */}
                 </Stack>
-                {/* <Button
+                <Button
                   fontFamily={"heading"}
                   mt={8}
                   w={"full"}
@@ -313,9 +313,10 @@ function UploadModal() {
                     bgGradient: "linear(to-r, red.400,pink.400)",
                     boxShadow: "xl",
                   }}
+                  onClick={handleApi}
                 >
-                  Post
-                </Button> */}
+                  Upload Image
+                </Button>
               </Box>
               form
             </Stack>
