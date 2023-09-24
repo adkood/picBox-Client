@@ -29,7 +29,7 @@ import { useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../../store";
 
-const Form3 = () => {
+const Form3 = ({setScl , setDesc}) => {
   // const socialRef = useRef<HTMLInputElement>(null);
   // const descriptionRef = useRef<HTMLTextAreaElement>(null);
 
@@ -56,6 +56,7 @@ const Form3 = () => {
               placeholder="www.example.com"
               focusBorderColor="brand.400"
               rounded="md"
+              onChange={(e) => setScl(e.target.value)}
             />
           </InputGroup>
         </FormControl>
@@ -79,6 +80,7 @@ const Form3 = () => {
             fontSize={{
               sm: "sm",
             }}
+            onChange={(e) => setDesc(e.target.value)}
           />
         </FormControl>
       </SimpleGrid>

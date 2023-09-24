@@ -31,7 +31,7 @@ import { useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../../store";
 
-const Form2 = ({ cr, sr, ctr }) => {
+const Form2 = ({ setCont,setStr,setCt }) => {
   // const countryRef = useRef<HTMLInputElement>(null);
   // const streetRef = useRef<HTMLInputElement>(null);
   // const cityRef = useRef<HTMLInputElement>(null);
@@ -63,7 +63,7 @@ const Form2 = ({ cr, sr, ctr }) => {
           size="sm"
           w="full"
           rounded="md"
-          ref={cr}
+          onChange={(e) => setCont(e.target.value)}
         />
       </FormControl>
 
@@ -90,7 +90,7 @@ const Form2 = ({ cr, sr, ctr }) => {
           size="sm"
           w="full"
           rounded="md"
-          ref={sr}
+          onChange={(e) => setStr(e.target.value)}
         />
       </FormControl>
 
@@ -117,7 +117,7 @@ const Form2 = ({ cr, sr, ctr }) => {
           size="sm"
           w="full"
           rounded="md"
-          ref={ctr}
+          onChange={(e) => setCt(e.target.value)}
         />
       </FormControl>
     </>

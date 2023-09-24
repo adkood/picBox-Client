@@ -42,14 +42,14 @@ export default function GetImageForm() {
   const isOpen = useSelector((state: any) => state.modal.isGetImage);
   const dispatch = useDispatch();
 
-  const firstRef = useRef<HTMLInputElement>(null);
-  const lastRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const countryRef = useRef<HTMLInputElement>(null);
-  const streetRef = useRef<HTMLInputElement>(null);
-  const cityRef = useRef<HTMLInputElement>(null);
-  const socialRef = useRef<HTMLInputElement>(null);
-  const descRef = useRef<HTMLInputElement>(null);
+  const [first, setFirst] = useState();
+  const [last, setLast] = useState();
+  const [email, setEmail] = useState();
+  const [coun, setCont] = useState();
+  const [str, setStr] = useState();
+  const [ct, setCt] = useState();
+  const [scl, setScl] = useState();
+  const [desc, setDesc] = useState();
 
   const onToggle = () => {
     dispatch(modalActions.getImageToggle());
@@ -79,11 +79,11 @@ export default function GetImageForm() {
             isAnimated
           ></Progress>
           {step === 1 ? (
-            <Form1 fr={firstRef} lr={lastRef} er={emailRef} />
+            <Form1 setFirst={setFirst} setLast={setLast} setEmail={setEmail} />
           ) : step === 2 ? (
-            <Form2 cr={countryRef} sr={streetRef} ctr={cityRef} />
+            <Form2 setCont={setCont} setStr={setStr} setCt={setCt} />
           ) : (
-            <Form3 sr={socialRef} dr={descRef} />
+            <Form3 setScl={setScl} setDesc={setDesc} />
           )}
           <ButtonGroup mt="5%" w="100%">
             <Flex w="100%" justifyContent="space-between">
@@ -124,6 +124,9 @@ export default function GetImageForm() {
                   colorScheme="blue"
                   variant="solid"
                   onClick={() => {
+                    console.log(first);
+                    console.log(str);
+                    console.log(desc);
                     toast({
                       title: "Image Request Sent.",
                       description:
