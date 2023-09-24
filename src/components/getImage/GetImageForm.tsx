@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useRef } from "react";
 import {
   Progress,
@@ -34,6 +32,8 @@ import Form1 from "./Form1";
 import Form2 from "./Form2";
 import Form3 from "./Form3";
 
+import axios from "axios";
+
 export default function GetImageForm() {
   const toast = useToast();
   const [step, setStep] = useState(1);
@@ -53,6 +53,47 @@ export default function GetImageForm() {
 
   const onToggle = () => {
     dispatch(modalActions.getImageToggle());
+  };
+
+  const handleApi = () => {
+    const forData = {
+      firstName: first,
+      lastName: last,
+      email: email,
+      country: coun,
+      street: str,
+      city: ct,
+      social: scl,
+      imageDesc: desc,
+    };
+
+    const url = "http://127.0.0.1:8000/api/v1/demand/createDemand";
+    axios({
+      url,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      data: forData,
+    })
+      .then((res) => {
+        toast({
+          title: "Image Request Sent.",
+          description: "We've started looking for the image you required.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((error) => {
+        toast({
+          title: "Unable to send request.",
+          description: "We are sorry,Please try again after some time",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
@@ -124,17 +165,7 @@ export default function GetImageForm() {
                   colorScheme="blue"
                   variant="solid"
                   onClick={() => {
-                    console.log(first);
-                    console.log(str);
-                    console.log(desc);
-                    toast({
-                      title: "Image Request Sent.",
-                      description:
-                        "We've started looking for the image you required.",
-                      status: "success",
-                      duration: 3000,
-                      isClosable: true,
-                    });
+                    handleApi();
                     onToggle();
                   }}
                 >
