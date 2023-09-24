@@ -12,7 +12,7 @@ import {
 import React, { useRef } from "react";
 import { Button, Text } from "@chakra-ui/react";
 
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import Frame from "../ui/Frame";
 
@@ -26,6 +26,7 @@ function EditModal() {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const professionRef = useRef<HTMLInputElement>(null);
+  // console.log(nameRef.current!.value);
 
   const OverlayTwo = () => (
     <ModalOverlay
@@ -157,7 +158,9 @@ function EditModal() {
                 </Button>
               </Flex>
               <Box borderRadius="50%" onClick={onToggle}>
-                <CloseIcon sx={{ color: "red", fontSize: "2.5rem"}}></CloseIcon>
+                <CloseIcon
+                  sx={{ color: "red", fontSize: "2.5rem" }}
+                ></CloseIcon>
               </Box>
             </Flex>
           </ModalBody>
