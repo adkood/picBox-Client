@@ -98,7 +98,6 @@ function ClickFrameModal() {
 
   //---------------------------------- download count
   const handleApi = () => {
-    console.log(photoId);
     const url = "http://127.0.0.1:8000/api/v1/count/increaseDownloadCount";
     axios({
       url,
@@ -108,9 +107,12 @@ function ClickFrameModal() {
       },
       data: {
         photoId,
+        title,
+        size,
       },
     })
       .then((res) => {
+        onToggle();
         console.log(res);
       })
       .catch((error) => {
