@@ -4,6 +4,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AllUsers from "../../src/components/dashMaterial/AllUsers";
 import AllImages from "../../src/components/dashMaterial/AllImages";
+import DownloadedImages from "../../src/components/dashMaterial/DownloadedImages";
+import TransactionImages from "../../src/components/dashMaterial/TransactionImages";
 
 const DashBoard = () => {
   const [resolved, setResolved] = useState([]);
@@ -176,7 +178,7 @@ const DashBoard = () => {
   }, []);
 
   // console.log(resolved);
-  console.log(imageCount);
+  console.log(allCount);
   // console.log(resolved.length);
 
   return (
@@ -259,7 +261,13 @@ const DashBoard = () => {
             imageCount={imageCount}
           ></BaiscInfo> */}
           {/* <AllUsers userCount={userCount}></AllUsers> */}
-          <AllImages imageCount={imageCount}></AllImages>
+          {/* <AllImages imageCount={imageCount}></AllImages> */}
+          {/* <DownloadedImages
+            downloadedPhotoIds={allCount.downloadedPhotoIds}
+          ></DownloadedImages> */}
+          <TransactionImages
+            transactionPhotoIds={allCount.transactionPhotoIds}
+          ></TransactionImages>
         </Flex>
       </Flex>
     </Flex>
