@@ -256,6 +256,13 @@ const DashBoard = () => {
           alignItems={"center"}
           justifyContent={"center"}
         >
+          {/* -------------MODALS-------------------------- */}
+
+          <OndemandClick></OndemandClick>
+          <OndemandUpload></OndemandUpload>
+
+          {/* ----------------------------------------------------------- */}
+
           {/* <BaiscInfo
             resolved={resolved}
             unresolved={unresolved}
@@ -263,7 +270,7 @@ const DashBoard = () => {
             allCount={allCount}
             imageCount={imageCount}
           ></BaiscInfo> */}
-          {/* <AllUsers userCount={userCount}></AllUsers> */}
+          <AllUsers userCount={userCount}></AllUsers>
           {/* <AllImages imageCount={imageCount}></AllImages> */}
           {/* <DownloadedImages
             downloadedPhotoIds={allCount.downloadedPhotoIds}
@@ -271,9 +278,7 @@ const DashBoard = () => {
           {/* <TransactionImages
             transactionPhotoIds={allCount.transactionPhotoIds}
           ></TransactionImages> */}
-          <OnDemand resolved={resolved} unresolved={unresolved}></OnDemand>
-          <OndemandClick></OndemandClick>
-          <OndemandUpload></OndemandUpload>
+          {/* <OnDemand resolved={resolved} unresolved={unresolved}></OnDemand> */}
         </Flex>
       </Flex>
     </Flex>

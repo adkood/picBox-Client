@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import UserFrame from "../../ui/UserFrame";
 
 const AllUsers = ({ userCount }) => {
+  var k = 0;
   return (
     <Box
       width={"95%"}
@@ -20,7 +21,7 @@ const AllUsers = ({ userCount }) => {
         const email = singleData.email;
         const role = singleData.role;
         const profession = singleData.profession;
-        const k = singleData._v;
+        k++;
         return (
           <UserFrame
             key={k}
