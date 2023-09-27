@@ -110,20 +110,20 @@ function UploadModal() {
     dispatch(modalActions.uploadToggle());
   };
 
-  const handleAnotherApi = () => {
-    const url = "http://127.0.0.1:8000/api/v1/count/increasePostCount";
-    axios({
-      url,
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }
-    }).then((res) => {
-      console.log(res);
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
+  // const handleAnotherApi = () => {
+  //   const url = "http://127.0.0.1:8000/api/v1/count/increasePostCount";
+  //   axios({
+  //     url,
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //     }
+  //   }).then((res) => {
+  //     console.log(res);
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   })
+  // }
 
   //api
   const handleApi = () => {
@@ -150,7 +150,7 @@ function UploadModal() {
     })
       .then((res) => {
         console.log(res);
-        handleAnotherApi();
+        // handleAnotherApi();
         onToggle();
       })
       .catch((error) => {

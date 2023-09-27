@@ -6,6 +6,9 @@ import AllUsers from "../../src/components/dashMaterial/AllUsers";
 import AllImages from "../../src/components/dashMaterial/AllImages";
 import DownloadedImages from "../../src/components/dashMaterial/DownloadedImages";
 import TransactionImages from "../../src/components/dashMaterial/TransactionImages";
+import OnDemand from "../../src/components/dashMaterial/OnDemand";
+import OndemandClick from "../../src/ui/OndemandClick";
+import OndemandUpload from "../../src/components/dashMaterial/OndemandUpload";
 
 const DashBoard = () => {
   const [resolved, setResolved] = useState([]);
@@ -265,9 +268,12 @@ const DashBoard = () => {
           {/* <DownloadedImages
             downloadedPhotoIds={allCount.downloadedPhotoIds}
           ></DownloadedImages> */}
-          <TransactionImages
+          {/* <TransactionImages
             transactionPhotoIds={allCount.transactionPhotoIds}
-          ></TransactionImages>
+          ></TransactionImages> */}
+          <OnDemand resolved={resolved} unresolved={unresolved}></OnDemand>
+          <OndemandClick></OndemandClick>
+          <OndemandUpload></OndemandUpload>
         </Flex>
       </Flex>
     </Flex>

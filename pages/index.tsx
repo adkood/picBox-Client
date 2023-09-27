@@ -13,6 +13,7 @@ import Navbar from "./../src/ui/Navbar";
 import ModalFrame from "../src/ui/ModalFrame";
 import GetImageForm from "../src/components/getImage/GetImageForm";
 import ChangePassword from "../src/components/ChangePassword";
+import OndemandClick from "../src/ui/OndemandClick";
 // import Overall from "../src/components/accounts/overall";
 
 const Home: NextPage = () => {

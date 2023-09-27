@@ -12,6 +12,7 @@ const initialModalState = {
   isAccount: false,
   isGetImage: false,
   isChangePassword: false,
+  isDemandUpload: false,
 };
 
 const modalSlice = createSlice({
@@ -46,6 +47,9 @@ const modalSlice = createSlice({
     },
     changePasswordToggle(state) {
       state.isChangePassword = !state.isChangePassword;
+    },
+    demandUploadToggle(state) {
+      state.isDemandUpload = !state.isDemandUpload;
     }
   },
 });
@@ -208,11 +212,65 @@ const clickFrameSlice = createSlice({
 
 //--------------------------------------------------------
 
+const initialDemandState = {
+  demandState: false,
+  id: -1,
+  firstName: "",
+  lastName: "",
+  email: "",
+  country: "",
+  city: "",
+  social: "",
+  imageDesc: "",
+  isResolved: false,
+};
+
+const clickDemandSlice = createSlice({
+  name: "clickDemand",
+  initialState: initialDemandState,
+  reducers: {
+    demandStateToggle(state) {
+      state.demandState = !state.demandState;
+    },
+    idDefiner(state, action) {
+      state.id = action.payload;
+    },
+    firstDefiner(state, action) {
+      state.firstName = action.payload;
+    },
+    lastDefiner(state, action) {
+      state.lastName = action.payload;
+    },
+    emailDefiner(state, action) {
+      state.email = action.payload;
+    },
+    countryDefiner(state, action) {
+      state.country = action.payload;
+    },
+    cityDefiner(state, action) {
+      state.city = action.payload;
+    },
+    socialDefiner(state, action) {
+      state.social = action.payload;
+    },
+    imageDescDefiner(state, action) {
+      state.imageDesc = action.payload;
+    },
+    isResolvedDifiner(state,action) {
+      state.isResolved = action.payload;
+    },
+  },
+});
+
+
+
+//-------------------------------------------------------
 export const modalActions = modalSlice.actions;
 export const authActions = authSlice.actions;
 export const uiActtions = uiSlice.actions;
 export const clickFrameActions = clickFrameSlice.actions;
 export const searchDataActions = searchDataSlice.actions;
+export const demandActions = clickDemandSlice.actions;
 
 const store = configureStore({
   reducer: {
@@ -221,6 +279,7 @@ const store = configureStore({
     ui: uiSlice.reducer,
     clickFrame: clickFrameSlice.reducer,
     searchData: searchDataSlice.reducer,
+    clickDemand: clickDemandSlice.reducer,
   },
 });
 
