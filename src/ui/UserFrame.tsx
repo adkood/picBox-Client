@@ -23,6 +23,7 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           isClosable: true,
         });
         console.log(res);
+        window.location.reload();
       })
       .catch((error) => {
         toast({
@@ -33,7 +34,6 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           isClosable: true,
         });
         console.log(error);
-        window.location.reload();
       });
   };
 
