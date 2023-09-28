@@ -78,6 +78,8 @@ const isLoggedIn = () => {
 const initialAuthState = {
   tokenId: getTokkenId(),
   isLogged: isLoggedIn(),
+  role: "user",
+  back: false,
 };
 
 const authSlice = createSlice({
@@ -94,6 +96,12 @@ const authSlice = createSlice({
       localStorage.removeItem("token");
       state.isLogged = false;
     },
+    roleDefiner(state,action) {
+      state.role = action.payload;
+    },
+    backToggle(state) {
+      state.back = !state.back;
+    }
   },
 });
 
@@ -295,6 +303,88 @@ const confirmSlice = createSlice({
 });
 
 //-------------------------------------------------------
+
+const initialDasBoardState = {
+  intro: true,
+  basic: false,
+  users: false,
+  images: false,
+  download: false,
+  transaction: false,
+  demand: false,
+};
+
+const dashboardSlice = createSlice({
+  name: "dashboard",
+  initialState: initialDasBoardState,
+  reducers: {
+    introToggle(state) {
+      state.intro = true;
+      state.basic = false;
+      state.users = false;
+      state.download = false;
+      state.images = false;
+      state.transaction = false;
+      state.demand = false;
+    },
+    basicToggle(state) {
+      state.intro = false;
+      state.basic = true;
+      state.users = false;
+      state.download = false;
+      state.images = false;
+      state.transaction = false;
+      state.demand = false;
+    },
+    usersToggle(state) {
+      state.intro = false;
+      state.basic = false;
+      state.users = true;
+      state.download = false;
+      state.images = false;
+      state.transaction = false;
+      state.demand = false;
+    },
+    imagesToggle(state) {
+      state.intro = false;
+      state.basic = false;
+      state.users = false;
+      state.images = true;
+      state.download = false;
+      state.transaction = false;
+      state.demand = false;
+    },
+    downloadToggle(state) {
+      state.intro = false;
+      state.basic = false;
+      state.users = false;
+      state.download = true;
+      state.images = false;
+      state.transaction = false;
+      state.demand = false;
+    },
+    transactionToggle(state) {
+      state.intro = false;
+      state.basic = false;
+      state.users = false;
+      state.download = false;
+      state.images = false;
+      state.transaction = true;
+      state.demand = false;
+    },
+    demandToggle(state) {
+      state.intro = false;
+      state.basic = false;
+      state.users = false;
+      state.download = false;
+      state.images = false;
+      state.transaction = false;
+      state.demand = true;
+    },
+  },
+});
+
+//----------------------------------------------------
 export const modalActions = modalSlice.actions;
 export const authActions = authSlice.actions;
 export const uiActtions = uiSlice.actions;
@@ -302,6 +392,7 @@ export const clickFrameActions = clickFrameSlice.actions;
 export const searchDataActions = searchDataSlice.actions;
 export const demandActions = clickDemandSlice.actions;
 export const confirmationActions = confirmSlice.actions;
+export const dashboardActions = dashboardSlice.actions;
 
 const store = configureStore({
   reducer: {
@@ -312,6 +403,7 @@ const store = configureStore({
     searchData: searchDataSlice.reducer,
     clickDemand: clickDemandSlice.reducer,
     confirm: confirmSlice.reducer,
+    dashboard: dashboardSlice.reducer,
   },
 });
 

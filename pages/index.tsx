@@ -14,6 +14,10 @@ import ModalFrame from "../src/ui/ModalFrame";
 import GetImageForm from "../src/components/getImage/GetImageForm";
 import ChangePassword from "../src/components/ChangePassword";
 import OndemandClick from "../src/ui/OndemandClick";
+import OndemandUpload from "../src/components/dashMaterial/OndemandUpload";
+import UserDeleteModal from "../src/components/dashMaterial/UserDeleteModal";
+import RoleUpdateModal from "../src/components/dashMaterial/RoleUpdateModal";
+import ImageDeleteModal from "../src/components/dashMaterial/ImageDeleteModal";
 // import Overall from "../src/components/accounts/overall";
 
 const Home: NextPage = () => {
@@ -32,6 +36,11 @@ const Home: NextPage = () => {
       <GetImageForm></GetImageForm>
       {/* <Overall></Overall> */}
       <ChangePassword></ChangePassword>
+      <OndemandClick></OndemandClick>
+      <OndemandUpload></OndemandUpload>
+      <UserDeleteModal></UserDeleteModal>
+      <RoleUpdateModal></RoleUpdateModal>
+      <ImageDeleteModal></ImageDeleteModal>
     </>
   );
 };

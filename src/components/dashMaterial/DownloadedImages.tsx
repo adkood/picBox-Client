@@ -2,8 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import DownloadEleFrame from "../../ui/DownloadEleFrame";
 
 const DownloadedImages = ({downloadedPhotoIds}) => {
-var k= 0;
-console.log(downloadedPhotoIds);
+var k = 0;
   return (
     <Box
     width={"95%"}
@@ -20,7 +19,7 @@ console.log(downloadedPhotoIds);
       const title = singleData.title;
       const size = singleData.size;
       const date = singleData.date;
-      const k++;
+      k++;
       return (
         <DownloadEleFrame
           key={k}

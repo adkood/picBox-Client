@@ -5,6 +5,7 @@ import { Image } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { modalActions } from "../../store";
+import { authActions } from "../../store";
 import Frame from "../ui/Frame";
 import { Spinner } from "@chakra-ui/react";
 
@@ -13,6 +14,7 @@ const HomePagePhotos = () => {
   const [imageArray1, setImageArray1] = useState([]);
   const [imageArray2, setImageArray2] = useState([]);
   const [imageArray3, setImageArray3] = useState([]);
+  // const [role, setRole] = useState("user");
 
   function base64ArrayBuffer(arrayBuffer: any) {
     var base64 = "";
@@ -86,6 +88,29 @@ const HomePagePhotos = () => {
       .then((response) => response.json())
       .then((res) => setImageArray3(res.data.data))
       .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    const call = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("unable to fetch user role");
+        }
+        const data = await response.json();
+        console.log(data);
+        dispatch(authActions.roleDefiner(data.data.data.role));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    call();
   }, []);
 
   const scrollToTop = () => {

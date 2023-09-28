@@ -12,6 +12,13 @@ import OndemandUpload from "../../src/components/dashMaterial/OndemandUpload";
 import UserDeleteModal from "../../src/components/dashMaterial/UserDeleteModal";
 import RoleUpdateModal from "../../src/components/dashMaterial/RoleUpdateModal";
 import ImageDeleteModal from "../../src/components/dashMaterial/ImageDeleteModal";
+import UploadModal from "../../src/components/UploadModal";
+import CollectionModal from "../../src/components/CollectionModal";
+import ChangePassword from "../../src/components/ChangePassword";
+import Navbar from "../../src/ui/Navbar";
+import Intro from "../../src/components/dashMaterial/Intro";
+import { useDispatch, useSelector } from "react-redux";
+import { dashboardActions } from "../../store";
 
 const DashBoard = () => {
   const [resolved, setResolved] = useState([]);
@@ -19,6 +26,16 @@ const DashBoard = () => {
   const [userCount, setUserCount] = useState([]);
   const [allCount, setAllCount] = useState([]);
   const [imageCount, setImageCount] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const intro = useSelector((state: any) => state.dashboard.intro);
+  const basic = useSelector((state: any) => state.dashboard.basic);
+  const users = useSelector((state: any) => state.dashboard.users);
+  const images = useSelector((state: any) => state.dashboard.images);
+  const download = useSelector((state: any) => state.dashboard.download);
+  const transaction = useSelector((state: any) => state.dashboard.transaction);
+  const demand = useSelector((state: any) => state.dashboard.demand);
 
   const toast = useToast();
 
@@ -184,17 +201,24 @@ const DashBoard = () => {
   }, []);
 
   // console.log(resolved);
-  console.log(imageCount);
+  console.log(allCount);
   // console.log(resolved.length);
 
   return (
     <Flex
       width={"100vw"}
       height={"100vh"}
-      justifyContent={"center"}
+      justifyContent={"space-between"}
       alignItems={"center"}
+      flexDirection={"column"}
     >
-      <Flex width={"70%"} height={"80%"} border={"1px solid green"}>
+      <Navbar></Navbar>
+      <Flex
+        marginBottom={"10vh"}
+        width={"70%"}
+        height={"80%"}
+        border={"1px solid green"}
+      >
         <Flex
           width={"22%"}
           height={"100%"}
@@ -207,6 +231,20 @@ const DashBoard = () => {
             height={"9%"}
             border={"1px solid"}
             marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.introToggle());
+            }}
+          >
+            Welcome
+          </Flex>
+          <Flex
+            width={"95%"}
+            height={"9%"}
+            border={"1px solid"}
+            marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.basicToggle());
+            }}
           >
             Basic Information
           </Flex>
@@ -215,6 +253,9 @@ const DashBoard = () => {
             height={"9%"}
             border={"1px solid"}
             marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.usersToggle());
+            }}
           >
             All Users
           </Flex>
@@ -223,6 +264,9 @@ const DashBoard = () => {
             height={"9%"}
             border={"1px solid"}
             marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.imagesToggle());
+            }}
           >
             All Images
           </Flex>
@@ -231,6 +275,9 @@ const DashBoard = () => {
             height={"9%"}
             border={"1px solid"}
             marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.downloadToggle());
+            }}
           >
             Download Information
           </Flex>
@@ -239,6 +286,9 @@ const DashBoard = () => {
             height={"9%"}
             border={"1px solid"}
             marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.transactionToggle());
+            }}
           >
             Transaction Information
           </Flex>
@@ -247,6 +297,9 @@ const DashBoard = () => {
             height={"9%"}
             border={"1px solid"}
             marginTop={"10px"}
+            onClick={() => {
+              dispatch(dashboardActions.demandToggle());
+            }}
           >
             Check On-Demand Information
           </Flex>
@@ -260,7 +313,14 @@ const DashBoard = () => {
           justifyContent={"center"}
         >
           {/* -------------MODALS-------------------------- */}
-
+          {/* <ModalFrame></ModalFrame> */}
+          <UploadModal></UploadModal>
+          <CollectionModal></CollectionModal>
+          {/* <SearchResultModal></SearchResultModal> */}
+          {/* <ClickFrameModal></ClickFrameModal> */}
+          {/* <GetImageForm></GetImageForm> */}
+          {/* <Overall></Overall> */}
+          <ChangePassword></ChangePassword>
           <OndemandClick></OndemandClick>
           <OndemandUpload></OndemandUpload>
           <UserDeleteModal></UserDeleteModal>
@@ -268,23 +328,31 @@ const DashBoard = () => {
           <ImageDeleteModal></ImageDeleteModal>
 
           {/* ----------------------------------------------------------- */}
-
-          {/* <BaiscInfo
-            resolved={resolved}
-            unresolved={unresolved}
-            userCount={userCount}
-            allCount={allCount}
-            imageCount={imageCount}
-          ></BaiscInfo> */}
-          {/* <AllUsers userCount={userCount}></AllUsers> */}
-          <AllImages imageCount={imageCount}></AllImages>
-          {/* <DownloadedImages
-            downloadedPhotoIds={allCount.downloadedPhotoIds}
-          ></DownloadedImages> */}
-          {/* <TransactionImages
-            transactionPhotoIds={allCount.transactionPhotoIds}
-          ></TransactionImages> */}
-          {/* <OnDemand resolved={resolved} unresolved={unresolved}></OnDemand> */}
+          {intro && <Intro></Intro>}
+          {basic && (
+            <BaiscInfo
+              resolved={resolved}
+              unresolved={unresolved}
+              userCount={userCount}
+              allCount={allCount}
+              imageCount={imageCount}
+            ></BaiscInfo>
+          )}
+          {users && <AllUsers userCount={userCount}></AllUsers>}
+          {images && <AllImages imageCount={imageCount}></AllImages>}
+          {download && (
+            <DownloadedImages
+              downloadedPhotoIds={allCount.downloadedPhotoIds}
+            ></DownloadedImages>
+          )}
+          {transaction && (
+            <TransactionImages
+              transactionPhotoIds={allCount.transactionPhotoIds}
+            ></TransactionImages>
+          )}
+          {demand && (
+            <OnDemand resolved={resolved} unresolved={unresolved}></OnDemand>
+          )}
         </Flex>
       </Flex>
     </Flex>

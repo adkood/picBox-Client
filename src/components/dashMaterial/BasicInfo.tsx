@@ -12,9 +12,9 @@ const BaiscInfo = ({
   const a = resolved == undefined ? 0 : resolved.length;
   const b = unresolved == undefined ? 0 : unresolved.length;
   const c = userCount == undefined ? 0 : userCount.length;
-  const d = allCount == undefined ? 0 : allCount.downloadedPhotoIds.length;
-  const e = allCount == undefined ? 0 : allCount.transactionPhotoIds.length;
-  const f = imageCount == undefined ? 0 : imageCount.length;
+  const d = (allCount == undefined) ? 0 : allCount.downloadedPhotoIds.length;
+  const e = (allCount == undefined) ? 0 : allCount.transactionPhotoIds.length;
+  const f = (imageCount == undefined) ? 0 : imageCount.length;
   const total = a + b + c + d + e + f;
 
   var h1 = 100;

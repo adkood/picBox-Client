@@ -2,9 +2,9 @@ import { Button, Flex } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DownloadIcon from "@mui/icons-material/Download";
-
-import { useDispatch } from "react-redux";
-import { clickFrameActions } from "../../store";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { clickFrameActions, confirmationActions } from "../../store";
 
 const Frame: React.FC<{
   imageUrl: string;
@@ -18,6 +18,14 @@ const Frame: React.FC<{
 }> = (props) => {
   // const [style, setStyle] = useState("hidden");
   const dispatch = useDispatch();
+
+  const role = useSelector((state: any) => state.auth.role);
+
+  const deleteToggle = (e: any) => {
+    e.stopPropagation();
+    dispatch(confirmationActions.photoIdDefiner(props.id));
+    dispatch(confirmationActions.imageDeleteStateToggle());
+  };
 
   const onToggle = () => {
     dispatch(clickFrameActions.srcDefiner(props.imageUrl));
@@ -46,12 +54,12 @@ const Frame: React.FC<{
       if (wassap) {
         isVisible = false;
       }
-      // console.log(isVisible);
       dispatch(clickFrameActions.visibilityDifiner(isVisible));
     };
     func();
   };
 
+  console.log(role);
   return (
     <Flex
       width="100%"
@@ -66,25 +74,27 @@ const Frame: React.FC<{
       onClick={onToggle}
     >
       <Image
-        boxShadow="0 0 10px rgba(0, 0, 0, 0.3)" /* Drop shadow for depth */
+        boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
         borderRadius="10px"
         padding="2px"
+        zIndex={"-5"}
         width="100%"
         src={props.imageUrl}
         alt="loading..."
       ></Image>
-      {/* <Button
-        visibility={`${style}`}
-        position={"absolute"}
-        height="5%"
-        width="5%"
-        borderStyle={"none"}
-        borderRadius="5px"
-        bgColor="#68BBE3"
-        onClick={downloadImage}
-      >
-        <DownloadIcon color="primary" fontSize="large"></DownloadIcon>
-      </Button> */}
+      {role == "admin" && (
+        <Flex
+          onClick={deleteToggle}
+          position={"absolute"}
+          _hover={{ cursor: "pointer" }}
+        >
+          <DeleteIcon
+            margin={"1.5"}
+            color={"red"}
+            sx={{ fontSize: "2rem" }}
+          ></DeleteIcon>
+        </Flex>
+      )}
     </Flex>
   );
 };
