@@ -8,7 +8,8 @@ const OnDemand = ({ unresolved, resolved}) => {
     <Box
       width={"95%"}
       height={"90%"}
-      border={"1px solid red"}
+      border={"2px solid #720e9e"}
+      borderRadius={"3px"}
       overflow="scroll"
       display={"flex"}
       flexDirection={"column"}

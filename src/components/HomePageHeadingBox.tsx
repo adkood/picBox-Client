@@ -32,11 +32,10 @@ const HomePageHeadingBox = () => {
       >
         <Heading
           alignItems="center"
-          // fontFamily="monospace"
           fontSize="150%"
           color="white"
         >
-          A place to explore your creativity and imagination
+          A place where you can explore the creativity and imagination
         </Heading>
         <SearchBox></SearchBox>
       </Flex>

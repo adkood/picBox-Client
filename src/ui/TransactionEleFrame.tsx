@@ -1,6 +1,6 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 
-const TransactionEleFrame = ({photoId , title , size, name , price, date}) => {
+const TransactionEleFrame = ({ photoId, title, size, name, price, date }) => {
   return (
     <Flex width={"100"} height={"20"} border={"1px solid"} margin={"5px"}>
       <Flex
@@ -15,10 +15,11 @@ const TransactionEleFrame = ({photoId , title , size, name , price, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>ID</span>
-          <span>{photoId}</span>
+          <Heading fontSize="1.1rem">Id</Heading>
+          <span>
+            <b>{photoId}</b>
+          </span>
         </Flex>
         <Flex
           width={"13%"}
@@ -26,10 +27,11 @@ const TransactionEleFrame = ({photoId , title , size, name , price, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Title</span>
-          <span>{title}</span>
+          <Heading fontSize="1.1rem">Title</Heading>
+          <span>
+            <b>{title}</b>
+          </span>
         </Flex>
         <Flex
           width={"11%"}
@@ -37,10 +39,11 @@ const TransactionEleFrame = ({photoId , title , size, name , price, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Size</span>
-          <span>{size}</span>
+          <Heading fontSize="1.1rem">Size</Heading>
+          <span>
+            <b>{size}</b>
+          </span>
         </Flex>
         <Flex
           width={"10%"}
@@ -48,10 +51,11 @@ const TransactionEleFrame = ({photoId , title , size, name , price, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Price(Rs.)</span>
-          <span>{price}</span>
+          <Heading fontSize="1.1rem">Price(Rs.)</Heading>
+          <span>
+            <b>{price}</b>
+          </span>
         </Flex>
         <Flex
           width={"15%"}
@@ -59,20 +63,23 @@ const TransactionEleFrame = ({photoId , title , size, name , price, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Bought By</span>
-          <span>{name}</span>
-        </Flex><Flex
+          <Heading fontSize="1.1rem">Bought By</Heading>
+          <span>
+            <b>{name}</b>
+          </span>
+        </Flex>
+        <Flex
           width={"17%"}
           height={"90%"}
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Bought On</span>
-          <span>{date}</span>
+          <Heading fontSize="1.1rem">Bought On</Heading>
+          <span>
+            <b>{date}</b>
+          </span>
         </Flex>
       </Flex>
     </Flex>

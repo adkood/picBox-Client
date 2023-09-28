@@ -37,7 +37,6 @@ const OndemandFrame = ({
       margin="5px"
       borderRadius={"5px"}
       border={"1px solid"}
-      margin={"5px"}
       onClick={onClickHandler}
     >
       <Flex
@@ -53,8 +52,8 @@ const OndemandFrame = ({
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <span>ID</span>
-          <span>{id}</span>
+          <Heading fontSize={"1.1rem"}>ID</Heading>
+          <span><b>{id}</b></span>
         </Flex>
         <Flex
           width={"16%"}
@@ -63,10 +62,8 @@ const OndemandFrame = ({
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <span>Demanded By</span>
-          <span>
-            {firstName} {lastName}
-          </span>
+          <Heading fontSize={"1.1rem"}>Demanded By</Heading>
+          <span><b>{firstName} {lastName}</b></span>
         </Flex>
         <Flex
           width={"13%"}
@@ -75,8 +72,8 @@ const OndemandFrame = ({
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <span>Email</span>
-          <span>{email}</span>
+          <Heading fontSize={"1.1rem"}>Email</Heading>
+          <span><b>{email}</b></span>
         </Flex>
         <Flex
           width={"6%"}
@@ -85,8 +82,8 @@ const OndemandFrame = ({
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <span>Country</span>
-          <span>{country}</span>
+          <Heading fontSize={"1.1rem"}>Country</Heading>
+          <span><b>{country}</b></span>
         </Flex>
         <Flex
           width={"15%"}
@@ -95,13 +92,13 @@ const OndemandFrame = ({
           alignItems={"center"}
         >
           {isResolved && (
-            <Heading fontSize={"2rem"} color={"green"}>
-              Resolved
+            <Heading fontSize={"1.7rem"} color={"green.500"}>
+              RESOLVED
             </Heading>
           )}
           {!isResolved && (
-            <Heading fontSize={"2rem"} color={"red"}>
-              Unresolved
+            <Heading fontSize={"1.7rem"} color={"red.500"}>
+              NOT YET
             </Heading>
           )}
         </Flex>

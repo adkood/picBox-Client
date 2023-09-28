@@ -215,9 +215,11 @@ const DashBoard = () => {
       <Navbar></Navbar>
       <Flex
         marginBottom={"10vh"}
-        width={"70%"}
+        width={"77%"}
         height={"80%"}
-        border={"1px solid green"}
+        border={"1px solid #720e9e"}
+        color={"#720e9e"}
+        borderRadius={"3px"}
       >
         <Flex
           width={"22%"}
@@ -229,85 +231,135 @@ const DashBoard = () => {
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.introToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            Welcome
+            WELCOME
           </Flex>
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.basicToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            Basic Information
+            BASIC INFORMATION
           </Flex>
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.usersToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            All Users
+            ALL USERS
           </Flex>
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.imagesToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            All Images
+            ALL IMAGES
           </Flex>
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.downloadToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            Download Information
+            DOWNLOAD INFORMATION
           </Flex>
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.transactionToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            Transaction Information
+            TRANSACTION INFORMATION
           </Flex>
           <Flex
             width={"95%"}
             height={"9%"}
-            border={"1px solid"}
+            border={"1px solid #720e9e"}
+            color={"#720e9e"}
             marginTop={"10px"}
             onClick={() => {
               dispatch(dashboardActions.demandToggle());
             }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius={"5px"}
+            fontWeight={"bold"}
+            cursor={"pointer"}
+            bgColor={"#D8BFD8"}
           >
-            Check On-Demand Information
+            CHECK ON-DEMAND INFORMATION
           </Flex>
         </Flex>
         <Flex
           width={"78%"}
           height={"100%"}
-          border={"1px solid"}
+          border={"1px solid #720e9e"}
+          color={"#720e9e"}
           flexDirection={"column"}
           alignItems={"center"}
           justifyContent={"center"}

@@ -8,7 +8,8 @@ const AllUsers = ({ userCount }) => {
     <Box
       width={"95%"}
       height={"90%"}
-      border={"1px solid red"}
+      border={"2px solid #720e9e"}
+      borderRadius={"3px"}
       overflow="scroll"
       flexDirection={"column"}
       css = "::-webkit-scrollbar {

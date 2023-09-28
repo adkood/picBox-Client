@@ -42,8 +42,7 @@ const HomePageArtists = () => {
               OUR PRICING!
             </Heading>
             <Text fontSize="150%">
-              Pick up a deal which suits you and build your project more
-              beautifully.
+              Pick up a deal which suits you at the price that suits you.
             </Text>
           </Flex>
           <Flex

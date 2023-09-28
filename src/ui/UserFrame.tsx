@@ -1,4 +1,4 @@
-import { Flex, useToast } from "@chakra-ui/react";
+import { Flex, Heading, useToast } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
   };
 
   return (
-    <Flex width={"100"} height={"20"} border={"1px solid"} margin={"5px"}>
+    <Flex width={"100"} height={"20"} border={"1px solid #720e9e"} margin={"5px"} borderRadius={"3px"}> 
       <Flex
         width={"100%"}
         height={"100%"}
@@ -31,10 +31,9 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>ID</span>
-          <span>{userId}</span>
+          <Heading fontSize={"1.1rem"}>Id</Heading>
+          <span><b>{userId}</b></span>
         </Flex>
         <Flex
           width={"13%"}
@@ -42,10 +41,9 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Name</span>
-          <span>{name}</span>
+          <Heading fontSize={"1.1rem"}>Name</Heading>
+          <span><b>{name}</b></span>
         </Flex>
         <Flex
           width={"6%"}
@@ -53,10 +51,9 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Role</span>
-          <span>{role}</span>
+          <Heading fontSize={"1.1rem"}>Role</Heading>
+          <span><b>{role}</b></span>
         </Flex>
         <Flex
           width={"12%"}
@@ -64,10 +61,9 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Profession</span>
-          <span>{profession}</span>
+          <Heading fontSize={"1.1rem"}>Profession</Heading>
+          <span><b>{profession}</b></span>
         </Flex>
         <Flex
           width={"13%"}
@@ -75,22 +71,20 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Email</span>
-          <span>{email}</span>
+          <Heading fontSize={"1.1rem"}>Email</Heading>
+          <span><b>{email}</b></span>
         </Flex>
         <Flex
           width={"13%"}
           height={"80%"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Change Role</span>
+          <Heading color={"blue.500"} fontSize={"1rem"}>Change Role</Heading>
           <EditIcon
             ml={"1"}
-            sx={{ color: "blue", fontSize: "2.2rem" }}
+            sx={{ color: "blue.500", fontSize: "2.2rem" }}
             onClick={onToggle2}
           ></EditIcon>
         </Flex>
@@ -99,10 +93,9 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           height={"80%"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
           <DeleteIcon
-            sx={{ color: "red", fontSize: "2.2rem" }}
+            sx={{ color: "red.500", fontSize: "2.2rem" }}
             onClick={onToggle1}
           ></DeleteIcon>
         </Flex>

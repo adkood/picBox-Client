@@ -9,7 +9,8 @@ console.log(transactionPhotoIds);
     <Box
     width={"95%"}
     height={"90%"}
-    border={"1px solid green"}
+    border={"2px solid #720e9e"}
+    borderRadius={"3px"}
     overflow="scroll"
     flexDirection={"column"}
     css = "::-webkit-scrollbar {

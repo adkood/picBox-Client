@@ -44,8 +44,8 @@ const Container = () => {
               padding={"40px"}
             >
               <Heading fontSize={"180%"}>Now get Images when you want.</Heading>
-              <Text fontSize={"100%"}>
-                Here you can get images of your like before the deadline you
+              <Text fontWeight={"bold"} margin={"2"} fontSize={"100%"}>
+                Here you can get images you like before the deadline you
                 mention
               </Text>
               <Button
@@ -57,6 +57,7 @@ const Container = () => {
                 _hover={{ color: "white", bgColor: "#ff4da6" }}
                 color="#ff4da6"
                 onClick={onToggle}
+                margin={"5"}
               >
                 Get Image
               </Button>

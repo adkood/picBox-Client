@@ -1,8 +1,8 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 
 const DownloadEleFrame = ({userId , title , size, date}) => {
   return (
-    <Flex width={"100"} height={"20"} border={"1px solid"} margin={"5px"}>
+    <Flex width={"100"} height={"20"} border={"1px solid #720e9e"} margin={"5px"} borderRadius="3px">
       <Flex
         width={"100%"}
         height={"100%"}
@@ -15,10 +15,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>ID</span>
-          <span>{userId}</span>
+          <Heading fontSize="1.1rem">Id</Heading>
+          <span><b>{userId}</b></span>
         </Flex>
         <Flex
           width={"25%"}
@@ -26,10 +25,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Title</span>
-          <span>{title}</span>
+          <Heading fontSize="1.1rem">Title</Heading>
+          <span><b>{title}</b></span>
         </Flex>
         <Flex
           width={"25%"}
@@ -37,10 +35,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Size</span>
-          <span>{size}</span>
+          <Heading fontSize="1.1rem">Size</Heading>
+          <span><b>{size}</b></span>
         </Flex>
         <Flex
           width={"25%"}
@@ -48,10 +45,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Downloaded On</span>
-          <span>{date}</span>
+          <Heading fontSize="1.1rem">Downloaded On</Heading>
+          <span><b>{date}</b></span>
         </Flex>
       </Flex>
     </Flex>

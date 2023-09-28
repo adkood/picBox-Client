@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,7 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
   };
 
   return (
-    <Flex width={"100"} height={"20"} border={"1px solid"} margin={"5px"}>
+    <Flex width={"100"} height={"20"} border={"1px solid #720e9e"} borderRadius={"3px"} margin={"5px"}>
       <Flex
         width={"100%"}
         height={"100%"}
@@ -26,10 +26,9 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>ID</span>
-          <span>{userId}</span>
+          <Heading fontSize={"1.1rem"}>Id</Heading>
+          <span><b>{userId}</b></span>
         </Flex>
         <Flex
           width={"15%"}
@@ -37,10 +36,9 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Title</span>
-          <span>{title}</span>
+          <Heading fontSize={"1.1rem"}>Title</Heading>
+          <span><b>{title}</b></span>
         </Flex>
         <Flex
           width={"8%"}
@@ -48,10 +46,9 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Size</span>
-          <span>{size}</span>
+          <Heading fontSize={"1.1rem"}>Size</Heading>
+          <span><b>{size}</b></span>
         </Flex>
         <Flex
           width={"10%"}
@@ -59,10 +56,9 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Price</span>
-          <span>{price}</span>
+          <Heading fontSize={"1.1rem"}>Price</Heading>
+          <span><b>{price}</b></span>
         </Flex>
         <Flex
           width={"10%"}
@@ -70,10 +66,9 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Discount(%)</span>
-          <span>{discount}</span>
+          <Heading fontSize={"1.1rem"}>Discount(%)</Heading>
+          <span><b>{discount}</b></span>
         </Flex>
         <Flex
           width={"13%"}
@@ -81,19 +76,17 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           flexDirection={"column"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <span>Posted By</span>
-          <span>{auther}</span>
+          <Heading fontSize={"1.1rem"}>Posted By</Heading>
+          <span><b>{auther}</b></span>
         </Flex>
         <Flex
           width={"6%"}
           height={"80%"}
           justifyContent={"center"}
           alignItems={"center"}
-          border="1px solid"
         >
-          <DeleteIcon sx={{ color: "red", fontSize: "2.2rem" }} onClick={onToggle}></DeleteIcon>
+          <DeleteIcon sx={{ color: "red.500", fontSize: "2.2rem" }} onClick={onToggle}></DeleteIcon>
         </Flex>
       </Flex>
     </Flex>

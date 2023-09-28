@@ -8,7 +8,8 @@ const AllImages = ({imageCount}) => {
         <Box
           width={"95%"}
           height={"90%"}
-          border={"1px solid red"}
+          border={"2px solid #720e9e"}
+          borderRadius={"3px"}
           overflow="scroll"
           flexDirection={"column"}
           css = "::-webkit-scrollbar {
@@ -22,7 +23,6 @@ const AllImages = ({imageCount}) => {
             const price = singleData.price;
             const discount= singleData.priceDiscount;
             const auther = singleData.author[0].name;
-            console.log(auther);
             k++;
             return (
               <ImageFrame

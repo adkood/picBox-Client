@@ -87,7 +87,7 @@ export default function Navbar() {
             onClick={() => {
               router.push("/");
             }}
-            borderRadius="5px"
+            borderRadius="10px"
             src={"/logo.png"}
           />
 
@@ -98,7 +98,7 @@ export default function Navbar() {
             justifyContent="flex-end"
             flexDirection="row"
           >
-            {role && !back && (
+            {authState && role && !back && (
               <Link href="/dashboard">
                 <Flex
                   onClick={() => dispatch(authActions.backToggle())}
@@ -116,7 +116,7 @@ export default function Navbar() {
                 </Flex>
               </Link>
             )}
-            {role && back && (
+            {authState && role && back && (
               <Link href="/">
                 <ArrowBackIcon
                   m="4"
@@ -131,13 +131,13 @@ export default function Navbar() {
                 onClick={() => {
                   dispatch(modalActions.loginToggle());
                 }}
-                borderBottom="1px solid"
                 borderStyle={"none"}
                 bgColor={"transparent"}
                 fontSize="130%"
                 fontFamily={"monospace"}
+                color="white"
               >
-                Login
+                LOGIN
               </Button>
             )}
             {!authState && (
@@ -145,13 +145,13 @@ export default function Navbar() {
                 onClick={() => {
                   dispatch(modalActions.signupToggle());
                 }}
-                borderBottom="1px solid"
                 borderStyle={"none"}
                 bgColor={"transparent"}
                 fontSize="130%"
                 fontFamily={"monospace"}
+                color="white"
               >
-                Signup
+                SIGNIN
               </Button>
             )}
             {authState && (

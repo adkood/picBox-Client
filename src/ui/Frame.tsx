@@ -20,6 +20,7 @@ const Frame: React.FC<{
   const dispatch = useDispatch();
 
   const role = useSelector((state: any) => state.auth.role);
+  const isLoggedIn = useSelector((state: any) => state.auth.isLogged);
 
   const deleteToggle = (e: any) => {
     e.stopPropagation();
@@ -82,7 +83,7 @@ const Frame: React.FC<{
         src={props.imageUrl}
         alt="loading..."
       ></Image>
-      {role == "admin" && (
+      {isLoggedIn && role == "admin" && (
         <Flex
           onClick={deleteToggle}
           position={"absolute"}
