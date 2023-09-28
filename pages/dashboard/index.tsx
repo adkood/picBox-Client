@@ -9,6 +9,9 @@ import TransactionImages from "../../src/components/dashMaterial/TransactionImag
 import OnDemand from "../../src/components/dashMaterial/OnDemand";
 import OndemandClick from "../../src/ui/OndemandClick";
 import OndemandUpload from "../../src/components/dashMaterial/OndemandUpload";
+import UserDeleteModal from "../../src/components/dashMaterial/UserDeleteModal";
+import RoleUpdateModal from "../../src/components/dashMaterial/RoleUpdateModal";
+import ImageDeleteModal from "../../src/components/dashMaterial/ImageDeleteModal";
 
 const DashBoard = () => {
   const [resolved, setResolved] = useState([]);
@@ -181,7 +184,7 @@ const DashBoard = () => {
   }, []);
 
   // console.log(resolved);
-  console.log(allCount);
+  console.log(imageCount);
   // console.log(resolved.length);
 
   return (
@@ -260,6 +263,9 @@ const DashBoard = () => {
 
           <OndemandClick></OndemandClick>
           <OndemandUpload></OndemandUpload>
+          <UserDeleteModal></UserDeleteModal>
+          <RoleUpdateModal></RoleUpdateModal>
+          <ImageDeleteModal></ImageDeleteModal>
 
           {/* ----------------------------------------------------------- */}
 
@@ -270,8 +276,8 @@ const DashBoard = () => {
             allCount={allCount}
             imageCount={imageCount}
           ></BaiscInfo> */}
-          <AllUsers userCount={userCount}></AllUsers>
-          {/* <AllImages imageCount={imageCount}></AllImages> */}
+          {/* <AllUsers userCount={userCount}></AllUsers> */}
+          <AllImages imageCount={imageCount}></AllImages>
           {/* <DownloadedImages
             downloadedPhotoIds={allCount.downloadedPhotoIds}
           ></DownloadedImages> */}

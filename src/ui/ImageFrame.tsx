@@ -1,7 +1,17 @@
 import { Flex } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
+import { useDispatch, useSelector } from "react-redux";
+import { confirmationActions } from "../../store";
+
 const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
+  const dispatch = useDispatch();
+
+  const onToggle = () => {
+    dispatch(confirmationActions.photoIdDefiner(userId)); // photoId == userId
+    dispatch(confirmationActions.imageDeleteStateToggle());
+  };
+
   return (
     <Flex width={"100"} height={"20"} border={"1px solid"} margin={"5px"}>
       <Flex
@@ -83,7 +93,7 @@ const ImageFrame = ({ userId, title, size, price, discount, auther }) => {
           alignItems={"center"}
           border="1px solid"
         >
-          <DeleteIcon sx={{ color: "red", fontSize: "2.2rem" }}></DeleteIcon>
+          <DeleteIcon sx={{ color: "red", fontSize: "2.2rem" }} onClick={onToggle}></DeleteIcon>
         </Flex>
       </Flex>
     </Flex>

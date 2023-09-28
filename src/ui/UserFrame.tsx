@@ -1,71 +1,20 @@
 import { Flex, useToast } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { confirmationActions } from "../../store";
 
 const UserFrame = ({ userId, name, email, profession, role }) => {
-  console.log(userId);
-  const toast = useToast();
+  const dispatch = useDispatch();
 
-  const deleteUser = () => {
-    const url = `http://127.0.0.1:8000/api/v1/users/${userId}`;
-    axios({
-      url,
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => {
-        toast({
-          title: "User successfully deleted.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-        console.log(res);
-        window.location.reload();
-      })
-      .catch((error) => {
-        toast({
-          title: "Unable to send request.",
-          description: "We are sorry,Please try again after some time",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-        console.log(error);
-      });
+  const onToggle1 = () => {
+    dispatch(confirmationActions.userIdDefiner(userId));
+    dispatch(confirmationActions.userDeleteStateToggle());
   };
 
-  const roleChange = () => {
-    const url = `http://127.0.0.1:8000/api/v1/users/${userId}`;
-    axios({
-      url,
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((res) => {
-        toast({
-          title: "Role successfully updated.",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-        console.log(res);
-        window.location.reload();
-      })
-      .catch((error) => {
-        toast({
-          title: "Unable to send request.",
-          description: "We are sorry,Please try again after some time",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-        console.log(error);
-      });
+  const onToggle2 = () => {
+    dispatch(confirmationActions.userIdDefiner(userId));
+    dispatch(confirmationActions.roleUpdateStateToggle());
   };
 
   return (
@@ -142,7 +91,7 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
           <EditIcon
             ml={"1"}
             sx={{ color: "blue", fontSize: "2.2rem" }}
-            onClick={roleChange}
+            onClick={onToggle2}
           ></EditIcon>
         </Flex>
         <Flex
@@ -154,7 +103,7 @@ const UserFrame = ({ userId, name, email, profession, role }) => {
         >
           <DeleteIcon
             sx={{ color: "red", fontSize: "2.2rem" }}
-            onClick={deleteUser}
+            onClick={onToggle1}
           ></DeleteIcon>
         </Flex>
       </Flex>

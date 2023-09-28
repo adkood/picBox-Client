@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react"
 import ImageFrame from "../../ui/ImageFrame";
 
 const AllImages = ({imageCount}) => {
+  console.log(imageCount);
     var k = 0;
     return (
         <Box
@@ -21,7 +22,7 @@ const AllImages = ({imageCount}) => {
             const price = singleData.price;
             const discount= singleData.priceDiscount;
             const auther = singleData.author[0].name;
-            // console.log(au);
+            console.log(auther);
             k++;
             return (
               <ImageFrame

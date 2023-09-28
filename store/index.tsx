@@ -50,7 +50,7 @@ const modalSlice = createSlice({
     },
     demandUploadToggle(state) {
       state.isDemandUpload = !state.isDemandUpload;
-    }
+    },
   },
 });
 
@@ -256,13 +256,43 @@ const clickDemandSlice = createSlice({
     imageDescDefiner(state, action) {
       state.imageDesc = action.payload;
     },
-    isResolvedDifiner(state,action) {
+    isResolvedDifiner(state, action) {
       state.isResolved = action.payload;
     },
   },
 });
 
+//---------------confirmation modals------------------
 
+const initialConfirmationState = {
+  userDeleteState: false,
+  imageDeleteState: false,
+  roleUpdateState: false,
+  userId: -1,
+  photoId: -1,
+};
+
+const confirmSlice = createSlice({
+  name: "confirm",
+  initialState: initialConfirmationState,
+  reducers: {
+    userIdDefiner(state, action) {
+      state.userId = action.payload;
+    },
+    photoIdDefiner(state, action) {
+      state.photoId = action.payload;
+    },
+    userDeleteStateToggle(state) {
+      state.userDeleteState = !state.userDeleteState;
+    },
+    imageDeleteStateToggle(state) {
+      state.imageDeleteState = !state.imageDeleteState;
+    },
+    roleUpdateStateToggle(state) {
+      state.roleUpdateState = !state.roleUpdateState;
+    },
+  },
+});
 
 //-------------------------------------------------------
 export const modalActions = modalSlice.actions;
@@ -271,6 +301,7 @@ export const uiActtions = uiSlice.actions;
 export const clickFrameActions = clickFrameSlice.actions;
 export const searchDataActions = searchDataSlice.actions;
 export const demandActions = clickDemandSlice.actions;
+export const confirmationActions = confirmSlice.actions;
 
 const store = configureStore({
   reducer: {
@@ -280,6 +311,7 @@ const store = configureStore({
     clickFrame: clickFrameSlice.reducer,
     searchData: searchDataSlice.reducer,
     clickDemand: clickDemandSlice.reducer,
+    confirm: confirmSlice.reducer,
   },
 });
 
