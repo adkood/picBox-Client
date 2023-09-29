@@ -82,7 +82,7 @@ const Frame: React.FC<{
         boxShadow="0 0 10px rgba(0, 0, 0, 0.3)"
         borderRadius="10px"
         padding="2px"
-        zIndex={"-5"}
+        // zIndex={"-5"}
         width="100%"
         src={props.imageUrl}
         alt="loading..."
@@ -95,7 +95,7 @@ const Frame: React.FC<{
         >
           <DeleteIcon
             margin={"1.5"}
-            color={"red"}
+            color={"red.500"}
             sx={{ fontSize: "2rem" }}
           ></DeleteIcon>
         </Flex>

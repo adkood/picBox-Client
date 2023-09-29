@@ -75,10 +75,10 @@ const PremiumPlan = () => {
           <div className={classes.buttonCont}>
             <Button
               onClick={onBuyItClickHandler1}
-              width="150px"
+              width="120px"
               color="blue.500"
-              height="50%"
-              fontSize="1.5rem"
+              height="40%"
+              fontSize="1.2rem"
               bgColor={"blue.100"}
               _hover={{ color: "white" }}
             >
@@ -111,10 +111,10 @@ const PremiumPlan = () => {
           <div className={classes.buttonCont}>
             <Button
               onClick={onBuyItClickHandler2}
-              width="150px"
+              width="120px"
               color="blue.500"
-              height="50%"
-              fontSize="1.5rem"
+              height="40%"
+              fontSize="1.2rem"
               bgColor={"blue.100"}
               _hover={{ color: "white" }}
             >
@@ -146,10 +146,10 @@ const PremiumPlan = () => {
           <div className={classes.buttonCont}>
             <Button
               onClick={onBuyItClickHandler3}
-              width="150px"
+              width="120px"
               color="blue.500"
-              height="50%"
-              fontSize="1.5rem"
+              height="40%"
+              fontSize="1.2rem"
               bgColor={"blue.100"}
               _hover={{ color: "white" }}
             >
