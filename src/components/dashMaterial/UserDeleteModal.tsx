@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef,useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,6 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { confirmationActions } from "../../../store";
 
 const UserDeleteModal = () => {
+
+  const [isRerender, setisRerender] = useState(false);
+
   const toast = useToast();
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.confirm.userId);
@@ -36,7 +39,8 @@ const UserDeleteModal = () => {
           isClosable: true,
         });
         console.log(res);
-        window.location.reload();
+        setisRerender(true);
+        // window.location.reload();
       })
       .catch((error) => {
         toast({
@@ -53,6 +57,10 @@ const UserDeleteModal = () => {
   const onToggle = () => {
     dispatch(confirmationActions.userDeleteStateToggle());
   };
+
+  useEffect(() => {
+    // for rerendering
+  },[isRerender]);
 
   return (
     <>

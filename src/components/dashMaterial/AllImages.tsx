@@ -31,8 +31,10 @@ const AllImages = ({ imageCount }) => {
   console.log(selectedValue1,selectedValue2);
   var k = 0;
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; 
+
   const handleApi = () => {
-    const url = `http://127.0.0.1:8000/api/v1/photo/sort?field=${selectedValue1}&order=${selectedValue2}`;
+    const url = `${backendUrl}/api/v1/photo/sort?field=${selectedValue1}&order=${selectedValue2}`;
     axios({
       url,
       method: "GET",

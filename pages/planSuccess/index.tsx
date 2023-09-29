@@ -10,9 +10,11 @@ const Success = () => {
 
   //api
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   useEffect(() => {
     const func = async () => {
-      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+      let res = await fetch(`${backendUrl}/api/v1/users/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -36,7 +38,7 @@ const Success = () => {
 
       // console.log(data.data.data);
       
-      const url = "http://127.0.0.1:8000/api/v1/users/updateMe";
+      const url = `${backendUrl}/api/v1/users/updateMe`;
       axios({
         url,
         method: "PATCH",

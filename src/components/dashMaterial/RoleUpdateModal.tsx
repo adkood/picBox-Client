@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef,useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,13 +14,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { confirmationActions } from "../../../store";
 
 const RoleUpdateModal = () => {
+
+  const [isRerender, setisRerender] = useState(false);
+
   const toast = useToast();
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.confirm.userId);
   const onOpen = useSelector((state: any) => state.confirm.roleUpdateState);
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const roleChange = () => {
-    const url = `http://127.0.0.1:8000/api/v1/users/${userId}`;
+    const url = `${backendUrl}/api/v1/users/${userId}`;
     axios({
       url,
       method: "PATCH",
@@ -36,7 +41,8 @@ const RoleUpdateModal = () => {
           isClosable: true,
         });
         console.log(res);
-        window.location.reload();
+        setisRerender(true);
+        // window.location.reload();
       })
       .catch((error) => {
         toast({
@@ -53,6 +59,10 @@ const RoleUpdateModal = () => {
   const onToggle = () => {
     dispatch(confirmationActions.roleUpdateStateToggle());
   };
+
+  useEffect(() => {
+    // for rerendering
+  },[isRerender]);
 
   return (
     <>

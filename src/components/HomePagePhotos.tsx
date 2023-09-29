@@ -305,8 +305,8 @@ const HomePagePhotos = () => {
             fontSize="180%"
             fontFamily="mono"
             borderStyle="none"
-            color="pink.300"
-            backgroundColor="#FFF7FF"
+            color="purple.400"
+            backgroundColor="purple.100"
             justifyContent={"center"}
             alignItems="center"
             onClick={scrollToTop}

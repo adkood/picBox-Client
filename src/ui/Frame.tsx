@@ -76,6 +76,7 @@ const Frame: React.FC<{
       // onMouseLeave={() => {
       //   setStyle("hidden");
       // }}
+      position="relative"
       onClick={onToggle}
     >
       <Image

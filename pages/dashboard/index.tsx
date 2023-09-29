@@ -38,13 +38,13 @@ const DashBoard = () => {
   const demand = useSelector((state: any) => state.dashboard.demand);
 
   const toast = useToast();
-
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   // ----------------CALLING SEASON-----------
   useEffect(() => {
     const call1 = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/v1/demand/getResolved",
+          `${backendUrl}/api/v1/demand/getResolved`,
           {
             method: "GET",
             headers: {
@@ -74,7 +74,7 @@ const DashBoard = () => {
     const call2 = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/v1/demand/getUnresolved",
+          `${backendUrl}/api/v1/demand/getUnresolved`,
           {
             method: "GET",
             headers: {
@@ -106,7 +106,7 @@ const DashBoard = () => {
     const call3 = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/v1/count/getCount",
+          `${backendUrl}/api/v1/count/getCount`,
           {
             method: "GET",
             headers: {
@@ -137,7 +137,7 @@ const DashBoard = () => {
     // const url4 = "http://127.0.0.1:8000/api/v1/users";
     const call4 = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/users", {
+        const response = await fetch(`${backendUrl}/api/v1/users`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -167,7 +167,7 @@ const DashBoard = () => {
     const call5 = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/api/v1/photo/getAllPhotos",
+          `${backendUrl}/api/v1/photo/getAllPhotos`,
           {
             method: "GET",
             headers: {

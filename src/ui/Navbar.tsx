@@ -72,7 +72,7 @@ export default function Navbar() {
         width="77%"
         borderRadius="10px"
         // boxShadow={`5px 5px`}
-        bg={"linear-gradient(to right, #ff6b6b, #6b47ff)"}
+        bg={"purple.400"}
         px={4}
       >
         <Flex

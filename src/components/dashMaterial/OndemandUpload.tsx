@@ -42,7 +42,7 @@ import {
 //   );
 // };
 
-import React, { useRef, useState } from "react";
+import React, { useRef,useEffect, useState } from "react";
 // import { Button, Text } from "@chakra-ui/react";
 
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -57,6 +57,9 @@ import { useToast } from "@chakra-ui/react";
 
 
 function OndemandUpload() {
+
+  const [isUploadComplete, setUploadComplete] = useState(false);
+
     const toast = useToast();
     const onOpen = useSelector((state: any) => state.modal.isDemandUpload);
     const demandId = useSelector((state: any) => state.clickDemand.id);
@@ -96,9 +99,12 @@ function OndemandUpload() {
 
   //api
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+
   const handleApi2 = () => {
 
-    const url = "http://127.0.0.1:8000/api/v1/demand/updateDemand";
+    const url = `${backendUrl}/api/v1/demand/updateDemand`;
     axios({
       url,
       method: "PATCH",
@@ -111,6 +117,7 @@ function OndemandUpload() {
     })
       .then((res) => {
         console.log(res);
+        setUploadComplete(true);
         onToggle2();
         toast({
             title: "Image Uploaded Successfully :)",
@@ -144,7 +151,7 @@ function OndemandUpload() {
 
     // console.log(formData);
 
-    const url = "http://127.0.0.1:8000/api/v1/photo";
+    const url = `${backendUrl}/api/v1/photo`;
     axios({
       url,
       method: "POST",
@@ -156,14 +163,18 @@ function OndemandUpload() {
       .then((res) => {
         console.log(res);
         handleApi2();
-        onToggle();
-        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
         onToggle();
       });
   };
+
+  useEffect(() => {
+    if(isUploadComplete) {
+      onToggle();
+    }
+  },[isUploadComplete]);
 
   return (
     <>

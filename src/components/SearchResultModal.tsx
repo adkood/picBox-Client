@@ -114,8 +114,15 @@ function SearchResultModal() {
     return base64;
   }
 
+
+  //---------------------BACKEND-------------
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  // console.log(backendUrl);
+
+  //-------------------------------------
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/v1/photo/search/${searchData}`)
+    fetch(`${backendUrl}/api/v1/photo/search/${searchData}`)
       .then((response) => response.json())
       .then((res) => setImageArray(res.data))
       .catch((err) => console.log(err));

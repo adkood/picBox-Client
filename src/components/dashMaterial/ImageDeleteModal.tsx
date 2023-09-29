@@ -19,8 +19,10 @@ const ImageDeleteModal = () => {
   const photoId = useSelector((state: any) => state.confirm.photoId);
   const onOpen = useSelector((state: any) => state.confirm.imageDeleteState);
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const deleteUser = () => {
-    const url = `http://127.0.0.1:8000/api/v1/photo/${photoId}`;
+    const url = `${backendUrl}/api/v1/photo/${photoId}`;
     axios({
       url,
       method: "DELETE",
@@ -36,7 +38,7 @@ const ImageDeleteModal = () => {
           isClosable: true,
         });
         console.log(res);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         toast({
