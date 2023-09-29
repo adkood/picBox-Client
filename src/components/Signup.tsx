@@ -144,7 +144,7 @@ const Signup = () => {
                   borderRadius="10px"
                   width="47%"
                   height={"70%"}
-                  bgColor="#50C878"
+                  bgColor="green.300"
                   type="submit"
                   onClick={onSignupClickHandler}
                 >
@@ -154,7 +154,7 @@ const Signup = () => {
                   borderStyle="none"
                   type="button"
                   width="47%"
-                  bgColor="#ff7070"
+                  bgColor="red.300"
                   height={"70%"}
                   borderRadius="10px"
                   onClick={onToggle}

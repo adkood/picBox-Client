@@ -118,16 +118,19 @@ const CollectionModal = () => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      });
-
-      let data = await res.json();
-      console.log(data);
-      setBoughtImages(data.data.data.boughtImages);
+      }).then((res) => {
+        let data = res.json();
+        console.log(data);
+        setBoughtImages(data.data.data.boughtImages);
+      }).catch((error) => {
+        console.log(error);
+      })
     };
     func();
   },[]);
 
-  // console.log(boughtImages);
+  console.log(data1);
+  console.log(boughtImages);
   return (
     <>
       <Modal isCentered isOpen={onOpen} onClose={onToggle}>
@@ -150,11 +153,11 @@ const CollectionModal = () => {
                 // padding="10px"
                 // bgColor="#ffddf4"
                 borderRadius="8px"
-                // overflow="scroll"
-                // wrap="wrap"
-                // css = "::-webkit-scrollbar {
-                //         display: none,
-                //       }" 
+                overflow="scroll"
+                wrap="wrap"
+                css = "::-webkit-scrollbar {
+                        display: none,
+                      }" 
               >
                 <Flex
                   height={"5%"}

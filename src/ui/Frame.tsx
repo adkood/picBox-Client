@@ -40,23 +40,27 @@ const Frame: React.FC<{
     dispatch(clickFrameActions.frameStateToggle());
 
     const func = async () => {
-      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-
-      let data = await res.json();
-      let imageArray = data.data.data.boughtImages;
-
-      let wassap = imageArray.find((obj: any) => obj.photoId === props.id);
-      let isVisible = true;
-
-      if (wassap) {
-        isVisible = false;
+      try {
+        let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        let data = await res.json();
+        let imageArray = data.data.data.boughtImages;
+    
+        let wassap = imageArray.find((obj: any) => obj.photoId === props.id);
+        let isVisible = true;
+    
+        if (wassap) {
+          isVisible = false;
+        }
+        dispatch(clickFrameActions.visibilityDifiner(isVisible));
+      } catch (error) {
+        console.log(error);
       }
-      dispatch(clickFrameActions.visibilityDifiner(isVisible));
     };
+    
     func();
   };
 

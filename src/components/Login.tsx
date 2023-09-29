@@ -9,6 +9,7 @@ import {
   ModalContent,
   ModalOverlay,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import {
   Alert,
@@ -27,6 +28,7 @@ import { useRouter } from "next/router";
 // const LoginHandler = () => {};
 
 const Login = () => {
+  const toast = useToast();
   const onOpen = useSelector((state: any) => state.modal.isLogin);
   const dispatch = useDispatch();
 
@@ -76,9 +78,23 @@ const Login = () => {
       // console.log(tokenId);
       dispatch(authActions.login(tokenId));
       setIsLogin(true);
+      toast({
+        title: "You are now Logged In.",
+        description: "You can now upload, download and buy any image.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       setMessage("you are now logged in!");
       onToggle();
     } catch (err: any) {
+      toast({
+        title: "You canont Log In.",
+        description: "Try again after some time",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
       setMessage(err.message);
     }
   };
@@ -139,7 +155,7 @@ const Login = () => {
                   justifyContent="center"
                   bgColor={"grey"}
                 >
-                  <Avatar height="100%" src="" borderRadius={"5px"} />
+                  <Avatar height="100%" width="100%" src="/profile.png" borderRadius={"5px"} />
                 </Flex>
 
                 <Box className="container">
@@ -177,7 +193,7 @@ const Login = () => {
                       height="65%"
                       borderRadius="10px"
                       // type="submit"
-                      bgColor="#50C878"
+                      bgColor="green.300"
                       onClick={onLoginClickHandler}
                     >
                       Login
@@ -185,7 +201,7 @@ const Login = () => {
                     <Button
                       borderStyle="none"
                       type="button"
-                      bgColor="#ff7070"
+                      bgColor="red.300"
                       borderRadius="10px"
                       width="50%"
                       height="65%"

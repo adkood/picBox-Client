@@ -98,7 +98,10 @@ export default function Navbar() {
             justifyContent="flex-end"
             flexDirection="row"
           >
-            {authState && role && !back && (
+            {
+              console.log(authState,role,back)
+            }
+            {authState && (role == "admin") && !back && (
               <Link href="/dashboard">
                 <Flex
                   onClick={() => dispatch(authActions.backToggle())}
@@ -116,7 +119,7 @@ export default function Navbar() {
                 </Flex>
               </Link>
             )}
-            {authState && role && back && (
+            {authState && (role == "admin") && back && (
               <Link href="/">
                 <ArrowBackIcon
                   m="4"

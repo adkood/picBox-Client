@@ -18,7 +18,7 @@ import { modalActions } from "../../store";
 
 import CollectionModal from "../components/CollectionModal";
 import Profile from "../components/Profile";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import UserActivity from "../components/UserActivity";
 import ChangePassword from "../components/ChangePassword";
 import UploadModal from "../components/UploadModal";
@@ -37,6 +37,7 @@ function ModalFrame() {
     />
   );
 
+  const inputFile = useRef(null);
   const [isProfile, setIsProfile] = useState(true);
   const [isUserActivity, setIsUserActivity] = useState(false);
   const [isChangePassword, setIsChangePassword] = useState(false);
@@ -139,6 +140,10 @@ function ModalFrame() {
       .catch((err) => console.log(err));
   }, []);
 
+  const onButtonClick = () => {
+    inputFile.current.click();
+  }
+
   const handleApi = () => {
     // console.log(image);
     const formData = new FormData();
@@ -234,6 +239,7 @@ function ModalFrame() {
 
                   <Input
                     type={"file"}
+                    ref={inputFile}
                     onChange={onProfilePhotoChangeHandler}
                     style={{ display: "none" }}
                   ></Input>
@@ -254,7 +260,7 @@ function ModalFrame() {
                       border="1px solid white"
                       color="#9932CC"
                       _hover={{ bgColor: "#9932CC", color: "white" }}
-                      // onClick={handleApi}
+                      onClick={onButtonClick}
                     >
                       CHOOSE PICTURE
                     </Button>
