@@ -13,8 +13,11 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   //api
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/users/me", {
+    fetch(`${backendUrl}/api/v1/users/me`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

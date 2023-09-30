@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import React from "react";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../store";
 
@@ -125,10 +125,14 @@ function ModalFrame() {
   }
   const base64String = base64ArrayBuffer(data);
 
-  //api
+  //-----------------------api-------------------------------------
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  const [isRender, setIsRender] = useState(0);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/users/me", {
+    fetch(`${backendUrl}/api/v1/users/me`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -138,18 +142,18 @@ function ModalFrame() {
         setData(data.data.data.img.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [isRender]);
 
   const onButtonClick = () => {
     inputFile.current.click();
-  }
+  };
 
   const handleApi = () => {
     // console.log(image);
     const formData = new FormData();
     formData.append("img", image);
 
-    const url = "http://127.0.0.1:8000/api/v1/users/updateMe";
+    const url = `${backendUrl}/api/v1/users/updateMe`;
     axios({
       url,
       method: "PATCH",
@@ -159,6 +163,7 @@ function ModalFrame() {
       data: formData,
     })
       .then((res) => {
+        setIsRender(isRender + 1);
         // console.log(res);
       })
       .catch((error) => {
@@ -330,7 +335,7 @@ function ModalFrame() {
                     </Button>
                   </Flex>
                 </Flex>
- 
+
                 {/* right part -------------------------------------- */}
                 <Flex
                   width="80%"
@@ -366,7 +371,7 @@ function ModalFrame() {
               <Signup></Signup>
             </ModalBody>
             <Box borderRadius="50%" onClick={onToggle}>
-              <CloseIcon sx={{ color: "red", fontSize: "3rem"}}></CloseIcon>
+              <CloseIcon sx={{ color: "red", fontSize: "3rem" }}></CloseIcon>
             </Box>
           </ModalBody>
         </ModalContent>

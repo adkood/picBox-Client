@@ -6,9 +6,11 @@ import { Button } from "@chakra-ui/react";
 const PremiumPlan = () => {
   const router = useRouter();
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const onBuyItClickHandler1 = async () => {
     const session = await axios(
-      `http://127.0.0.1:8000/api/v1/payment/checkout-session-basic`,
+      `${backendUrl}/api/v1/payment/checkout-session-basic`,
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -22,7 +24,7 @@ const PremiumPlan = () => {
 
   const onBuyItClickHandler2 = async () => {
     const session = await axios(
-      `http://127.0.0.1:8000/api/v1/payment/checkout-session-pro`,
+      `${backendUrl}/api/v1/payment/checkout-session-pro`,
       {
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -36,7 +38,7 @@ const PremiumPlan = () => {
 
   const onBuyItClickHandler3 = async () => {
     const session = await axios(
-      `http://127.0.0.1:8000/api/v1/payment/checkout-session-premium`,
+      `${backendUrl}/api/v1/payment/checkout-session-premium`,
       {
         headers: {
           "Access-Control-Allow-Origin": "*",

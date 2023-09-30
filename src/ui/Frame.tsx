@@ -28,6 +28,8 @@ const Frame: React.FC<{
     dispatch(confirmationActions.imageDeleteStateToggle());
   };
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const onToggle = () => {
     dispatch(clickFrameActions.srcDefiner(props.imageUrl));
     dispatch(clickFrameActions.widthDefiner(props.width));
@@ -41,17 +43,17 @@ const Frame: React.FC<{
 
     const func = async () => {
       try {
-        let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+        let res = await fetch(`${backendUrl}/api/v1/users/me`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         let data = await res.json();
         let imageArray = data.data.data.boughtImages;
-    
+
         let wassap = imageArray.find((obj: any) => obj.photoId === props.id);
         let isVisible = true;
-    
+
         if (wassap) {
           isVisible = false;
         }
@@ -60,7 +62,7 @@ const Frame: React.FC<{
         console.log(error);
       }
     };
-    
+
     func();
   };
 

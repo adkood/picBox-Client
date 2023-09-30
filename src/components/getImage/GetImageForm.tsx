@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Progress,
   Box,
@@ -55,6 +55,9 @@ export default function GetImageForm() {
     dispatch(modalActions.getImageToggle());
   };
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const [isRender ,setIsRender] = useState(false);
+
   const handleApi = () => {
     const forData = {
       firstName: first,
@@ -67,7 +70,7 @@ export default function GetImageForm() {
       imageDesc: desc,
     };
 
-    const url = "http://127.0.0.1:8000/api/v1/demand/createDemand";
+    const url = `${backendUrl}/api/v1/demand/createDemand`;
     axios({
       url,
       method: "POST",
@@ -77,6 +80,7 @@ export default function GetImageForm() {
       data: forData,
     })
       .then((res) => {
+        setIsRender(true);
         toast({
           title: "Image Request Sent.",
           description: "We've started looking for the image you required.",
@@ -95,6 +99,11 @@ export default function GetImageForm() {
         });
       });
   };
+
+
+  useEffect(() => {
+  // for rerendering
+  },[isRender])
 
   return (
     <Modal isOpen={isOpen} onClose={onToggle}>

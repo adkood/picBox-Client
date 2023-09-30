@@ -69,31 +69,33 @@ const HomePagePhotos = () => {
     return base64;
   }
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/photo/getFivePhotos?page=1&limit=5")
-      .then((response) => response.json())
-      .then((res) => setImageArray1(res.data.data))
-      .catch((err) => console.log(err));
-  }, []);
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/photo/getFivePhotos?page=2&limit=5")
-      .then((response) => response.json())
-      .then((res) => setImageArray2(res.data.data))
-      .catch((err) => console.log(err));
-  }, []);
+    let func1 = async () => {
+      await fetch(`${backendUrl}/api/v1/photo/getFivePhotos?page=1&limit=5`)
+        .then((response) => response.json())
+        .then((res) => setImageArray1(res.data.data))
+        .catch((err) => console.log(err));
+    };
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/photo/getFivePhotos?page=3&limit=5")
-      .then((response) => response.json())
-      .then((res) => setImageArray3(res.data.data))
-      .catch((err) => console.log(err));
-  }, []);
+    let func2 = async () => {
+      await fetch(`${backendUrl}/api/v1/photo/getFivePhotos?page=2&limit=5`)
+        .then((response) => response.json())
+        .then((res) => setImageArray2(res.data.data))
+        .catch((err) => console.log(err));
+    };
 
-  useEffect(() => {
+    let func3 = async () => {
+      await fetch(`${backendUrl}/api/v1/photo/getFivePhotos?page=3&limit=5`)
+        .then((response) => response.json())
+        .then((res) => setImageArray3(res.data.data))
+        .catch((err) => console.log(err));
+    };
+
     const call = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+        const response = await fetch(`${backendUrl}/api/v1/users/me`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -110,6 +112,10 @@ const HomePagePhotos = () => {
         console.log(error);
       }
     };
+
+    func1();
+    func2();
+    func3();
     call();
   }, []);
 

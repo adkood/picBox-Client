@@ -126,6 +126,9 @@ function UploadModal() {
   // }
 
   //api
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const handleApi = () => {
     // console.log(image);
     const formData = new FormData();
@@ -139,7 +142,7 @@ function UploadModal() {
 
     // console.log(formData);
 
-    const url = "http://127.0.0.1:8000/api/v1/photo";
+    const url = `${backendUrl}/api/v1/photo`;
     axios({
       url,
       method: "POST",

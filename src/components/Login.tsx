@@ -53,6 +53,8 @@ const Login = () => {
 
   // api requests
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const onLoginClickHandler = async () => {
     const user = {
       email: usernameRef.current!.value,
@@ -60,7 +62,7 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/v1/users/login", {
+      const response = await fetch(`${backendUrl}/api/v1/users/login`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
@@ -101,33 +103,6 @@ const Login = () => {
 
   return (
     <>
-      {/* {isLogin && (
-        <Alert
-          status="success"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          height="100px"
-          colorScheme={"green"}
-        >
-          <AlertIcon boxSize="40px" mr={0} />
-          {message}
-        </Alert>
-      )}
-      {!isLogin && (
-        <Alert
-          status="error"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          height="100px"
-          border={'1px solid'}
-          colorScheme={"red"}
-        >
-          <AlertIcon boxSize="40px" mr={0} />
-          {message}
-        </Alert>
-      )} */}
       <Modal isCentered isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
         <ModalContent bgColor={"transparent"} position={"fixed"} left="0">
@@ -155,7 +130,12 @@ const Login = () => {
                   justifyContent="center"
                   bgColor={"grey"}
                 >
-                  <Avatar height="100%" width="100%" src="/profile.png" borderRadius={"5px"} />
+                  <Avatar
+                    height="100%"
+                    width="100%"
+                    src="/profile.png"
+                    borderRadius={"5px"}
+                  />
                 </Flex>
 
                 <Box className="container">

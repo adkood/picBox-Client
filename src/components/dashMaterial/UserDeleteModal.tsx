@@ -22,8 +22,10 @@ const UserDeleteModal = () => {
   const userId = useSelector((state: any) => state.confirm.userId);
   const onOpen = useSelector((state: any) => state.confirm.userDeleteState);
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const deleteUser = () => {
-    const url = `http://127.0.0.1:8000/api/v1/users/${userId}`;
+    const url = `${backendUrl}/api/v1/users/${userId}`;
     axios({
       url,
       method: "DELETE",

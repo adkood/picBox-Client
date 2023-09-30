@@ -97,8 +97,12 @@ function ClickFrameModal() {
   };
 
   //---------------------------------- download count
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+
   const handleApi = () => {
-    const url = "http://127.0.0.1:8000/api/v1/count/increaseDownloadCount";
+    const url = `${backendUrl}/api/v1/count/increaseDownloadCount`;
     axios({
       url,
       method: "POST",
@@ -122,7 +126,7 @@ function ClickFrameModal() {
 
   const downloadImage = () => {
     const func = async () => {
-      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+      let res = await fetch(`${backendUrl}/api/v1/users/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -130,7 +134,7 @@ function ClickFrameModal() {
       let data = await res.json();
       data.data.data.planCount -= 1;
 
-      const url = "http://127.0.0.1:8000/api/v1/users/updateMe";
+      const url =`${backendUrl}/api/v1/users/updateMe`;
       axios({
         url,
         method: "PATCH",
@@ -172,7 +176,7 @@ function ClickFrameModal() {
 
   useEffect(() => {
     const func = async () => {
-      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+      let res = await fetch(`${backendUrl}/api/v1/users/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -191,7 +195,7 @@ function ClickFrameModal() {
   // checkout-session
   const onBuyItClickHandler = async () => {
     const session = await axios(
-      `http://127.0.0.1:8000/api/v1/payment/checkout-session/${photoId}`,
+      `${backendUrl}/api/v1/payment/checkout-session/${photoId}`,
       {
         headers: {
           "Access-Control-Allow-Origin": "*",

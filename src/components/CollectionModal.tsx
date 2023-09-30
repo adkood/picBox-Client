@@ -98,8 +98,27 @@ const CollectionModal = () => {
   }
 
   //api
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  // useEffect(() => {
+  //   fetch(`${backendUrl}/api/v1/photo`, {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setData1(data.data.data);
+  //       console.log(data.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/v1/photo", {
+
+    const func1 = async () => {
+    let res = await fetch(`${backendUrl}/api/v1/photo`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -110,11 +129,10 @@ const CollectionModal = () => {
         console.log(data.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+    };
 
-  useEffect(() => {
-    const func = async () => {
-      let res = await fetch("http://127.0.0.1:8000/api/v1/users/me", {
+    const func2 = async () => {
+      let res = await fetch(`${backendUrl}/api/v1/users/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -126,7 +144,9 @@ const CollectionModal = () => {
         console.log(error);
       })
     };
-    func();
+
+    func1();
+    func2();
   },[]);
 
   console.log(data1);

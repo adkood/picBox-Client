@@ -45,6 +45,8 @@ const Signup = () => {
 
   // api requests
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const onSignupClickHandler = async () => {
     const user = {
       name: nameRef.current!.value,
@@ -54,17 +56,14 @@ const Signup = () => {
     };
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/v1/users/signup",
-        {
-          method: "POST",
-          body: JSON.stringify(user),
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${backendUrl}/api/v1/users/signup`, {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Authentication Failed!");

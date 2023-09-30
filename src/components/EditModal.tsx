@@ -44,6 +44,9 @@ function EditModal() {
   };
 
   //api
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const onClickHandler = async () => {
     let user = {};
 
@@ -58,7 +61,7 @@ function EditModal() {
     }
 
     const response = await fetch(
-      "http://127.0.0.1:8000/api/v1/users/updateMe",
+      `${backendUrl}/api/v1/users/updateMe`,
       {
         method: "PATCH",
         body: JSON.stringify(user),
@@ -144,9 +147,9 @@ function EditModal() {
                   width="90%"
                   height="18%"
                   borderStyle="none"
-                  color="#9932CC"
+                  color="purple.500"
                   borderRadius="10px"
-                  _hover={{ bgColor: "#9932CC", color: "white" }}
+                  _hover={{ bgColor: "purple.500", color: "white" }}
                   onClick={onClickHandler}
                   fontSize={"20px"}
                 >

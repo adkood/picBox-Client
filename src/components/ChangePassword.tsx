@@ -27,6 +27,8 @@ const ChangePassword = () => {
     dispatch(modalActions.changePasswordToggle());
   };
 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const onClickHandler = async () => {
     const data = {
       passwordCurrent: currPasswordRef.current!.value,
@@ -35,7 +37,7 @@ const ChangePassword = () => {
     };
 
     const response = await fetch(
-      "http://127.0.0.1:8000/api/v1/users/updateMyPassword",
+      `${backendUrl}/api/v1/users/updateMyPassword`,
       {
         method: "PATCH",
         body: JSON.stringify(data),
@@ -91,7 +93,7 @@ const ChangePassword = () => {
               placeholder="Your Password"
               // borderStyle="none"
               fontSize="100%"
-              color="#9932CC"
+              color="purple.500"
               bgColor={"white"}
               ref={currPasswordRef}
             ></Input>
@@ -101,7 +103,7 @@ const ChangePassword = () => {
               borderRadius="5px"
               placeholder="New Password"
               // borderStyle="none"
-              color="#9932CC"
+              color="purple.500"
               bgColor={"white"}
               fontSize="100%"
               ref={newPasswordRef}
@@ -114,7 +116,7 @@ const ChangePassword = () => {
               placeholder="Confirm your Password"
               // borderStyle="none"
               bgColor={"white"}
-              color="#9932CC"
+              color="purple.500"
               fontSize="100%"
               ref={confirmPasswordRef}
             ></Input>
@@ -124,8 +126,8 @@ const ChangePassword = () => {
               height="16%"
               borderStyle="none"
               borderRadius="5px"
-              color="#9932CC"
-              _hover={{ bgColor: "#9932CC", color: "white" }}
+              color="purple.500"
+              _hover={{ bgColor: "purple.500", color: "white" }}
               cursor="pointer"
               onClick={onClickHandler}
             >
