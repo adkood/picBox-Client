@@ -129,13 +129,12 @@ const Login = () => {
                   justifyContent="center"
                   bgColor={"grey"}
                 >
-                  <Flex
+                  <Avatar
                     height="100%"
                     width="100%"
-                    bgImage={"profile.png"}
-                    bgSize={"cover"}
+                    src={"/profile.png"}
                     borderRadius={"5px"}
-                  ></Flex>
+                  />
                 </Flex>
 
                 <Box className="container">
