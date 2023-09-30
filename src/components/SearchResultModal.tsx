@@ -126,7 +126,7 @@ function SearchResultModal() {
       .then((response) => response.json())
       .then((res) => setImageArray(res.data))
       .catch((err) => console.log(err));
-  }, [searchData]);
+  }, [searchData,backendUrl]);
 
   // console.log(imageArray);
 
@@ -174,9 +174,11 @@ function SearchResultModal() {
                   height="95%"
                   width="100%"
                   overflow={"scroll"}
-                  css = "::-webkit-scrollbar {
-                          width: 0px
-                        }"
+                  sx={{
+                    "::-webkit-scrollbar": {
+                      display: "none",
+                    },
+                  }}
                 >
                   <Flex
                     height="100%"
