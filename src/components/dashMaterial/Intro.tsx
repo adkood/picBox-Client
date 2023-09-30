@@ -1,6 +1,7 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
 const Intro = () => {
+    
   return (
     <Flex
       width={"100%"}
