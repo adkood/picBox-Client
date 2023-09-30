@@ -199,8 +199,8 @@ function ModalFrame() {
             <ModalBody
               width={"70vw"}
               height={"40vh"}
-              boxShadow={"2px 2px 5px"}
-              bg={"#C197D2"}
+              boxShadow={"1px 1px 4px"}
+              bg={"purple.200"}
               borderRadius={"10px"}
               display="flex"
               alignItems="center"
@@ -264,10 +264,10 @@ function ModalFrame() {
                       // borderStyle="none"
                       border="1px solid white"
                       color="#9932CC"
-                      _hover={{ bgColor: "#9932CC", color: "white" }}
+                      _hover={{ bgColor: "purple.300", color: "white" }}
                       onClick={onButtonClick}
                     >
-                      CHOOSE PICTURE
+                      BROWSE PICTURE
                     </Button>
                   </Flex>
                   <Flex
@@ -285,10 +285,10 @@ function ModalFrame() {
                       // borderStyle="none"
                       border="1px solid white"
                       color="#9932CC"
-                      _hover={{ bgColor: "#9932CC", color: "white" }}
+                      _hover={{ bgColor: "purple.300", color: "white" }}
                       onClick={handleApi}
                     >
-                      CHANGE PROFILE
+                      CHANGE PICTURE
                     </Button>
                   </Flex>
                   <Flex
@@ -305,7 +305,7 @@ function ModalFrame() {
                       // borderStyle="none"
                       border="1px solid white"
                       color="#9932CC"
-                      _hover={{ bgColor: "#9932CC", color: "white" }}
+                      _hover={{ bgColor: "purple.300", color: "white" }}
                       onClick={() => {
                         dispatch(modalActions.editToggle());
                       }}
@@ -326,12 +326,12 @@ function ModalFrame() {
                       borderRadius="10px"
                       border="1px solid white"
                       color="#9932CC"
-                      _hover={{ bgColor: "#9932CC", color: "white" }}
+                      _hover={{ bgColor: "purple.300", color: "white" }}
                       onClick={() => {
                         dispatch(modalActions.changePasswordToggle());
                       }}
                     >
-                      CHANGE-PASSWORD
+                      CHANGE PASSWORD
                     </Button>
                   </Flex>
                 </Flex>

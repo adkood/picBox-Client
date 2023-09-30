@@ -93,14 +93,15 @@ function EditModal() {
               <Flex
                 flexWrap="wrap"
                 gap="15"
-                width="40%"
+                width="30%"
                 height="35%"
-                bgColor="#C197D2"
+                bgColor="purple.200"
                 borderRadius="5px"
                 justifyContent="center"
                 alignItems="center"
                 flexDirection="column"
-                boxShadow={"2px 2px 5px"}
+                boxShadow={"1px 1px 4px"}
+                p={"5"}
               >
                 <Flex
                   height="70%"
@@ -149,7 +150,7 @@ function EditModal() {
                   borderStyle="none"
                   color="purple.500"
                   borderRadius="10px"
-                  _hover={{ bgColor: "purple.500", color: "white" }}
+                  _hover={{ bgColor: "purple.300", color: "white" }}
                   onClick={onClickHandler}
                   fontSize={"20px"}
                 >

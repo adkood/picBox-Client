@@ -78,13 +78,14 @@ const ChangePassword = () => {
         >
           <Flex
             height="40%"
-            width="40%"
-            bgColor={"#C197D2"}
-            boxShadow={"2px 2px 5px"}
+            width="30%"
+            bgColor={"purple.200"}
+            boxShadow={"1px 1px 4px"}
             borderRadius="10px"
             flexDirection="column"
             alignItems="center"
             justifyContent="space-around"
+            p={"5"}
           >
             <Input
               height="20%"
@@ -127,7 +128,7 @@ const ChangePassword = () => {
               borderStyle="none"
               borderRadius="5px"
               color="purple.500"
-              _hover={{ bgColor: "purple.500", color: "white" }}
+              _hover={{ bgColor: "purple.300", color: "white" }}
               cursor="pointer"
               onClick={onClickHandler}
             >
