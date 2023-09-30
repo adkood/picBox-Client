@@ -72,7 +72,7 @@ const RoleUpdateModal = () => {
           <ModalHeader color={"red"}>Confirmation !</ModalHeader>
           <ModalBody>
             <span>
-              <b>Do you realy want to CHANGE this user's role to admin ?</b>
+              <b>Do you realy want to CHANGE this user role to admin ?</b>
             </span>
           </ModalBody>
           <Flex justifyContent={"center"}>
