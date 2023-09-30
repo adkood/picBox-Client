@@ -99,6 +99,7 @@ const Signup = () => {
               borderRadius="8px"
               flexDirection={"column"}
               alignItems="center"
+              p={"4"}
             >
               <Box className="container" width="94%" height="60%">
                 <Input
@@ -137,6 +138,7 @@ const Signup = () => {
                 height="30%"
                 justifyContent={"center"}
                 alignItems="center"
+                m={"4"}
               >
                 <Button
                   borderStyle="none"
