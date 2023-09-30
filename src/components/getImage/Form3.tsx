@@ -29,7 +29,13 @@ import { useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../../store";
 
-const Form3 = ({setScl , setDesc}) => {
+const Form3 = ({
+  setScl,
+  setDesc,
+}: {
+  setScl: (value: string) => void;
+  setDesc: (value: string) => void;
+}) => {
   // const socialRef = useRef<HTMLInputElement>(null);
   // const descriptionRef = useRef<HTMLTextAreaElement>(null);
 

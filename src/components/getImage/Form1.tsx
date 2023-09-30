@@ -31,7 +31,15 @@ import { useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../../store";
 
-const Form1 = ({ setFirst, setLast, setEmail }) => {
+const Form1 = ({
+  setFirst,
+  setLast,
+  setEmail,
+}: {
+  setFirst: (value: string) => void;
+  setLast: (value: string) => void;
+  setEmail: (value: string) => void;
+}) => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -67,7 +75,11 @@ const Form1 = ({ setFirst, setLast, setEmail }) => {
         <FormLabel htmlFor="email" fontWeight={"normal"}>
           Email address
         </FormLabel>
-        <Input id="email" type="email" onChange={(e) => setEmail(e.target.value)} />
+        <Input
+          id="email"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <FormHelperText>We&apos;ll never share your email.</FormHelperText>
       </FormControl>
     </>

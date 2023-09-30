@@ -31,7 +31,15 @@ import { useToast } from "@chakra-ui/react";
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../../store";
 
-const Form2 = ({ setCont,setStr,setCt }) => {
+const Form2 = ({
+  setCont,
+  setStr,
+  setCt,
+}: {
+  setCont: (value: string) => void;
+  setStr: (value: string) => void;
+  setCt: (value: string) => void;
+}) => {
   // const countryRef = useRef<HTMLInputElement>(null);
   // const streetRef = useRef<HTMLInputElement>(null);
   // const cityRef = useRef<HTMLInputElement>(null);
