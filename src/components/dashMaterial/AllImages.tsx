@@ -26,7 +26,6 @@ const AllImages = () => {
     setSelectedValue2(event.target.value);
   };
 
-  console.log(selectedValue1, selectedValue2);
   var k = 0;
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;

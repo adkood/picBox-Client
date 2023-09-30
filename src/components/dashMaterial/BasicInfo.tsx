@@ -67,7 +67,7 @@ const BaiscInfo = () => {
           duration: 3000,
           isClosable: true,
         });
-        console.error(err.message);
+        console.error(err);
       }
     };
 
