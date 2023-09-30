@@ -42,14 +42,14 @@ export default function GetImageForm() {
   const isOpen = useSelector((state: any) => state.modal.isGetImage);
   const dispatch = useDispatch();
 
-  const [first, setFirst] = useState();
-  const [last, setLast] = useState();
-  const [email, setEmail] = useState();
-  const [coun, setCont] = useState();
-  const [str, setStr] = useState();
-  const [ct, setCt] = useState();
-  const [scl, setScl] = useState();
-  const [desc, setDesc] = useState();
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
+  const [email, setEmail] = useState("");
+  const [coun, setCont] = useState("");
+  const [str, setStr] = useState("");
+  const [ct, setCt] = useState("");
+  const [scl, setScl] = useState("");
+  const [desc, setDesc] = useState("");
 
   const onToggle = () => {
     dispatch(modalActions.getImageToggle());
