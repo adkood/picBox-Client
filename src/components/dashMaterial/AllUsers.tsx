@@ -1,8 +1,20 @@
-import { Box, Flex } from "@chakra-ui/react";
-import { useEffect } from "react";
+import React from "react";
+import { Box } from "@chakra-ui/react";
 import UserFrame from "../../ui/UserFrame";
 
-const AllUsers = ({ userCount }) => {
+interface userData {
+  _id: string;
+  name: string;
+  email: String;
+  profession: String;
+  role: String;
+}
+
+interface AllUsersProps {
+  userCount: userData[];
+}
+
+const AllUsers:React.FC<AllUsersProps> = ({ userCount }) => {
   var k = 0;
   return (
     <Box
@@ -12,11 +24,13 @@ const AllUsers = ({ userCount }) => {
       borderRadius={"3px"}
       overflow="scroll"
       flexDirection={"column"}
-      css = "::-webkit-scrollbar {
-          width: 0px
-        }"
+      sx={{
+        "::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
     >
-      {userCount.map((singleData: any) => {
+      {userCount.map((singleData) => {
         const id = singleData._id;
         const name = singleData.name;
         const email = singleData.email;

@@ -11,9 +11,11 @@ var k = 0;
     borderRadius={"3px"}
     overflow="scroll"
     flexDirection={"column"}
-    css = "::-webkit-scrollbar {
-        width: 0px
-      }"
+    sx={{
+      "::-webkit-scrollbar": {
+        display: "none",
+      },
+    }}
   >
     {downloadedPhotoIds && downloadedPhotoIds.map((singleData: any) => {
       const id = singleData._id;

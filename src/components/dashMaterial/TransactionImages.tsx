@@ -13,9 +13,11 @@ console.log(transactionPhotoIds);
     borderRadius={"3px"}
     overflow="scroll"
     flexDirection={"column"}
-    css = "::-webkit-scrollbar {
-        width: 0px
-      }"
+    sx={{
+      "::-webkit-scrollbar": {
+        display: "none",
+      },
+    }}
   >
     {transactionPhotoIds && transactionPhotoIds.map((singleData: any) => {
       const id = singleData._id;

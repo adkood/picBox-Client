@@ -14,9 +14,11 @@ const OnDemand = ({ unresolved, resolved}) => {
       display={"flex"}
       flexDirection={"column"}
       alignItems={"center"}
-      css = "::-webkit-scrollbar {
-          width: 0px
-        }"
+      sx={{
+        "::-webkit-scrollbar": {
+          display: "none",
+        },
+      }}
     >
       {unresolved.map((singleData: any) => {
         const id = singleData._id;
