@@ -4,8 +4,20 @@ import { useEffect, useState } from "react";
 import { Select } from "@chakra-ui/react";
 import axios from "axios";
 
-const AllImages = ({ imageCount }) => {
+interface ImageData {
+  _id: string;
+  title: string;
+  size: number;
+  price: number;
+  priceDiscount: number;
+  author: { name: string }[];
+}
 
+interface AllImagesProps {
+  imageCount: ImageData[];
+}
+
+const AllImages: React.FC<AllImagesProps> = ({ imageCount }) => {
   const [dataToShow, setDataToShow] = useState(imageCount);
   const [selectedValue1, setSelectedValue1] = useState("");
   const [selectedValue2, setSelectedValue2] = useState("");
@@ -20,7 +32,6 @@ const AllImages = ({ imageCount }) => {
     { value: "dsc", label: "Descending" },
   ];
 
-
   const handleSelectChange1 = (event: any) => {
     setSelectedValue1(event.target.value);
   };
@@ -28,10 +39,10 @@ const AllImages = ({ imageCount }) => {
     setSelectedValue2(event.target.value);
   };
 
-  console.log(selectedValue1,selectedValue2);
+  console.log(selectedValue1, selectedValue2);
   var k = 0;
 
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; 
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const handleApi = () => {
     const url = `${backendUrl}/api/v1/photo/sort?field=${selectedValue1}&order=${selectedValue2}`;
@@ -40,18 +51,20 @@ const AllImages = ({ imageCount }) => {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }
-    }).then((res) => {
-      setDataToShow(res.data);
-      console.log(res);
-    }).catch((error) => {
-      console.log(error);
+      },
     })
-  }
+      .then((res) => {
+        setDataToShow(res.data);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     // handleApi();
-  },[dataToShow]);
+  }, [dataToShow]);
 
   return (
     <Flex
@@ -92,12 +105,16 @@ const AllImages = ({ imageCount }) => {
             </option>
           ))}
         </Select>
-        <Button bgColor={"purple.300"}
+        <Button
+          bgColor={"purple.300"}
           width={"11%"}
           color={"white"}
-          _hover={{ color: "purple.300", bgColor: "white"}}
+          _hover={{ color: "purple.300", bgColor: "white" }}
           onClick={handleApi}
-          fontWeight={"bold"}>APPLY</Button>
+          fontWeight={"bold"}
+        >
+          APPLY
+        </Button>
       </Flex>
       <Box
         width={"95%"}
@@ -106,9 +123,11 @@ const AllImages = ({ imageCount }) => {
         borderRadius={"3px"}
         overflow="scroll"
         flexDirection={"column"}
-        css = "::-webkit-scrollbar {
-            width: 0px
-          }"
+        sx={{
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
       >
         {dataToShow.map((singleData: any) => {
           const id = singleData._id;
