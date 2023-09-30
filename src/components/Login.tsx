@@ -113,8 +113,6 @@ const Login = () => {
               width="100vw"
               height="100vh"
               flexDirection="column"
-
-              // bgColor="blue"
             >
               <Flex
                 width="30%"
@@ -126,16 +124,18 @@ const Login = () => {
               >
                 <Flex
                   height="35%"
+                  width="70%"
                   margin={"15px"}
                   justifyContent="center"
                   bgColor={"grey"}
                 >
-                  <Avatar
+                  <Flex
                     height="100%"
                     width="100%"
-                    src="/profile.png"
+                    bgImage={"profile.png"}
+                    bgSize={"cover"}
                     borderRadius={"5px"}
-                  />
+                  ></Flex>
                 </Flex>
 
                 <Box className="container">
