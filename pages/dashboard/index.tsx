@@ -195,7 +195,7 @@ const DashBoard = () => {
     call3();
     call4();
     call5();
-  }, [backendUrl,toast]);
+  }, [backendUrl, toast]);
 
   // console.log(resolved);
   console.log(allCount);
@@ -378,15 +378,7 @@ const DashBoard = () => {
 
           {/* ----------------------------------------------------------- */}
           {intro && <Intro></Intro>}
-          {basic && (
-            <BaiscInfo
-              resolved={resolved}
-              unresolved={unresolved}
-              userCount={userCount}
-              allCount={allCount}
-              imageCount={imageCount}
-            ></BaiscInfo>
-          )}
+          {basic && <BaiscInfo></BaiscInfo>}
           {users && <AllUsers userCount={userCount}></AllUsers>}
           {images && <AllImages imageCount={imageCount}></AllImages>}
           {download && allCount && allCount.downloadedPhotoIds && (
