@@ -118,36 +118,45 @@ const CollectionModal = () => {
   useEffect(() => {
 
     const func1 = async () => {
-    let res = await fetch(`${backendUrl}/api/v1/photo`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setData1(data.data.data);
-        console.log(data.data.data);
-      })
-      .catch((err) => console.log(err));
-    };
+      try {
+        const response = await fetch(`${backendUrl}/api/v1/photo`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
-    const func2 = async () => {
-      let res = await fetch(`${backendUrl}/api/v1/users/me`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }).then((res) => {
-        let data = await res.json();
-        console.log(data);
-        setBoughtImages(data.data.data.boughtImages);
-      }).catch((error) => {
+        if (!response.ok) {
+          throw new Error("Unable to fetch data");
+        }
+
+        const data = await response.json();
+        setData1(data.data.data);
+      } catch (error) {
         console.log(error);
-      })
+      }
+    };
+    const func2 = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/api/v1/users/me`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Unable to fetch data");
+        }
+
+        const data = await response.json();
+        setBoughtImages(data.data.data.boughtImages);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     func1();
     func2();
-  },[]);
+  },[backendUrl]);
 
   console.log(data1);
   console.log(boughtImages);
@@ -175,9 +184,11 @@ const CollectionModal = () => {
                 borderRadius="8px"
                 overflow="scroll"
                 wrap="wrap"
-                css = "::-webkit-scrollbar {
-                        display: none,
-                      }" 
+                sx={{
+                  "::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                }}
               >
                 <Flex
                   height={"5%"}
@@ -201,6 +212,11 @@ const CollectionModal = () => {
                   // css = "::-webkit-scrollbar {
                   //   width: 0px
                   // }"
+                  sx={{
+                    "::-webkit-scrollbar": {
+                      display: "none",
+                    },
+                  }}
                 >
                   <Flex
                     height="100%"
