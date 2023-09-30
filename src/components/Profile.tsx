@@ -24,7 +24,7 @@ const Profile = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data.data.data);
         setName(data.data.data.name);
         setEmail(data.data.data.email);
         setProfession(data.data.data.profession);
