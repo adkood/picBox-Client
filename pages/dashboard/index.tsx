@@ -105,15 +105,12 @@ const DashBoard = () => {
     // const url3 = "http://127.0.0.1:8000/api/v1/count/getCount";
     const call3 = async () => {
       try {
-        const response = await fetch(
-          `${backendUrl}/api/v1/count/getCount`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const response = await fetch(`${backendUrl}/api/v1/count/getCount`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
         if (!response.ok) {
           throw new Error("unable to fetch data2");
@@ -392,12 +389,12 @@ const DashBoard = () => {
           )}
           {users && <AllUsers userCount={userCount}></AllUsers>}
           {images && <AllImages imageCount={imageCount}></AllImages>}
-          {download && (
+          {download && allCount && allCount.downloadedPhotoIds && (
             <DownloadedImages
               downloadedPhotoIds={allCount.downloadedPhotoIds}
             ></DownloadedImages>
           )}
-          {transaction && (
+          {transaction && allCount && allCount.transactionPhotoIds && (
             <TransactionImages
               transactionPhotoIds={allCount.transactionPhotoIds}
             ></TransactionImages>
