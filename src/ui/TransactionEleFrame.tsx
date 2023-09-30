@@ -1,6 +1,22 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
-const TransactionEleFrame = ({ photoId, title, size, name, price, date }) => {
+interface TransactionProps {
+  photoId: string;
+  title: string;
+  size: any;
+  name: string;
+  price: number;
+  date: any;
+}
+
+const TransactionEleFrame: React.FC<TransactionProps> = ({
+  photoId,
+  title,
+  size,
+  name,
+  price,
+  date,
+}) => {
   return (
     <Flex width={"100"} height={"20"} border={"1px solid"} margin={"5px"}>
       <Flex
