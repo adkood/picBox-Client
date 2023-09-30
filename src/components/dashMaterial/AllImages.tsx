@@ -1,24 +1,12 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, useToast } from "@chakra-ui/react";
 import ImageFrame from "../../ui/ImageFrame";
 import { useEffect, useState } from "react";
 import { Select } from "@chakra-ui/react";
 import axios from "axios";
 
-interface ImageData {
-  _id: string;
-  title: string;
-  size: number;
-  price: number;
-  priceDiscount: number;
-  author: { name: string }[];
-}
 
-interface AllImagesProps {
-  imageCount: ImageData[];
-}
-
-const AllImages: React.FC<AllImagesProps> = ({ imageCount }) => {
-  const [dataToShow, setDataToShow] = useState(imageCount);
+const AllImages = () => {
+  const [dataToShow, setDataToShow] = useState([]);
   const [selectedValue1, setSelectedValue1] = useState("");
   const [selectedValue2, setSelectedValue2] = useState("");
   const option1 = [
@@ -65,6 +53,40 @@ const AllImages: React.FC<AllImagesProps> = ({ imageCount }) => {
   useEffect(() => {
     // handleApi();
   }, [dataToShow]);
+
+  // const [imageCount, setImageCount] = useState([]);
+
+  const toast = useToast();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [imageData] =
+          await Promise.all([
+            fetch(`${backendUrl}/api/v1/photo/getAllPhotos`, {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }),
+          ]);
+
+        const imageJson = await imageData.json();
+        setDataToShow(imageJson.data.data);
+      } catch (err: any) {
+        toast({
+          title: "Unable to receive data right now",
+          description: "We are sorry, please try again after some time",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+        console.error(err.message);
+      }
+    };
+
+    fetchData();
+  }, [toast, backendUrl]);
 
   return (
     <Flex
@@ -155,3 +177,4 @@ const AllImages: React.FC<AllImagesProps> = ({ imageCount }) => {
 };
 
 export default AllImages;
+

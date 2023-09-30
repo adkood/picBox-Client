@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import DownloadEleFrame from "../../ui/DownloadEleFrame";
 
-const DownloadedImages = ({downloadedPhotoIds}) => {
+const DownloadedImages = () => {
 var k = 0;
   return (
     <Box

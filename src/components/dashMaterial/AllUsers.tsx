@@ -1,20 +1,42 @@
-import React from "react";
-import { Box } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Box, useToast } from "@chakra-ui/react";
 import UserFrame from "../../ui/UserFrame";
 
-interface userData {
-  _id: string;
-  name: string;
-  email: String;
-  profession: String;
-  role: String;
-}
+const AllUsers = () => {
+  const [userCount, setUserCount] = useState<any>([]);
 
-interface AllUsersProps {
-  userCount: userData[];
-}
+  const toast = useToast();
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-const AllUsers:React.FC<AllUsersProps> = ({ userCount }) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [userData] = await Promise.all([
+          fetch(`${backendUrl}/api/v1/users`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }),
+        ]);
+
+        const userJson = await userData.json();
+        setUserCount(userJson.data.data);
+      } catch (err: any) {
+        toast({
+          title: "Unable to receive data right now",
+          description: "We are sorry, please try again after some time",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+        console.error(err.message);
+      }
+    };
+
+    fetchData();
+  }, [toast, backendUrl]);
+
   var k = 0;
   return (
     <Box
@@ -30,7 +52,7 @@ const AllUsers:React.FC<AllUsersProps> = ({ userCount }) => {
         },
       }}
     >
-      {userCount.map((singleData) => {
+      {userCount.map((singleData: any) => {
         const id = singleData._id;
         const name = singleData.name;
         const email = singleData.email;
