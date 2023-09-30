@@ -124,7 +124,7 @@ const Login = () => {
               >
                 <Flex
                   height="35%"
-                  width="70%"
+                  width="30%"
                   margin={"15px"}
                   justifyContent="center"
                   bgColor={"grey"}
