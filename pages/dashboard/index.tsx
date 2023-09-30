@@ -195,7 +195,7 @@ const DashBoard = () => {
     call3();
     call4();
     call5();
-  }, []);
+  }, [backendUrl,toast]);
 
   // console.log(resolved);
   console.log(allCount);
