@@ -24,7 +24,7 @@ const DashBoard = () => {
   const [resolved, setResolved] = useState([]);
   const [unresolved, setUnresolved] = useState([]);
   const [userCount, setUserCount] = useState([]);
-  const [allCount, setAllCount] = useState({});
+  const [allCount, setAllCount] = useState<any>({});
   const [imageCount, setImageCount] = useState([]);
 
   const dispatch = useDispatch();

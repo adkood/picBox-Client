@@ -137,7 +137,7 @@ const CollectionModal = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }).then((res) => {
-        let data = res.json();
+        let data = await res.json();
         console.log(data);
         setBoughtImages(data.data.data.boughtImages);
       }).catch((error) => {
