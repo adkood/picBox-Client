@@ -56,7 +56,7 @@ export default function GetImageForm() {
   };
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const [isRender ,setIsRender] = useState(false);
+  const [isRender, setIsRender] = useState(false);
 
   const handleApi = () => {
     const forData = {
@@ -100,10 +100,9 @@ export default function GetImageForm() {
       });
   };
 
-
   useEffect(() => {
-  // for rerendering
-  },[isRender])
+    // for rerendering
+  }, [isRender]);
 
   return (
     <Modal isOpen={isOpen} onClose={onToggle}>

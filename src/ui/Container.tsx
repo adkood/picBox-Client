@@ -45,8 +45,7 @@ const Container = () => {
             >
               <Heading fontSize={"180%"}>Now get Images when you want.</Heading>
               <Text fontWeight={"bold"} margin={"2"} fontSize={"100%"}>
-                Here you can get images you like before the deadline you
-                mention
+                Here you can get images you like before the deadline you mention
               </Text>
               <Button
                 width={"140px"}

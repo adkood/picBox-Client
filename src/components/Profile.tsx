@@ -31,7 +31,7 @@ const Profile = () => {
         setUserId(data.data.data._id);
       })
       .catch((err) => console.log(err));
-  }, [name, email, profession]);
+  }, [name, email, profession, backendUrl]);
 
   // console.log("name:", name);
 

@@ -100,7 +100,6 @@ function ClickFrameModal() {
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-
   const handleApi = () => {
     const url = `${backendUrl}/api/v1/count/increaseDownloadCount`;
     axios({
@@ -134,7 +133,7 @@ function ClickFrameModal() {
       let data = await res.json();
       data.data.data.planCount -= 1;
 
-      const url =`${backendUrl}/api/v1/users/updateMe`;
+      const url = `${backendUrl}/api/v1/users/updateMe`;
       axios({
         url,
         method: "PATCH",
@@ -190,7 +189,7 @@ function ClickFrameModal() {
       }
     };
     func();
-  }, []);
+  }, [authState, backendUrl]);
 
   // checkout-session
   const onBuyItClickHandler = async () => {

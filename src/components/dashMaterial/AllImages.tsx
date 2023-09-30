@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Select } from "@chakra-ui/react";
 import axios from "axios";
 
-
 const AllImages = () => {
   const [dataToShow, setDataToShow] = useState([]);
   const [selectedValue1, setSelectedValue1] = useState("");
@@ -61,15 +60,14 @@ const AllImages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [imageData] =
-          await Promise.all([
-            fetch(`${backendUrl}/api/v1/photo/getAllPhotos`, {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }),
-          ]);
+        const [imageData] = await Promise.all([
+          fetch(`${backendUrl}/api/v1/photo/getAllPhotos`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }),
+        ]);
 
         const imageJson = await imageData.json();
         setDataToShow(imageJson.data.data);
@@ -177,4 +175,3 @@ const AllImages = () => {
 };
 
 export default AllImages;
-

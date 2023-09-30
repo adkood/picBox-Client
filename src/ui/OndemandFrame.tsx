@@ -2,7 +2,20 @@ import { Flex, Heading } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { demandActions } from "../../store";
 
-const OndemandFrame = ({
+interface OndemandProps {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  country: string;
+  street: string;
+  city: string;
+  social: string;
+  imageDesc: string;
+  isResolved: boolean;
+}
+
+const OndemandFrame: React.FC<OndemandProps> = ({
   id,
   firstName,
   lastName,
@@ -53,7 +66,9 @@ const OndemandFrame = ({
           alignItems={"center"}
         >
           <Heading fontSize={"1.1rem"}>ID</Heading>
-          <span><b>{id}</b></span>
+          <span>
+            <b>{id}</b>
+          </span>
         </Flex>
         <Flex
           width={"16%"}
@@ -63,7 +78,11 @@ const OndemandFrame = ({
           alignItems={"center"}
         >
           <Heading fontSize={"1.1rem"}>Demanded By</Heading>
-          <span><b>{firstName} {lastName}</b></span>
+          <span>
+            <b>
+              {firstName} {lastName}
+            </b>
+          </span>
         </Flex>
         <Flex
           width={"13%"}
@@ -73,7 +92,9 @@ const OndemandFrame = ({
           alignItems={"center"}
         >
           <Heading fontSize={"1.1rem"}>Email</Heading>
-          <span><b>{email}</b></span>
+          <span>
+            <b>{email}</b>
+          </span>
         </Flex>
         <Flex
           width={"6%"}
@@ -83,7 +104,9 @@ const OndemandFrame = ({
           alignItems={"center"}
         >
           <Heading fontSize={"1.1rem"}>Country</Heading>
-          <span><b>{country}</b></span>
+          <span>
+            <b>{country}</b>
+          </span>
         </Flex>
         <Flex
           width={"15%"}

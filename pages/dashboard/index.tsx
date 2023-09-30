@@ -21,10 +21,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { dashboardActions } from "../../store";
 
 const DashBoard = () => {
-  const [userCount, setUserCount] = useState([]);
-  const [allCount, setAllCount] = useState<any>({});
-  const [imageCount, setImageCount] = useState([]);
-
   const dispatch = useDispatch();
 
   const intro = useSelector((state: any) => state.dashboard.intro);
@@ -34,170 +30,6 @@ const DashBoard = () => {
   const download = useSelector((state: any) => state.dashboard.download);
   const transaction = useSelector((state: any) => state.dashboard.transaction);
   const demand = useSelector((state: any) => state.dashboard.demand);
-
-  const toast = useToast();
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  // ----------------CALLING SEASON-----------
-  // useEffect(() => {
-  //   const call1 = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `${backendUrl}/api/v1/demand/getResolved`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //           },
-  //         }
-  //       );
-
-  //       if (!response.ok) {
-  //         throw new Error("unable to fetch data2");
-  //       }
-
-  //       const data = await response.json();
-  //       setResolved(data);
-  //     } catch (err: any) {
-  //       toast({
-  //         title: "Unable to receive data right now",
-  //         description: "We are sorry,Please try again after some time",
-  //         status: "error",
-  //         duration: 3000,
-  //         isClosable: true,
-  //       });
-  //       console.log(err.message);
-  //     }
-  //   };
-
-  //   const call2 = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `${backendUrl}/api/v1/demand/getUnresolved`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //           },
-  //         }
-  //       );
-
-  //       if (!response.ok) {
-  //         throw new Error("unable to fetch data2");
-  //       }
-
-  //       const data = await response.json();
-  //       setUnresolved(data);
-  //     } catch (err: any) {
-  //       toast({
-  //         title: "Unable to receive data right now",
-  //         description: "We are sorry,Please try again after some time",
-  //         status: "error",
-  //         duration: 3000,
-  //         isClosable: true,
-  //       });
-  //       console.log(err.message);
-  //     }
-  //   };
-
-  //   // useEffect(() => {
-  //   // const url3 = "http://127.0.0.1:8000/api/v1/count/getCount";
-  //   const call3 = async () => {
-  //     try {
-  //       const response = await fetch(`${backendUrl}/api/v1/count/getCount`, {
-  //         method: "GET",
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       });
-
-  //       if (!response.ok) {
-  //         throw new Error("unable to fetch data2");
-  //       }
-
-  //       const data = await response.json();
-  //       setAllCount(data.data);
-  //     } catch (err: any) {
-  //       toast({
-  //         title: "Unable to receive data right now",
-  //         description: "We are sorry,Please try again after some time",
-  //         status: "error",
-  //         duration: 3000,
-  //         isClosable: true,
-  //       });
-  //       console.log(err.message);
-  //     }
-  //   };
-
-  //   // useEffect(() => {
-  //   // const url4 = "http://127.0.0.1:8000/api/v1/users";
-  //   const call4 = async () => {
-  //     try {
-  //       const response = await fetch(`${backendUrl}/api/v1/users`, {
-  //         method: "GET",
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //         },
-  //       });
-
-  //       if (!response.ok) {
-  //         throw new Error("unable to fetch data4");
-  //       }
-
-  //       const data = await response.json();
-  //       setUserCount(data.data.data);
-  //     } catch (err: any) {
-  //       toast({
-  //         title: "Unable to receive data right now",
-  //         description: "We are sorry,Please try again after some time",
-  //         status: "error",
-  //         duration: 3000,
-  //         isClosable: true,
-  //       });
-  //       console.log(err.message);
-  //     }
-  //   };
-
-  //   // useEffect(() => {
-  //   // const url5 = "http://127.0.0.1:8000/api/v1/photo/getAllPhotos";
-  //   const call5 = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `${backendUrl}/api/v1/photo/getAllPhotos`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //           },
-  //         }
-  //       );
-
-  //       if (!response.ok) {
-  //         throw new Error("unable to fetch data4");
-  //       }
-
-  //       const data = await response.json();
-  //       setImageCount(data.data.data);
-  //     } catch (err: any) {
-  //       toast({
-  //         title: "Unable to receive data right now",
-  //         description: "We are sorry,Please try again after some time",
-  //         status: "error",
-  //         duration: 3000,
-  //         isClosable: true,
-  //       });
-  //       console.log(err.message);
-  //     }
-  //   };
-  //   call1();
-  //   call2();
-  //   call3();
-  //   call4();
-  //   call5();
-  // }, [backendUrl, toast]);
-
-  // console.log(resolved);
-  console.log(allCount);
-  // console.log(resolved.length);
 
   return (
     <Flex
@@ -378,16 +210,9 @@ const DashBoard = () => {
           {intro && <Intro></Intro>}
           {basic && <BaiscInfo></BaiscInfo>}
           {users && <AllUsers></AllUsers>}
-          {images && <AllImages ></AllImages>}
-          {/* {download && (
-            <DownloadedImages
-              
-            ></DownloadedImages>
-          )}
-          {transaction && (
-            <TransactionImages
-            ></TransactionImages>
-          )} */}
+          {images && <AllImages></AllImages>}
+          {download && <DownloadedImages></DownloadedImages>}
+          {transaction && <TransactionImages></TransactionImages>}
           {demand && <OnDemand></OnDemand>}
         </Flex>
       </Flex>

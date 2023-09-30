@@ -1,8 +1,26 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
-const DownloadEleFrame = ({userId , title , size, date}) => {
+interface DownloadFrameProps {
+  userId: string;
+  title: string;
+  size: any;
+  date: any;
+}
+
+const DownloadEleFrame: React.FC<DownloadFrameProps> = ({
+  userId,
+  title,
+  size,
+  date,
+}) => {
   return (
-    <Flex width={"100"} height={"20"} border={"1px solid #720e9e"} margin={"5px"} borderRadius="3px">
+    <Flex
+      width={"100"}
+      height={"20"}
+      border={"1px solid #720e9e"}
+      margin={"5px"}
+      borderRadius="3px"
+    >
       <Flex
         width={"100%"}
         height={"100%"}
@@ -17,7 +35,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           alignItems={"center"}
         >
           <Heading fontSize="1.1rem">Id</Heading>
-          <span><b>{userId}</b></span>
+          <span>
+            <b>{userId}</b>
+          </span>
         </Flex>
         <Flex
           width={"25%"}
@@ -27,7 +47,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           alignItems={"center"}
         >
           <Heading fontSize="1.1rem">Title</Heading>
-          <span><b>{title}</b></span>
+          <span>
+            <b>{title}</b>
+          </span>
         </Flex>
         <Flex
           width={"25%"}
@@ -37,7 +59,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           alignItems={"center"}
         >
           <Heading fontSize="1.1rem">Size</Heading>
-          <span><b>{size}</b></span>
+          <span>
+            <b>{size}</b>
+          </span>
         </Flex>
         <Flex
           width={"25%"}
@@ -47,7 +71,9 @@ const DownloadEleFrame = ({userId , title , size, date}) => {
           alignItems={"center"}
         >
           <Heading fontSize="1.1rem">Downloaded On</Heading>
-          <span><b>{date}</b></span>
+          <span>
+            <b>{date}</b>
+          </span>
         </Flex>
       </Flex>
     </Flex>

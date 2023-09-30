@@ -117,7 +117,7 @@ const HomePagePhotos = () => {
     func2();
     func3();
     call();
-  }, []);
+  }, [backendUrl]);
 
   const scrollToTop = () => {
     window.scrollTo({

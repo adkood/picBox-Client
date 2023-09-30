@@ -64,7 +64,10 @@ const ImageDeleteModal = () => {
           <ModalHeader color={"red"}>Confirmation !</ModalHeader>
           <ModalBody>
             <span>
-              <b>Do you realy want to <span color="red">delete</span> this Image ?</b>
+              <b>
+                Do you realy want to <span color="red">delete</span> this Image
+                ?
+              </b>
             </span>
           </ModalBody>
           <Flex justifyContent={"center"}>

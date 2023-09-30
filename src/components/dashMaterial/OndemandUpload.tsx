@@ -42,7 +42,7 @@ import {
 //   );
 // };
 
-import React, { useRef,useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 // import { Button, Text } from "@chakra-ui/react";
 
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -55,14 +55,12 @@ import { demandActions } from "../../../store";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
-
 function OndemandUpload() {
-
   const [isUploadComplete, setUploadComplete] = useState(false);
 
-    const toast = useToast();
-    const onOpen = useSelector((state: any) => state.modal.isDemandUpload);
-    const demandId = useSelector((state: any) => state.clickDemand.id);
+  const toast = useToast();
+  const onOpen = useSelector((state: any) => state.modal.isDemandUpload);
+  const demandId = useSelector((state: any) => state.clickDemand.id);
   const dispatch = useDispatch();
   const titleRef = useRef<HTMLInputElement>(null);
   const priceRef = useRef<HTMLInputElement>(null);
@@ -101,9 +99,7 @@ function OndemandUpload() {
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-
   const handleApi2 = () => {
-
     const url = `${backendUrl}/api/v1/demand/updateDemand`;
     axios({
       url,
@@ -120,23 +116,23 @@ function OndemandUpload() {
         setUploadComplete(true);
         onToggle2();
         toast({
-            title: "Image Uploaded Successfully :)",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
+          title: "Image Uploaded Successfully :)",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
       .catch((error) => {
         console.log(error);
         onToggle2();
         toast({
-            title: "Unable to send request.",
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
+          title: "Unable to send request.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       });
-  }
+  };
 
   const handleApi = () => {
     // console.log(image);
@@ -171,10 +167,10 @@ function OndemandUpload() {
   };
 
   useEffect(() => {
-    if(isUploadComplete) {
+    if (isUploadComplete) {
       onToggle();
     }
-  },[isUploadComplete]);
+  }, [isUploadComplete]);
 
   return (
     <>
@@ -208,7 +204,7 @@ function OndemandUpload() {
                 // lg: "6xl",
               }}
             >
-              Double check the image before posting It   :)
+              Double check the image before posting It :)
             </Heading>
             <Stack
               bg={"gray.50"}

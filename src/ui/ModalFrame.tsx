@@ -37,7 +37,7 @@ function ModalFrame() {
     />
   );
 
-  const inputFile = useRef(null);
+  const inputFile = useRef<HTMLInputElement | null>(null);
   const [isProfile, setIsProfile] = useState(true);
   const [isUserActivity, setIsUserActivity] = useState(false);
   const [isChangePassword, setIsChangePassword] = useState(false);
@@ -142,10 +142,10 @@ function ModalFrame() {
         setData(data.data.data.img.data.data);
       })
       .catch((err) => console.log(err));
-  }, [isRender]);
+  }, [isRender, backendUrl]);
 
   const onButtonClick = () => {
-    inputFile.current.click();
+    inputFile.current!.click();
   };
 
   const handleApi = () => {
