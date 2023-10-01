@@ -2,6 +2,8 @@ import { Box, Button, Flex, useToast } from "@chakra-ui/react";
 import ImageFrame from "../../ui/ImageFrame";
 import { useEffect, useState } from "react";
 import { Select } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+
 import axios from "axios";
 
 const AllImages = () => {
@@ -48,9 +50,11 @@ const AllImages = () => {
       });
   };
 
+  const isDelete = useSelector(( state: any) => state.render.isDelete);
+
   useEffect(() => {
     // handleApi();
-  }, [dataToShow]);
+  }, [dataToShow,isDelete]);
 
   // const [imageCount, setImageCount] = useState([]);
 

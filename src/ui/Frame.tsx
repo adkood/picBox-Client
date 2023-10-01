@@ -1,4 +1,5 @@
 import { Button, Flex } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { Image } from "@chakra-ui/react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DownloadIcon from "@mui/icons-material/Download";
@@ -65,6 +66,10 @@ const Frame: React.FC<{
 
     func();
   };
+
+  useEffect(() => {
+    // for rerendering
+  }, [role, isLoggedIn]);
 
   console.log(role);
   return (

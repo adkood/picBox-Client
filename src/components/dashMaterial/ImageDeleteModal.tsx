@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { confirmationActions } from "../../../store";
+import { confirmationActions, renderActions } from "../../../store";
 
 const ImageDeleteModal = () => {
   const toast = useToast();
@@ -38,6 +38,8 @@ const ImageDeleteModal = () => {
           isClosable: true,
         });
         console.log(res);
+        dispatch(renderActions.isDeleteCounter());
+        onToggle();
         // window.location.reload();
       })
       .catch((error) => {
@@ -55,6 +57,8 @@ const ImageDeleteModal = () => {
   const onToggle = () => {
     dispatch(confirmationActions.imageDeleteStateToggle());
   };
+
+
 
   return (
     <>
@@ -74,7 +78,7 @@ const ImageDeleteModal = () => {
             <Button
               onClick={deleteUser}
               color="white"
-              bgColor={"red"}
+              bgColor={"red.500"}
               width={"19%"}
               m={"5px"}
               _hover={{ bgColor: "red.400" }}
@@ -84,7 +88,7 @@ const ImageDeleteModal = () => {
             <Button
               onClick={onToggle}
               color="white"
-              bgColor={"grey"}
+              bgColor={"grey.500"}
               width={"19%"}
               m={"5px"}
               _hover={{ bgColor: "grey.400" }}

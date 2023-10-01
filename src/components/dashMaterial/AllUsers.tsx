@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Box, useToast } from "@chakra-ui/react";
 import UserFrame from "../../ui/UserFrame";
+import { useSelector } from "react-redux";
 
 const AllUsers = () => {
   const [userCount, setUserCount] = useState<any>([]);
+
+  const isUserDelete = useSelector((state: any) => state.render.isUserDelete);
 
   const toast = useToast();
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -35,7 +38,7 @@ const AllUsers = () => {
     };
 
     fetchData();
-  }, [toast, backendUrl]);
+  }, [toast, backendUrl, isUserDelete]);
 
   var k = 0;
   return (

@@ -96,12 +96,12 @@ const authSlice = createSlice({
       localStorage.removeItem("token");
       state.isLogged = false;
     },
-    roleDefiner(state,action) {
+    roleDefiner(state, action) {
       state.role = action.payload;
     },
     backToggle(state) {
       state.back = !state.back;
-    }
+    },
   },
 });
 
@@ -384,6 +384,30 @@ const dashboardSlice = createSlice({
   },
 });
 
+// ----------------------------------------
+
+const renderVariable = {
+  isDelete: 0,
+  isUserDelete: 0,
+  isResolved: 0,
+};
+
+const renderSlice = createSlice({
+  name: "render",
+  initialState: renderVariable,
+  reducers: {
+    isDeleteCounter(state) {
+      state.isDelete = state.isDelete + 1;
+    },
+    isUserDeleteCounter(state) {
+      state.isUserDelete = state.isUserDelete + 1;
+    },
+    isResolved(state) {
+      state.isResolved = state.isResolved + 1;
+    }
+  },
+});
+
 //----------------------------------------------------
 export const modalActions = modalSlice.actions;
 export const authActions = authSlice.actions;
@@ -393,6 +417,7 @@ export const searchDataActions = searchDataSlice.actions;
 export const demandActions = clickDemandSlice.actions;
 export const confirmationActions = confirmSlice.actions;
 export const dashboardActions = dashboardSlice.actions;
+export const renderActions = renderSlice.actions;
 
 const store = configureStore({
   reducer: {
@@ -404,6 +429,7 @@ const store = configureStore({
     clickDemand: clickDemandSlice.reducer,
     confirm: confirmSlice.reducer,
     dashboard: dashboardSlice.reducer,
+    render: renderSlice.reducer,
   },
 });
 

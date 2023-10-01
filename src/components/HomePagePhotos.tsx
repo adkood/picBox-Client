@@ -3,13 +3,16 @@ import { Text } from "@chakra-ui/react";
 import axios from "axios";
 import { Image } from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../../store";
 import { authActions } from "../../store";
 import Frame from "../ui/Frame";
 import { Spinner } from "@chakra-ui/react";
 
 const HomePagePhotos = () => {
+
+  const authState = useSelector((state: any) => state.auth.isLogged);
+  const isDelete = useSelector((state: any) => state.render.isDelete);
   const dispatch = useDispatch();
   const [imageArray1, setImageArray1] = useState([]);
   const [imageArray2, setImageArray2] = useState([]);
@@ -117,7 +120,7 @@ const HomePagePhotos = () => {
     func2();
     func3();
     call();
-  }, [backendUrl]);
+  }, [backendUrl, authState, isDelete]);
 
   const scrollToTop = () => {
     window.scrollTo({

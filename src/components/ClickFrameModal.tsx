@@ -9,6 +9,7 @@ import {
   Input,
   Heading,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -35,9 +36,11 @@ const stripePromise = loadStripe(
 );
 
 function ClickFrameModal() {
+  const toast = useToast();
   const router = useRouter();
 
   const authState = useSelector((state: any) => state.auth.isLogged);
+  const [userId, setUserId] = useState();
 
   // const [isVisible, setIsVisible] = useState(true);
   const [planCount, setPlanCount] = useState(0);
@@ -79,6 +82,8 @@ function ClickFrameModal() {
   isVisible = isCollectionModalOpen ? 0 : isVisible;
 
   let download_Button_Visibility = isVisible ? 0 : 1;
+
+  const finalPrice = price - (discount / 100) * price;
   //--------------------------------------------------------------------
 
   const OverlayTwo = () => (
@@ -148,44 +153,23 @@ function ClickFrameModal() {
     saveAs(imageSrc, "image.jpg");
   };
 
-  //api
-  // const handleApi = () => {
-  //   // console.log(image);
-  //   const formData = new FormData();
-  //   formData.append("title", titleRef.current!.value);
-  //   formData.append("price", priceRef.current!.value);
-  //   formData.append("img", image);
-
-  //   const url = "http://127.0.0.1:8000/api/v1/photo";
-  //   axios({
-  //     url,
-  //     method: "POST",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //     data: formData,
-  //   })
-  //     .then((res) => {
-  //       // console.log(res);
-  //     })
-  //     .catch((error) => {
-  //       // console.log(error);
-  //     });
-  // };
-
   useEffect(() => {
     const func = async () => {
-      let res = await fetch(`${backendUrl}/api/v1/users/me`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      try {
+        let res = await fetch(`${backendUrl}/api/v1/users/me`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
-      let data = await res.json();
-      {
-        authState && setPlanCount(data.data.data.planCount);
-        authState && setBoughtImages(data.data.data.boughtImages);
-        // console.log(boughtImages);
+        let data = await res.json();
+        setUserId(data.data.data._id);
+        {
+          authState && setPlanCount(data.data.data.planCount);
+          authState && setBoughtImages(data.data.data.boughtImages);
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
     func();
@@ -193,25 +177,61 @@ function ClickFrameModal() {
 
   // checkout-session
   const onBuyItClickHandler = async () => {
-    const session = await axios(
-      `${backendUrl}/api/v1/payment/checkout-session/${photoId}`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    try {
+      const session = await axios(
+        `${backendUrl}/api/v1/payment/checkout-session/${photoId}`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      router.push(session.data.session.url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    router.push(session.data.session.url);
+  const onAddToKartHandler = () => {
+    const url = `${backendUrl}/api/v1/users/cart/${userId}`;
+    axios({
+      url,
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      data: {
+        photoId,
+        title,
+        size,
+        price,
+        discount,
+        newPrice: finalPrice,
+      },
+    })
+      .then((res) => {
+        toast({
+          title: "Image successfully added To Cart",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((error) => {
+        toast({
+          title: "Cannot add Image to the Cart, Try again later",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      });
   };
 
   let withWidth = true;
   if (height > width) {
     withWidth = false;
   }
-
-  const finalPrice = price - (discount / 100) * price;
 
   return (
     <>
@@ -368,6 +388,7 @@ function ClickFrameModal() {
                       height="10%"
                       width="100%"
                       justifyContent={"center"}
+                      margin={"2"}
                       alignItems="center"
                     >
                       <Button
@@ -382,6 +403,26 @@ function ClickFrameModal() {
                         onClick={onBuyItClickHandler}
                       >
                         <Heading fontSize="100%">Buy It</Heading>
+                      </Button>
+                    </Flex>
+                    <Flex
+                      height="10%"
+                      width="100%"
+                      justifyContent={"center"}
+                      alignItems="center"
+                    >
+                      <Button
+                        width="100%"
+                        height="100%"
+                        bgColor="green.300"
+                        _hover={{ borderRadius: "10px" }}
+                        borderStyle="none"
+                        border="1px dotted green"
+                        color="green"
+                        visibility={isVisible ? "visible" : "hidden"}
+                        onClick={onAddToKartHandler}
+                      >
+                        <Heading fontSize="100%">Add to Cart</Heading>
                       </Button>
                     </Flex>
                   </Flex>

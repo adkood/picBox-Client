@@ -11,11 +11,11 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { confirmationActions } from "../../../store";
+import { confirmationActions, renderActions } from "../../../store";
 
 const UserDeleteModal = () => {
 
-  const [isRerender, setisRerender] = useState(false);
+  // const [isRerender, setisRerender] = useState(false);
 
   const toast = useToast();
   const dispatch = useDispatch();
@@ -41,7 +41,8 @@ const UserDeleteModal = () => {
           isClosable: true,
         });
         console.log(res);
-        setisRerender(true);
+        dispatch(renderActions.isUserDeleteCounter());
+        onToggle();
         // window.location.reload();
       })
       .catch((error) => {
@@ -60,10 +61,6 @@ const UserDeleteModal = () => {
     dispatch(confirmationActions.userDeleteStateToggle());
   };
 
-  useEffect(() => {
-    // for rerendering
-  },[isRerender]);
-
   return (
     <>
       <Modal isOpen={onOpen} onClose={onToggle}>
@@ -79,20 +76,20 @@ const UserDeleteModal = () => {
             <Button
               onClick={deleteUser}
               color="white"
-              bgColor={"red"}
+              bgColor={"red.500"}
               width={"19%"}
               m={"5px"}
-              _hover={{ bgColor: "red.400" }}
+              _hover={{ bgColor: "red.300" }}
             >
               Delete
             </Button>
             <Button
               onClick={onToggle}
               color="white"
-              bgColor={"grey"}
+              bgColor={"grey.500"}
               width={"19%"}
               m={"5px"}
-              _hover={{ bgColor: "grey.400" }}
+              _hover={{ bgColor: "grey.300" }}
             >
               Cancel
             </Button>

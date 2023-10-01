@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode , useEffect} from "react";
 import { useRouter } from "next/router";
 
 import {
@@ -61,6 +61,10 @@ export default function Navbar() {
     dispatch(authActions.logout());
     router.replace("/");
   };
+
+  useEffect(()=> {
+
+  },[authState,back,role]);
 
   return (
     <>
