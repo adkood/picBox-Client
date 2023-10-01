@@ -18,6 +18,7 @@ import OndemandUpload from "../src/components/dashMaterial/OndemandUpload";
 import UserDeleteModal from "../src/components/dashMaterial/UserDeleteModal";
 import RoleUpdateModal from "../src/components/dashMaterial/RoleUpdateModal";
 import ImageDeleteModal from "../src/components/dashMaterial/ImageDeleteModal";
+import CartModal from "../src/components/cart/CartModal";
 // import Overall from "../src/components/accounts/overall";
 
 const Home: NextPage = () => {
@@ -41,6 +42,7 @@ const Home: NextPage = () => {
       <UserDeleteModal></UserDeleteModal>
       <RoleUpdateModal></RoleUpdateModal>
       <ImageDeleteModal></ImageDeleteModal>
+      <CartModal></CartModal>
     </>
   );
 };

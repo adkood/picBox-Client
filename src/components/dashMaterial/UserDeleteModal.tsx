@@ -1,4 +1,4 @@
-import React, { useRef,useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { confirmationActions, renderActions } from "../../../store";
 
 const UserDeleteModal = () => {
-
   // const [isRerender, setisRerender] = useState(false);
 
   const toast = useToast();
@@ -86,10 +85,10 @@ const UserDeleteModal = () => {
             <Button
               onClick={onToggle}
               color="white"
-              bgColor={"grey.500"}
+              bgColor={"grey"}
               width={"19%"}
               m={"5px"}
-              _hover={{ bgColor: "grey.300" }}
+              _hover={{ bgColor: "grey.500" }}
             >
               Cancel
             </Button>

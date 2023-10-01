@@ -88,10 +88,10 @@ const ImageDeleteModal = () => {
             <Button
               onClick={onToggle}
               color="white"
-              bgColor={"grey.500"}
+              bgColor={"grey"}
               width={"19%"}
               m={"5px"}
-              _hover={{ bgColor: "grey.400" }}
+              _hover={{ bgColor: "grey.500" }}
             >
               Cancel
             </Button>

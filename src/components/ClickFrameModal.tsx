@@ -17,7 +17,7 @@ import { Button, Text } from "@chakra-ui/react";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useRouter } from "next/router";
 
-import { authActions } from "../../store";
+import { authActions, renderActions } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { clickFrameActions } from "../../store";
 import axios from "axios";
@@ -164,6 +164,7 @@ function ClickFrameModal() {
 
         let data = await res.json();
         setUserId(data.data.data._id);
+        dispatch(renderActions.userIdDefiner(data.data.data._id));
         {
           authState && setPlanCount(data.data.data.planCount);
           authState && setBoughtImages(data.data.data.boughtImages);
@@ -173,7 +174,7 @@ function ClickFrameModal() {
       }
     };
     func();
-  }, [authState, backendUrl]);
+  }, [authState, backendUrl, dispatch]);
 
   // checkout-session
   const onBuyItClickHandler = async () => {
@@ -194,7 +195,7 @@ function ClickFrameModal() {
   };
 
   const onAddToKartHandler = () => {
-    const url = `${backendUrl}/api/v1/users/cart/${userId}`;
+    const url = `${backendUrl}/api/v1/cart/${userId}`;
     axios({
       url,
       method: "PATCH",
@@ -211,6 +212,7 @@ function ClickFrameModal() {
       },
     })
       .then((res) => {
+        dispatch(renderActions.isCartItemDeleteCounter());
         toast({
           title: "Image successfully added To Cart",
           status: "success",
@@ -232,7 +234,6 @@ function ClickFrameModal() {
   if (height > width) {
     withWidth = false;
   }
-
   return (
     <>
       <Modal isOpen={onOpen} onClose={onToggle}>

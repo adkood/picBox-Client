@@ -1,4 +1,4 @@
-import { ReactNode , useEffect} from "react";
+import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import {
@@ -19,6 +19,7 @@ import {
   // Link,
   Heading,
 } from "@chakra-ui/react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CollectionModal from "../components/CollectionModal";
 import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../../store";
@@ -52,6 +53,7 @@ export default function Navbar() {
   const authState = useSelector((state: any) => state.auth.isLogged);
   const role = useSelector((state: any) => state.auth.role);
   const back = useSelector((state: any) => state.auth.back);
+  const cartCount = useSelector((state: any) => state.render.cartItemCount);
   console.log(back);
   const colorModeToggle = () => {
     dispatch(uiActtions.colorToggle());
@@ -62,9 +64,7 @@ export default function Navbar() {
     router.replace("/");
   };
 
-  useEffect(()=> {
-
-  },[authState,back,role]);
+  useEffect(() => {}, [authState, back, role, cartCount]);
 
   return (
     <>
@@ -102,16 +102,14 @@ export default function Navbar() {
             justifyContent="flex-end"
             flexDirection="row"
           >
-            {
-              console.log(authState,role,back)
-            }
-            {authState && (role == "admin") && !back && (
+            {console.log(authState, role, back)}
+            {authState && role == "admin" && !back && (
               <Link href="/dashboard">
                 <Flex
                   onClick={() => dispatch(authActions.backToggle())}
                   justifyContent="center"
                   alignItems="center"
-                  m="3"
+                  marginRight="35px"
                   _hover={{ cursor: "pointer" }}
                 >
                   <PlusSquareIcon
@@ -123,10 +121,10 @@ export default function Navbar() {
                 </Flex>
               </Link>
             )}
-            {authState && (role == "admin") && back && (
+            {authState && role == "admin" && back && (
               <Link href="/">
                 <ArrowBackIcon
-                  m="4"
+                  marginRight="35px"
                   onClick={() => dispatch(authActions.backToggle())}
                   sx={{ fontSize: "3rem", color: "white" }}
                 ></ArrowBackIcon>
@@ -160,6 +158,25 @@ export default function Navbar() {
               >
                 SIGNIN
               </Button>
+            )}
+            {authState && (
+              <Flex
+                onClick={() => {
+                  dispatch(modalActions.cartToggle());
+                }}
+                marginRight="20px"
+                width="100px"
+                borderRadius="10px"
+                height="60%"
+                justifyContent="center"
+                alignItems="center"
+                bgColor="white"
+              >
+                <ShoppingCartIcon
+                  sx={{ fontSize: "2.5rem", margin: "3px", color: "purple" }}
+                ></ShoppingCartIcon>
+                <Heading color="purple" fontSize="2rem">{cartCount}</Heading>{" "}
+              </Flex>
             )}
             {authState && (
               <Menu>

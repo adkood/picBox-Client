@@ -13,6 +13,7 @@ const initialModalState = {
   isGetImage: false,
   isChangePassword: false,
   isDemandUpload: false,
+  isCart: false,
 };
 
 const modalSlice = createSlice({
@@ -50,6 +51,9 @@ const modalSlice = createSlice({
     },
     demandUploadToggle(state) {
       state.isDemandUpload = !state.isDemandUpload;
+    },
+    cartToggle(state) {
+      state.isCart = !state.isCart;
     },
   },
 });
@@ -387,9 +391,12 @@ const dashboardSlice = createSlice({
 // ----------------------------------------
 
 const renderVariable = {
+  userId: "",
+  cartItemCount: 0,
   isDelete: 0,
   isUserDelete: 0,
   isResolved: 0,
+  isCartItemDelete: 0,
 };
 
 const renderSlice = createSlice({
@@ -404,6 +411,15 @@ const renderSlice = createSlice({
     },
     isResolved(state) {
       state.isResolved = state.isResolved + 1;
+    },
+    userIdDefiner(state, action) {
+      state.userId = action.payload;
+    },
+    isCartItemDeleteCounter(state) {
+      state.isCartItemDelete = state.isCartItemDelete + 1;
+    },
+    cartItemCountDefiner(state,action) {
+      state.cartItemCount = action.payload;
     }
   },
 });

@@ -18,6 +18,7 @@ import {
   useBreakpointValue,
   IconProps,
   Icon,
+  useToast,
 } from "@chakra-ui/react";
 
 const avatars = [
@@ -66,7 +67,6 @@ const Blur = (props: IconProps) => {
 };
 
 import React, { useRef, useState } from "react";
-// import { Button, Text } from "@chakra-ui/react";
 
 import CancelIcon from "@mui/icons-material/Cancel";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
@@ -77,6 +77,7 @@ import { modalActions } from "../../store";
 import axios from "axios";
 
 function UploadModal() {
+  const toast = useToast();
   const onOpen = useSelector((state: any) => state.modal.isUpload);
   const dispatch = useDispatch();
   const titleRef = useRef<HTMLInputElement>(null);
@@ -84,7 +85,7 @@ function UploadModal() {
   const discountRef = useRef<HTMLInputElement>(null);
 
   const [image, setImage] = useState("");
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(0);
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
 
@@ -92,9 +93,10 @@ function UploadModal() {
     setImage(e.target.files[0]);
 
     const bytesSize = e.target.files[0].size;
-    const sufixes = ["B", "KB", "MB", "GB", "TB"];
+    // const sufixes = ["B", "KB", "MB", "GB", "TB"];
     const i = Math.floor(Math.log(bytesSize) / Math.log(1024));
-    setSize(`${(bytesSize / Math.pow(1024, i)).toFixed(2)} ${sufixes[i]}`);
+    setSize((bytesSize / Math.pow(1024, i)).toFixed(2));
+    console.log(size);
 
     let ii = new Image();
     ii.src = window.URL.createObjectURL(e.target.files[0]);
@@ -140,8 +142,6 @@ function UploadModal() {
     formData.append("height", height);
     formData.append("img", image);
 
-    // console.log(formData);
-
     const url = `${backendUrl}/api/v1/photo`;
     axios({
       url,
@@ -150,13 +150,22 @@ function UploadModal() {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       data: formData,
-    })
-      .then((res) => {
-        console.log(res);
-        // handleAnotherApi();
+    }).then((res) => {
+        toast({
+          title: "Image successfully uploaded :)",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         onToggle();
       })
       .catch((error) => {
+        toast({
+          title: "Unable to uploade image right now !!!",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
         console.log(error);
         onToggle();
       });
