@@ -15,10 +15,11 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { error } from "console";
 import CartItems from "./CartItems";
+import { useRouter } from "next/router";
 import { modalActions, renderActions } from "../../../store";
 
-
 const CartModal = () => {
+    const router = useRouter();
   const userId = useSelector((state: any) => state.render.userId);
 
   const cartItemDeleted = useSelector(
@@ -58,10 +59,27 @@ const CartModal = () => {
       }
     };
     func();
-  }, [backendUrl, userId, cartItemDeleted]);
+  }, [backendUrl, userId, cartItemDeleted, dispatch]);
 
   const onToggle = () => {
     dispatch(modalActions.cartToggle());
+  };
+
+  const paymentHandler = async () => {
+    try {
+      const session = await axios(
+        `${backendUrl}/api/v1/payment/checkout-session-cart/${userId}`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      router.push(session.data.session.url);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   let c = 0;
@@ -121,7 +139,13 @@ const CartModal = () => {
                 {totalAmount}
               </Text>
             </Grid>
-            <Button bgColor="purple.300" mt="4" w="100%" size="sm">
+            <Button
+              onClick={paymentHandler}
+              bgColor="purple.300"
+              mt="4"
+              w="100%"
+              size="sm"
+            >
               Checkout
             </Button>
             <Button
