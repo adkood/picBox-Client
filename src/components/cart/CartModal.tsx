@@ -68,15 +68,15 @@ const CartModal = () => {
   return (
     <Modal isOpen={onOpen} onClose={onToggle}>
       <OverlayTwo />
-      <ModalContent bgColor={"transparent"} height={"700px"} width={"600px"}>
-        <ModalBody>
+      <ModalContent height={"700px"}>
+        <ModalBody height="100%" width={"100%"}>
           <Box
             boxShadow="lg"
             p="4"
             width={"100%"}
             height={"100%"}
             borderRadius="md"
-            borderWidth="1px"
+            // borderWidth="1px"
             borderColor="gray.200"
             bgColor={"white"}
           >
