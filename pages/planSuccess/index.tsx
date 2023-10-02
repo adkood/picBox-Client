@@ -6,7 +6,7 @@ import axios from "axios";
 const Success = () => {
   const router = useRouter();
   const { userId, plan } = router.query;
-  console.log("--------------------->",userId , plan);
+  console.log("--------------------->", userId, plan);
 
   //api
 
@@ -23,21 +23,16 @@ const Success = () => {
       let data = await res.json();
       // console.log(data);
       data.data.data.planActive = true;
-      if(plan === '1')
-      {
+      if (plan === "1") {
         data.data.data.planCount += 5;
-      }
-      else if(plan === '2')
-      {
+      } else if (plan === "2") {
         data.data.data.planCount += 15;
-      }
-      else
-      {
+      } else {
         data.data.data.planCount += 30;
       }
 
       // console.log(data.data.data);
-      
+
       const url = `${backendUrl}/api/v1/users/updateMe`;
       axios({
         url,
@@ -67,7 +62,13 @@ const Success = () => {
       flexDirection={"column"}
     >
       <Heading fontSize={"400%"}>PAYMENT SUCCESSFUL!</Heading>
-      <Button>Return to Home</Button>
+      <Button
+        onClick={() => {
+          router.push("/");
+        }}
+      >
+        Return to Home
+      </Button>
     </Flex>
   );
 };

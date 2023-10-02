@@ -11,11 +11,9 @@ const Success = () => {
 
   //api
 
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL; 
-
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
-
     const func = async () => {
       let res = await fetch(`${backendUrl}/api/v1/users/me`, {
         headers: {
@@ -46,7 +44,7 @@ const Success = () => {
     };
 
     func();
-  },[photoId, backendUrl]);
+  }, [photoId, backendUrl]);
 
   return (
     <Flex
@@ -58,7 +56,13 @@ const Success = () => {
       flexDirection={"column"}
     >
       <Heading fontSize={"400%"}>PAYMENT SUCCESSFUL!</Heading>
-      <Button>Return to Home</Button>
+      <Button
+        onClick={() => {
+          router.push("/");
+        }}
+      >
+        Return to Home
+      </Button>
     </Flex>
   );
 };
