@@ -12,39 +12,14 @@ const DownloadedImages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [resolvedData, unresolvedData, countData, userData, imageData] =
-          await Promise.all([
-            fetch(`${backendUrl}/api/v1/demand/getResolved`, {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }),
-            fetch(`${backendUrl}/api/v1/demand/getUnresolved`, {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }),
-            fetch(`${backendUrl}/api/v1/count/getCount`, {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }),
-            fetch(`${backendUrl}/api/v1/users`, {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }),
-            fetch(`${backendUrl}/api/v1/photo/getAllPhotos`, {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }),
-          ]);
+        const [countData] = await Promise.all([
+          fetch(`${backendUrl}/api/v1/count/getCount`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }),
+        ]);
 
         const countJson = await countData.json();
 

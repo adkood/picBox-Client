@@ -392,6 +392,7 @@ const dashboardSlice = createSlice({
 
 const renderVariable = {
   userId: "",
+  author: "",
   cartItemCount: 0,
   isDelete: 0,
   isUserDelete: 0,
@@ -415,6 +416,9 @@ const renderSlice = createSlice({
     },
     userIdDefiner(state, action) {
       state.userId = action.payload;
+    },
+    authorDefiner(state,action) {
+      state.author = action.payload;
     },
     isCartItemDeleteCounter(state) {
       state.isCartItemDelete = state.isCartItemDelete + 1;

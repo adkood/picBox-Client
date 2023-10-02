@@ -163,8 +163,11 @@ function ClickFrameModal() {
         });
 
         let data = await res.json();
+
         setUserId(data.data.data._id);
         dispatch(renderActions.userIdDefiner(data.data.data._id));
+        dispatch(renderActions.authorDefiner(data.data.data.name));
+
         {
           authState && setPlanCount(data.data.data.planCount);
           authState && setBoughtImages(data.data.data.boughtImages);

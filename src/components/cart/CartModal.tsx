@@ -21,6 +21,7 @@ import { modalActions, renderActions } from "../../../store";
 const CartModal = () => {
     const router = useRouter();
   const userId = useSelector((state: any) => state.render.userId);
+  const author = useSelector((state: any) => state.render.author);
 
   const cartItemDeleted = useSelector(
     (state: any) => state.render.isCartItemDelete
@@ -68,7 +69,7 @@ const CartModal = () => {
   const paymentHandler = async () => {
     try {
       const session = await axios(
-        `${backendUrl}/api/v1/payment/checkout-session-cart/${userId}`,
+        `${backendUrl}/api/v1/payment/checkout-session-cart/${userId}/${author}`,
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
