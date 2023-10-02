@@ -129,6 +129,8 @@ const HomePagePhotos = () => {
     });
   };
 
+  console.log(imageArray1);
+
   return (
     <Flex
       height="300vh"

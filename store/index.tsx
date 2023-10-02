@@ -397,6 +397,7 @@ const renderVariable = {
   isUserDelete: 0,
   isResolved: 0,
   isCartItemDelete: 0,
+  isCollectionUpdate: 0,
 };
 
 const renderSlice = createSlice({
@@ -420,6 +421,9 @@ const renderSlice = createSlice({
     },
     cartItemCountDefiner(state,action) {
       state.cartItemCount = action.payload;
+    },
+    isCollectionUpdateCounter(state) {
+      state.isCollectionUpdate = state.isCollectionUpdate + 1;
     }
   },
 });

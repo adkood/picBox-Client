@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
-
 import React, { useEffect, useState } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -19,13 +18,17 @@ import Frame from "../ui/Frame";
 
 import { useSelector, useDispatch } from "react-redux";
 import { modalActions } from "../../store";
+import axios from "axios";
 
 const CollectionModal = () => {
   const onOpen = useSelector((state: any) => state.modal.isCollection);
   const dispatch = useDispatch();
+  const isCollectionCounter = useSelector(
+    (state: any) => state.render.isCollectionUpdate
+  );
 
   const [data1, setData1] = useState([]);
-  const [boughtImages , setBoughtImages] = useState([]);
+  const [boughtImages, setBoughtImages] = useState([]);
   // const [data2, setData2] = useState([]);
   // const [data3, setData3] = useState([]);
 
@@ -98,43 +101,9 @@ const CollectionModal = () => {
   }
 
   //api
-
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  // useEffect(() => {
-  //   fetch(`${backendUrl}/api/v1/photo`, {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setData1(data.data.data);
-  //       console.log(data.data.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   useEffect(() => {
-
-    const func1 = async () => {
-      try {
-        const response = await fetch(`${backendUrl}/api/v1/photo`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Unable to fetch data");
-        }
-
-        const data = await response.json();
-        setData1(data.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     const func2 = async () => {
       try {
         const response = await fetch(`${backendUrl}/api/v1/users/me`, {
@@ -153,18 +122,48 @@ const CollectionModal = () => {
         console.log(error);
       }
     };
-
-    func1();
     func2();
-  },[backendUrl]);
+  }, [backendUrl, isCollectionCounter]);
+
+  const fetchPhotosByBoughtImages = async (boughtImages: any) => {
+    try {
+      const response = await fetch(
+        `${backendUrl}/api/v1/photo/getBoughtPhotos`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Set the content type to JSON
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ boughtImages }), // Convert boughtImages to JSON
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Unable to fetch data");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setData1(data.data.filteredPhotoModels);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (boughtImages.length > 0) {
+      fetchPhotosByBoughtImages(boughtImages);
+    }
+  }, [boughtImages]);
 
   console.log(data1);
-  console.log(boughtImages);
+
   return (
     <>
       <Modal isCentered isOpen={onOpen} onClose={onToggle}>
         <OverlayTwo />
-        <ModalContent bgColor={"transparent"}  position={"fixed"} left="0">
+        <ModalContent bgColor={"transparent"} position={"fixed"} left="0">
           <ModalBody>
             <Flex
               justifyContent="center"
@@ -182,13 +181,6 @@ const CollectionModal = () => {
                 // padding="10px"
                 // bgColor="#ffddf4"
                 borderRadius="8px"
-                overflow="scroll"
-                wrap="wrap"
-                sx={{
-                  "::-webkit-scrollbar": {
-                    display: "none",
-                  },
-                }}
               >
                 <Flex
                   height={"5%"}
@@ -226,39 +218,45 @@ const CollectionModal = () => {
                   >
                     {data1.length > 0 ? (
                       data1.map((singleData: any) => {
-                      const base64String = base64ArrayBuffer(
-                        singleData.img.data.data
-                      );
-                      const width = singleData.width * 1;
-                      const height = singleData.height * 1;
-                      const size = singleData.size;
-                      const price = singleData.price;
-                      const title = singleData.title;
-                      const discount = singleData.priceDiscount;
-                      const photoId = singleData._id;
-                      c++;
-                      return (
-                        <Frame
-                          key={c}
-                          id={photoId}
-                          price={price}
-                          discount={discount}
-                          title={title}
-                          width={width}
-                          height={height}
-                          size={size}
-                          imageUrl={`data:image/*;base64,${base64String}`}
-                        ></Frame>
-                      );
-                    })
-                    ) : ( <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
-                    <Spinner
-                      margin={"10%"}
-                      width={"50px"}
-                      height={"50px"}
-                      color="#9370DB"
-                    />
-                  </Flex> )}
+                        console.log("*");
+                        const base64String = base64ArrayBuffer(
+                          singleData.img.data.data
+                        );
+                        const width = singleData.width * 1;
+                        const height = singleData.height * 1;
+                        const size = singleData.size;
+                        const price = singleData.price;
+                        const title = singleData.title;
+                        const discount = singleData.priceDiscount;
+                        const photoId = singleData._id;
+                        return (
+                          <Frame
+                            key={singleData._id}
+                            id={photoId}
+                            price={price}
+                            discount={discount}
+                            title={title}
+                            width={width}
+                            height={height}
+                            size={size}
+                            imageUrl={`data:image/*;base64,${base64String}`}
+                          ></Frame>
+                        );
+                      })
+                    ) : (
+                      <Flex
+                        width={"100%"}
+                        height={"100%"}
+                        justifyContent={"center"}
+                      >
+                        <Spinner
+                          margin={"10%"}
+                          width={"50px"}
+                          height={"50px"}
+                          color="#9370DB"
+                        />
+                      </Flex>
+                    )}
                   </Flex>
                   <Flex
                     height="100%"
@@ -266,34 +264,33 @@ const CollectionModal = () => {
                     flexDirection="column"
                     // overflow="hidden"
                   >
-                     <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
-                    <Spinner
-                      margin={"10%"}
-                      width={"50px"}
-                      height={"50px"}
-                      color="#9370DB"
-                    />
                   </Flex>
-                  </Flex>
+
                   <Flex
                     height="100%"
                     width="33.3%"
                     flexDirection="column"
                     // overflow="hidden"
                   >
-                     <Flex width={"100%"} height={"100%"} justifyContent={"center"}>
-                    <Spinner
-                      margin={"10%"}
-                      width={"50px"}
-                      height={"50px"}
-                      color="#9370DB"
-                    />
-                  </Flex>
+                    <Flex
+                      width={"100%"}
+                      height={"100%"}
+                      justifyContent={"center"}
+                    >
+                      <Spinner
+                        margin={"10%"}
+                        width={"50px"}
+                        height={"50px"}
+                        color="#9370DB"
+                      />
+                    </Flex>
                   </Flex>
                 </Flex>
               </Flex>
               <Box borderRadius="50%" onClick={onToggle}>
-              <CloseIcon sx={{ color: "red", fontSize: "2.5rem" }}></CloseIcon>
+                <CloseIcon
+                  sx={{ color: "red", fontSize: "2.5rem" }}
+                ></CloseIcon>
               </Box>
             </Flex>
           </ModalBody>

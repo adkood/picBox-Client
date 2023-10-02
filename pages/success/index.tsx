@@ -15,6 +15,7 @@ const Success = () => {
 
 
   useEffect(() => {
+
     const func = async () => {
       let res = await fetch(`${backendUrl}/api/v1/users/me`, {
         headers: {
@@ -44,30 +45,8 @@ const Success = () => {
         });
     };
 
-    // const handleApi1 = () => {
-    //   const url = "http://127.0.0.1:8000/api/v1/count/increaseTransactionCount";
-    //   axios({
-    //     url,
-    //     method: "POST",
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     },
-    //     data: {
-    //       photoId,
-    //       userId,
-    //     }
-    //   })
-    //     .then((res) => {
-    //       console.log(res);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // };
-
     func();
-    // handleApi1();
-  },[]);
+  },[photoId, backendUrl]);
 
   return (
     <Flex
