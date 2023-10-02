@@ -95,7 +95,8 @@ function UploadModal() {
     const bytesSize = e.target.files[0].size;
     // const sufixes = ["B", "KB", "MB", "GB", "TB"];
     const i = Math.floor(Math.log(bytesSize) / Math.log(1024));
-    setSize((bytesSize / Math.pow(1024, i)).toFixed(2));
+    const newSize = parseFloat((bytesSize / Math.pow(1024, i)).toFixed(2));
+    setSize(newSize);
     console.log(size);
 
     let ii = new Image();
