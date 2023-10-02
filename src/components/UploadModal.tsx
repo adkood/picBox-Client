@@ -138,7 +138,7 @@ function UploadModal() {
     formData.append("title", titleRef.current!.value);
     formData.append("price", priceRef.current!.value);
     formData.append("priceDiscount", discountRef.current!.value);
-    formData.append("size", size);
+    formData.append("size", size.toString());
     formData.append("width", width);
     formData.append("height", height);
     formData.append("img", image);
