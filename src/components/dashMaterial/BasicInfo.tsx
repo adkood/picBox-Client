@@ -123,56 +123,70 @@ const BaiscInfo = () => {
             bgColor={"red.300"}
             width={"8%"}
             height={`${h1}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            Use
+            Users
           </Flex>
           <Flex
             border={"1px solid orange"}
             bgColor={"orange.300"}
             width={"8%"}
             height={`${h2}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            no of images
+            Images
           </Flex>
           <Flex
             border={"1px solid pink"}
             bgColor={"pink.300"}
             width={"8%"}
             height={`${h3}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            no of download
+            Download
           </Flex>
           <Flex
             border={"1px solid green"}
             bgColor={"green.300"}
             width={"8%"}
             height={`${h4}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            no of transaction
+            Transaction
           </Flex>
           <Flex
             border={"1px solid blue"}
             bgColor={"blue.300"}
             width={"8%"}
             height={`${h5}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            total demands
+            Demands
           </Flex>
           <Flex
             border={"1px solid yellow"}
             bgColor={"yellow.300"}
             width={"8%"}
             height={`${h6}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            on demand cleared
+            Cleared
           </Flex>
           <Flex
             border={"1px solid cyan"}
             bgColor={"cyan.300"}
             width={"8%"}
             height={`${h7}%`}
+            justifyContent="center"
+            alignItems="center"
           >
-            on demand pending
+            Pending
           </Flex>
           {/* -------------------------------------------- */}
         </Flex>

@@ -109,7 +109,7 @@ export default function Navbar() {
                   onClick={() => dispatch(authActions.backToggle())}
                   justifyContent="center"
                   alignItems="center"
-                  marginRight="35px"
+                  marginRight="20px"
                   _hover={{ cursor: "pointer" }}
                 >
                   <PlusSquareIcon
@@ -124,7 +124,7 @@ export default function Navbar() {
             {authState && role == "admin" && back && (
               <Link href="/">
                 <ArrowBackIcon
-                  marginRight="35px"
+                  marginRight="20px"
                   onClick={() => dispatch(authActions.backToggle())}
                   sx={{ fontSize: "3rem", color: "white" }}
                 ></ArrowBackIcon>
@@ -159,7 +159,7 @@ export default function Navbar() {
                 SIGNIN
               </Button>
             )}
-            {authState && (
+            {authState && role === "user" && (
               <Flex
                 onClick={() => {
                   dispatch(modalActions.cartToggle());
@@ -175,7 +175,9 @@ export default function Navbar() {
                 <ShoppingCartIcon
                   sx={{ fontSize: "2.5rem", margin: "3px", color: "purple" }}
                 ></ShoppingCartIcon>
-                <Heading color="purple" fontSize="2rem">{cartCount}</Heading>{" "}
+                <Heading color="purple" fontSize="2rem">
+                  {cartCount}
+                </Heading>{" "}
               </Flex>
             )}
             {authState && (
@@ -207,28 +209,32 @@ export default function Navbar() {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem
-                    borderRadius="5px"
-                    borderColor="#9370DB"
-                    _hover={{ bgColor: "#9370DB", color: "white" }}
-                    color="#9370DB"
-                    onClick={() => {
-                      dispatch(modalActions.uploadToggle());
-                    }}
-                  >
-                    Upload Images
-                  </MenuItem>
-                  <MenuItem
-                    borderRadius="5px"
-                    borderColor="#9370DB"
-                    _hover={{ bgColor: "#9370DB", color: "white" }}
-                    color="#9370DB"
-                    onClick={() => {
-                      dispatch(modalActions.collectionToggle());
-                    }}
-                  >
-                    Your Collections
-                  </MenuItem>
+                  {role === "admin" && (
+                    <MenuItem
+                      borderRadius="5px"
+                      borderColor="#9370DB"
+                      _hover={{ bgColor: "#9370DB", color: "white" }}
+                      color="#9370DB"
+                      onClick={() => {
+                        dispatch(modalActions.uploadToggle());
+                      }}
+                    >
+                      Upload Images
+                    </MenuItem>
+                  )}
+                  {role === "user" && (
+                    <MenuItem
+                      borderRadius="5px"
+                      borderColor="#9370DB"
+                      _hover={{ bgColor: "#9370DB", color: "white" }}
+                      color="#9370DB"
+                      onClick={() => {
+                        dispatch(modalActions.collectionToggle());
+                      }}
+                    >
+                      Your Collections
+                    </MenuItem>
+                  )}
                   <MenuItem
                     borderRadius="5px"
                     borderColor="#9370DB"

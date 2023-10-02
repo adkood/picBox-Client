@@ -13,7 +13,6 @@ const AllImages = () => {
   const option1 = [
     { value: "price", label: "Price(Rs)" },
     { value: "size", label: "Size(KB)" },
-    { value: "discount", label: "Discount(%)" },
   ];
 
   const option2 = [

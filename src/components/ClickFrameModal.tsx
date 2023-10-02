@@ -178,56 +178,74 @@ function ClickFrameModal() {
 
   // checkout-session
   const onBuyItClickHandler = async () => {
-    try {
-      const session = await axios(
-        `${backendUrl}/api/v1/payment/checkout-session/${photoId}`,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      router.push(session.data.session.url);
-    } catch (error) {
-      console.log(error);
+    if (authState) {
+      try {
+        const session = await axios(
+          `${backendUrl}/api/v1/payment/checkout-session/${photoId}`,
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        router.push(session.data.session.url);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      toast({
+        title: "You are not logged in, please log in first !!!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
   const onAddToKartHandler = () => {
-    const url = `${backendUrl}/api/v1/cart/${userId}`;
-    axios({
-      url,
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      data: {
-        photoId,
-        title,
-        size,
-        price,
-        discount,
-        newPrice: finalPrice,
-      },
-    })
-      .then((res) => {
-        dispatch(renderActions.isCartItemDeleteCounter());
-        toast({
-          title: "Image successfully added To Cart",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
+    if (authState) {
+      const url = `${backendUrl}/api/v1/cart/${userId}`;
+      axios({
+        url,
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        data: {
+          photoId,
+          title,
+          size,
+          price,
+          discount,
+          newPrice: finalPrice,
+        },
       })
-      .catch((error) => {
-        toast({
-          title: "Cannot add Image to the Cart, Try again later",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
+        .then((res) => {
+          dispatch(renderActions.isCartItemDeleteCounter());
+          toast({
+            title: "Image successfully added To Cart",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+        })
+        .catch((error) => {
+          toast({
+            title: "Cannot add Image to the Cart, Try again later",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
         });
+    } else {
+      toast({
+        title: "You are not logged in, please log in first !!!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
       });
+    }
   };
 
   let withWidth = true;

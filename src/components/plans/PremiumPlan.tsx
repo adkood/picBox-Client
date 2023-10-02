@@ -1,53 +1,84 @@
 import classes from "./PremiumPlan.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 const PremiumPlan = () => {
   const router = useRouter();
+  const toast = useToast();
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  const onBuyItClickHandler1 = async () => {
-    const session = await axios(
-      `${backendUrl}/api/v1/payment/checkout-session-basic`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+  const authState = useSelector((state: any) => state.auth.isLogged);
 
-    router.push(session.data.session.url);
+  const onBuyItClickHandler1 = async () => {
+    if (authState) {
+      const session = await axios(
+        `${backendUrl}/api/v1/payment/checkout-session-basic`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      router.push(session.data.session.url);
+    } else {
+      toast({
+        title: "You are not logged in, Please Login first !!!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   const onBuyItClickHandler2 = async () => {
-    const session = await axios(
-      `${backendUrl}/api/v1/payment/checkout-session-pro`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    if (authState) {
+      const session = await axios(
+        `${backendUrl}/api/v1/payment/checkout-session-pro`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
-    router.push(session.data.session.url);
+      router.push(session.data.session.url);
+    } else {
+      toast({
+        title: "You are not logged in, Please Login first !!!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   const onBuyItClickHandler3 = async () => {
-    const session = await axios(
-      `${backendUrl}/api/v1/payment/checkout-session-premium`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    if (authState) {
+      const session = await axios(
+        `${backendUrl}/api/v1/payment/checkout-session-premium`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
-    router.push(session.data.session.url);
+      router.push(session.data.session.url);
+    } else {
+      toast({
+        title: "You are not logged in, Please Login first !!!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

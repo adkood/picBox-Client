@@ -1,14 +1,34 @@
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import SearchBox from "../components/SearchBox";
 import Navbar from "./Navbar";
 import HomePageHeadingBox from "../components/HomePageHeadingBox";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { modalActions } from "../../store";
 
 const Container = () => {
   const dispatch = useDispatch();
+  const toast = useToast();
+  const authState = useSelector((state: any) => state.auth.isLogged);
+
   const onToggle = () => {
-    dispatch(modalActions.getImageToggle());
+    if (authState) {
+      dispatch(modalActions.getImageToggle());
+    } else {
+      toast({
+        title: "You are not logged in, Please Login first !!!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

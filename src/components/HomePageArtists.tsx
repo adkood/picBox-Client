@@ -4,6 +4,7 @@ import ProfileFrame from "./ClickFrameModal";
 import PremiumPlan from "./plans/PremiumPlan";
 
 const HomePageArtists = () => {
+  
   const uiColor = useSelector((state: any) => state.ui.uiColorCode);
   return (
     <Flex

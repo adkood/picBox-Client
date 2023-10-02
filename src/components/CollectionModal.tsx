@@ -22,6 +22,8 @@ import axios from "axios";
 
 const CollectionModal = () => {
   const onOpen = useSelector((state: any) => state.modal.isCollection);
+  const authState = useSelector((state: any) => state.auth.isLogged);
+  const userId = useSelector((state: any) => state.render.userId);
   const dispatch = useDispatch();
   const isCollectionCounter = useSelector(
     (state: any) => state.render.isCollectionUpdate
@@ -123,7 +125,7 @@ const CollectionModal = () => {
       }
     };
     func2();
-  }, [backendUrl, isCollectionCounter]);
+  }, [backendUrl, isCollectionCounter, authState, userId]);
 
   const fetchPhotosByBoughtImages = async (boughtImages: any) => {
     try {
