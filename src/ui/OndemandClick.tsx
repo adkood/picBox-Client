@@ -6,6 +6,7 @@ import {
   ModalContent,
   ModalFooter,
   Flex,
+  Heading,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { demandActions } from "../../store";
@@ -46,95 +47,107 @@ function OndemandClick() {
             <Flex
               width={"90%"}
               height={"11%"}
-              border={"1px solid red"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              color={"purple.500"}
             >
-              <Flex height="30%">
-                <span>Id :</span>
+              <Flex height="30%" m={"1"}>
+                <Heading fontSize={"1.rem"}>Id :</Heading>
               </Flex>
-              <Flex height="70%">
-                <span>{id}</span>
+              <Flex height="70%" m={"1"}>
+                <b>
+                  <span>{id}</span>
+                </b>
               </Flex>
             </Flex>
             <Flex
               width={"90%"}
               height={"13%"}
-              border={"1px solid red"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              color={"purple.500"}
             >
-              <Flex height="30%">
-                <span>Demand By :</span>
+              <Flex height="30%" m={"1"}>
+                <Heading fontSize={"1rem"}>Demanded By :</Heading>
               </Flex>
-              <Flex height="70%">
+              <Flex height="70%" m={"1"}>
                 <span>
-                  {firstName} {lastName}
+                  <b>
+                    {firstName} {lastName}
+                  </b>
                 </span>
               </Flex>
             </Flex>
             <Flex
               width={"90%"}
               height={"11%"}
-              border={"1px solid red"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              color={"purple.500"}
             >
-              <Flex height="30%">
-                <span>Email :</span>
+              <Flex height="30%" m={"1"}>
+                <Heading fontSize={"1rem"}>Email :</Heading>
               </Flex>
-              <Flex height="70%">
-                <span>{email}</span>
+              <Flex height="70%" m={"1"}>
+                <span>
+                  <b>{email}</b>
+                </span>
               </Flex>
             </Flex>
             <Flex
               width={"90%"}
               height={"13%"}
-              border={"1px solid red"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              color={"purple.500"}
             >
-              <Flex height="30%">
-                <span>Address :</span>
+              <Flex height="30%" m={"1"}>
+                <Heading fontSize={"1rem"}>Address :</Heading>
               </Flex>
-              <Flex height="70%">
+              <Flex height="70%" m={"1"}>
                 <span>
-                  {country}, {city}
+                  <b>
+                    {country}, {city}
+                  </b>
                 </span>
               </Flex>
             </Flex>
             <Flex
               width={"90%"}
               height={"11%"}
-              border={"1px solid red"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              color={"purple.500"}
             >
-              <Flex height="30%">
-                <span>Social :</span>
+              <Flex height="30%" m={"1"}>
+                <Heading fontSize={"1rem"}>Socials :</Heading>
               </Flex>
-              <Flex height="70%">
-                <span>{social}</span>
+              <Flex height="70%" m={"1"}>
+                <span>
+                  <b>{social}</b>
+                </span>
               </Flex>
             </Flex>
             <Flex
               width={"90%"}
-              height={"22%"}
-              border={"1px solid red"}
+              height={"16%"}
               flexDirection={"column"}
               justifyContent={"center"}
               alignItems={"center"}
+              color={"purple.500"}
             >
-              <Flex height="30%">
-                <span>Image Description :</span>
+              <Flex height="30%" m={"1"}>
+                <Heading fontSize={"1rem"}>Image Description :</Heading>
               </Flex>
-              <Flex height="70%">
-                <span>{imageDesc}</span>
+              <Flex height="70%" m={"1"}>
+                <span>
+                  <b>{imageDesc}</b>
+                </span>
               </Flex>
             </Flex>
           </Flex>
