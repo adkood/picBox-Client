@@ -86,8 +86,8 @@ export default function Navbar() {
           alignItems="center"
         >
           <Avatar
-            height="70%"
-            width="70px"
+            height="92%"
+            width="60px"
             onClick={() => {
               router.push("/");
             }}
