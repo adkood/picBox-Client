@@ -151,7 +151,8 @@ function UploadModal() {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       data: formData,
-    }).then((res) => {
+    })
+      .then((res) => {
         toast({
           title: "Image successfully uploaded :)",
           status: "success",
@@ -197,9 +198,7 @@ function UploadModal() {
             py={{ base: 6, sm: 20, lg: 32 }}
           >
             <Stack>
-              <Heading
-                fontSize={"1.5rem"}
-              >
+              <Heading lineHeight={1.2} fontSize={"1.1rem"}>
                 Team Of Creators From All Over The World{" "}
                 <Text
                   as={"span"}
@@ -274,7 +273,7 @@ function UploadModal() {
                   }}
                 >
                   YOU
-                </Flex
+                </Flex>
               </Stack>
             </Stack>
             <Stack
