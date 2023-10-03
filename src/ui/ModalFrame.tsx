@@ -14,7 +14,7 @@ import {
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector, useDispatch } from "react-redux";
-import { modalActions } from "../../store";
+import { modalActions, renderActions } from "../../store";
 
 import CollectionModal from "../components/CollectionModal";
 import Profile from "../components/Profile";
@@ -37,6 +37,7 @@ function ModalFrame() {
     />
   );
 
+  const profilePageUpdateCounter = useSelector((state: any) => state.render.profilePageUpdateCounter);
   const inputFile = useRef<HTMLInputElement | null>(null);
   const [isProfile, setIsProfile] = useState(true);
   const [isUserActivity, setIsUserActivity] = useState(false);
@@ -142,9 +143,10 @@ function ModalFrame() {
         setData(data.data.data.img.data.data);
       })
       .catch((err) => console.log(err));
-  }, [isRender, backendUrl]);
+  }, [isRender, backendUrl,profilePageUpdateCounter]);
 
   const onButtonClick = () => {
+    dispatch(renderActions.profilePageUpdateCounter());
     inputFile.current!.click();
   };
 

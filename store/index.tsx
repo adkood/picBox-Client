@@ -399,6 +399,7 @@ const renderVariable = {
   isResolved: 0,
   isCartItemDelete: 0,
   isCollectionUpdate: 0,
+  profilePageUpdate: 0,
 };
 
 const renderSlice = createSlice({
@@ -428,6 +429,9 @@ const renderSlice = createSlice({
     },
     isCollectionUpdateCounter(state) {
       state.isCollectionUpdate = state.isCollectionUpdate + 1;
+    },
+    profilePageUpdateCounter(state) {
+      state.profilePageUpdate = state.profilePageUpdate + 1;
     }
   },
 });
