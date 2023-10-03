@@ -178,7 +178,7 @@ function ClickFrameModal() {
       }
     };
     func();
-  }, [authState, backendUrl, dispatch]);
+  }, [authState, backendUrl, dispatch, role]);
 
   // checkout-session
   const onBuyItClickHandler = async () => {
