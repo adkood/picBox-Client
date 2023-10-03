@@ -274,7 +274,7 @@ function UploadModal() {
                   }}
                 >
                   YOU
-                </Flex>
+                </Flex
               </Stack>
             </Stack>
             <Stack
@@ -284,7 +284,7 @@ function UploadModal() {
               spacing={{ base: 8 }}
               maxW={{ lg: "lg" }}
             >
-              <Box as={"form"} >
+              <Box as={"form"}>
                 <Stack spacing={4}>
                   <Input placeholder="Your Title" ref={titleRef}></Input>
                   <Input
