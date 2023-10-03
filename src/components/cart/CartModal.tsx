@@ -87,7 +87,7 @@ const CartModal = () => {
   return (
     <Modal isOpen={onOpen} onClose={onToggle}>
       <OverlayTwo />
-      <ModalContent height={"700px"}>
+      <ModalContent height={"600px"}>
         <ModalBody height="100%" width={"100%"}>
           <Box
             boxShadow="lg"

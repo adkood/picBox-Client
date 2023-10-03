@@ -57,7 +57,7 @@ const CartItems = ({
       mb={"2"}
     >
       <Flex
-        width={"15%"}
+        width={"13%"}
         height={"100%"}
         color="purple.500"
         alignItems={"center"}
@@ -70,40 +70,40 @@ const CartItems = ({
         </span>
       </Flex>
       <Flex
-        width={"15%"}
+        width={"22%"}
         height={"100%"}
         color="purple.500"
         alignItems={"center"}
         justifyContent={"center"}
         flexDirection={"column"}
       >
-        <Heading fontSize={"1rem"}>Size</Heading>
+        <Heading fontSize={"1rem"}>Size(KB)</Heading>
         <span>
           <b>{size}</b>
         </span>
       </Flex>
       <Flex
-        width={"15%"}
+        width={"23%"}
         height={"100%"}
         color="purple.500"
         alignItems={"center"}
         justifyContent={"center"}
         flexDirection={"column"}
       >
-        <Heading fontSize={"1rem"}>Price</Heading>
+        <Heading fontSize={"1rem"}>Price(Rs)</Heading>
         <span>
           <b>{price}</b>
         </span>
       </Flex>
       <Flex
-        width={"15%"}
+        width={"25%"}
         height={"100%"}
         color="purple.500"
         alignItems={"center"}
         justifyContent={"center"}
         flexDirection={"column"}
       >
-        <Heading fontSize={"1rem"}>Discount</Heading>
+        <Heading fontSize={"1rem"}>Discount(%)</Heading>
         <span>
           <b>{discount}</b>
         </span>
@@ -112,7 +112,7 @@ const CartItems = ({
         cursor={"pointer"}
         onClick={onDeleteHandler}
         color={"red"}
-        fontSize={"2rem"}
+        fontSize={"1.5rem"}
       ></CloseIcon>
     </Flex>
   );

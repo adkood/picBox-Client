@@ -225,8 +225,8 @@ function ModalFrame() {
                     flexDirection={"column"}
                   >
                     <Flex
-                      height="300px"
-                      width="300px"
+                      height="250px"
+                      width="220px"
                       border="2px solid white"
                       // boxShadow="5px 5px 5px #DDA0DD"
                       borderRadius="50%"

@@ -190,21 +190,11 @@ function OndemandUpload() {
           flexDirection={"column"}
         >
           <Container
-            as={SimpleGrid}
-            // maxW={"7xl"}
-            // columns={{ base: 1, md: 2 }}
-            py={{ base: 6, sm: 20, lg: 32 }}
+            p="3"
+            // py={{ base: 6, sm: 20, lg: 32 }}
           >
-            <Heading
-              lineHeight={1.2}
-              fontSize={{
-                base: "3xl",
-                sm: "4xl",
-                // md: "5xl",
-                // lg: "6xl",
-              }}
-            >
-              Double check the image before posting It :)
+            <Heading lineHeight={1.2} fontSize={"1.7rem"}>
+              Resolve the requested demand :)
             </Heading>
             <Stack
               bg={"gray.50"}
@@ -213,7 +203,7 @@ function OndemandUpload() {
               spacing={{ base: 8 }}
               maxW={{ lg: "lg" }}
             >
-              <Box as={"form"} mt={10}>
+              <Box as={"form"} mt={3}>
                 <Stack spacing={4}>
                   <Input placeholder="Your Title" ref={titleRef}></Input>
                   <Input
