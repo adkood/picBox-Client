@@ -40,6 +40,7 @@ function ClickFrameModal() {
   const router = useRouter();
 
   const authState = useSelector((state: any) => state.auth.isLogged);
+  const role = useSelector((state: any) => state.auth.role);
   const [userId, setUserId] = useState();
 
   // const [isVisible, setIsVisible] = useState(true);
@@ -406,47 +407,51 @@ function ClickFrameModal() {
                         <Heading fontSize="100%">DOWNLOAD</Heading>
                       </Button>
                     </Flex>
-                    <Flex
-                      height="10%"
-                      width="100%"
-                      justifyContent={"center"}
-                      margin={"2"}
-                      alignItems="center"
-                    >
-                      <Button
+                    {role === "user" && (
+                      <Flex
+                        height="10%"
                         width="100%"
-                        height="100%"
-                        bgColor="#87CEEB"
-                        _hover={{ borderRadius: "10px" }}
-                        borderStyle="none"
-                        border="1px dotted #1E90FF"
-                        color="#008080"
-                        visibility={isVisible ? "visible" : "hidden"}
-                        onClick={onBuyItClickHandler}
+                        justifyContent={"center"}
+                        margin={"2"}
+                        alignItems="center"
                       >
-                        <Heading fontSize="100%">Buy It</Heading>
-                      </Button>
-                    </Flex>
-                    <Flex
-                      height="10%"
-                      width="100%"
-                      justifyContent={"center"}
-                      alignItems="center"
-                    >
-                      <Button
+                        <Button
+                          width="100%"
+                          height="100%"
+                          bgColor="#87CEEB"
+                          _hover={{ borderRadius: "10px" }}
+                          borderStyle="none"
+                          border="1px dotted #1E90FF"
+                          color="#008080"
+                          visibility={isVisible ? "visible" : "hidden"}
+                          onClick={onBuyItClickHandler}
+                        >
+                          <Heading fontSize="100%">Buy It</Heading>
+                        </Button>
+                      </Flex>
+                    )}
+                    {role === "user" && (
+                      <Flex
+                        height="10%"
                         width="100%"
-                        height="100%"
-                        bgColor="green.300"
-                        _hover={{ borderRadius: "10px" }}
-                        borderStyle="none"
-                        border="1px dotted green"
-                        color="green"
-                        visibility={isVisible ? "visible" : "hidden"}
-                        onClick={onAddToKartHandler}
+                        justifyContent={"center"}
+                        alignItems="center"
                       >
-                        <Heading fontSize="100%">Add to Cart</Heading>
-                      </Button>
-                    </Flex>
+                        <Button
+                          width="100%"
+                          height="100%"
+                          bgColor="green.300"
+                          _hover={{ borderRadius: "10px" }}
+                          borderStyle="none"
+                          border="1px dotted green"
+                          color="green"
+                          visibility={isVisible ? "visible" : "hidden"}
+                          onClick={onAddToKartHandler}
+                        >
+                          <Heading fontSize="100%">Add to Cart</Heading>
+                        </Button>
+                      </Flex>
+                    )}
                   </Flex>
                 </Flex>
               </Flex>
