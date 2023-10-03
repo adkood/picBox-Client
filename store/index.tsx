@@ -400,6 +400,7 @@ const renderVariable = {
   isCartItemDelete: 0,
   isCollectionUpdate: 0,
   profilePageUpdate: 0,
+  imageUpload: 0,
 };
 
 const renderSlice = createSlice({
@@ -432,6 +433,9 @@ const renderSlice = createSlice({
     },
     profilePageUpdateCounter(state) {
       state.profilePageUpdate = state.profilePageUpdate + 1;
+    },
+    imageUploadCounter(state) {
+      state.imageUpload = state.imageUpload + 1;
     }
   },
 });
