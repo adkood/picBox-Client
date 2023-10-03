@@ -198,13 +198,7 @@ function UploadModal() {
           >
             <Stack>
               <Heading
-                lineHeight={1.2}
-                fontSize={{
-                  base: "3xl",
-                  sm: "4xl",
-                  // md: "5xl",
-                  // lg: "6xl",
-                }}
+                fontSize={"1.5rem"}
               >
                 Team Of Creators From All Over The World{" "}
                 <Text
@@ -290,7 +284,7 @@ function UploadModal() {
               spacing={{ base: 8 }}
               maxW={{ lg: "lg" }}
             >
-              <Box as={"form"} mt={10}>
+              <Box as={"form"} >
                 <Stack spacing={4}>
                   <Input placeholder="Your Title" ref={titleRef}></Input>
                   <Input

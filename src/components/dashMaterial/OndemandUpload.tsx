@@ -49,7 +49,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 
 import { useSelector, useDispatch } from "react-redux";
-import { modalActions } from "../../../store";
+import { modalActions, renderActions } from "../../../store";
 import { demandActions } from "../../../store";
 
 import axios from "axios";
@@ -67,7 +67,7 @@ function OndemandUpload() {
   const discountRef = useRef<HTMLInputElement>(null);
 
   const [image, setImage] = useState("");
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(0);
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
 
@@ -75,9 +75,11 @@ function OndemandUpload() {
     setImage(e.target.files[0]);
 
     const bytesSize = e.target.files[0].size;
-    const sufixes = ["B", "KB", "MB", "GB", "TB"];
+    // const sufixes = ["B", "KB", "MB", "GB", "TB"];
     const i = Math.floor(Math.log(bytesSize) / Math.log(1024));
-    setSize(`${(bytesSize / Math.pow(1024, i)).toFixed(2)} ${sufixes[i]}`);
+    const newSize = parseFloat((bytesSize / Math.pow(1024, i)).toFixed(2));
+    setSize(newSize);
+    console.log(size);
 
     let ii = new Image();
     ii.src = window.URL.createObjectURL(e.target.files[0]);
@@ -112,7 +114,7 @@ function OndemandUpload() {
       },
     })
       .then((res) => {
-        console.log(res);
+        dispatch(renderActions.isResolved());
         setUploadComplete(true);
         onToggle2();
         toast({

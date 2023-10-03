@@ -1,10 +1,12 @@
 import { Box, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import OndemandFrame from "../../ui/OndemandFrame";
+import { useSelector } from "react-redux";
 
 const OnDemand = () => {
   const [resolved, setResolved] = useState([]);
   const [unresolved, setUnresolved] = useState([]);
+  const isResolvedCounter = useSelector((state: any) => state.render.isResolved);
 
   const toast = useToast();
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -44,7 +46,7 @@ const OnDemand = () => {
       }
     };
     fetchData();
-  }, [toast, backendUrl]);
+  }, [toast, backendUrl, isResolvedCounter]);
 
   var k = 0;
   return (
