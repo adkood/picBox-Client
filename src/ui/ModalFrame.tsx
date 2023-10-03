@@ -238,7 +238,7 @@ function ModalFrame() {
                       <Image
                         width="100%"
                         src={`data:image/png;base64,${base64String}`}
-                        alt="loading..."
+                        alt="..."
                       ></Image>
                     </Flex>
                   </Flex>
